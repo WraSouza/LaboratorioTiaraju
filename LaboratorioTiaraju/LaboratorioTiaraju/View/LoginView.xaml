@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mvvm="clr-namespace:LaboratorioTiaraju.ViewModel"
+             x:Class="LaboratorioTiaraju.View.LoginView">
+    <ContentPage.BindingContext>
+        <mvvm:LoginViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout BackgroundColor="White">
+                <Image Source="logotiaraju.jpg"/>
+
+                <StackLayout Margin="20,0,20,0">
+                    <Image Source="loginLogo.jpg" 
+                   Margin="20,0,20,0">
+                        <Image.HeightRequest>
+                            <OnPlatform x:TypeArguments="x:Double">
+                                <On Platform="Android" Value="250"/>
+                                <On Platform="UWP" Value="150"/>
+                            </OnPlatform>
+                        </Image.HeightRequest>
+                        <Image.WidthRequest>
+                            <OnPlatform x:TypeArguments="x:Double">
+                                <On Platform="UWP" Value="150"/>
+                            </OnPlatform>
+                        </Image.WidthRequest>
+                    </Image>
+
+                    <Label Text="Usuário"
+                       TextColor="#006600"
+                       FontSize="20"
+                       FontAttributes="Bold"/>
+
+                    <Entry Text="{Binding Nome}"/>
+
+
+                    <Label Text="Senha"
+                       Margin="0,30,0,0"
+                       TextColor="#006600"
+                       FontSize="20"
+                       FontAttributes="Bold"/>
+
+                    <Entry Text="{Binding Senha}"
+                            IsPassword="True"/>
+
+                </StackLayout>
+
+                <Button Text="Acessar"
+                    VerticalOptions="EndAndExpand"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Margin="20,30,20,30"
+                    Command="{Binding LoginCommand}"
+                    BackgroundColor="OrangeRed"/>
+            </StackLayout>
+
+            <ActivityIndicator IsRunning="{Binding IsBusy}" 
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Color="OrangeRed"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

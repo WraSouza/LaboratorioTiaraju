@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LaboratorioTiaraju.View.PrincipalView">
+    <ContentPage.Content>
+        <ScrollView>
+            
+        
+        <Grid RowDefinitions="170,30,220,30,120,120" BackgroundColor="#F8F8F8">
+            
+            <Grid Margin="10,20,10,0">
+                <Image Source="meetingroomlogo.jpg"                       
+                       Aspect="Fill"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Sala de Reuniões"
+                           VerticalOptions="End"
+                           HorizontalOptions="StartAndExpand"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="White"/>                   
+                </StackLayout>
+            </Grid>
+
+            <StackLayout Grid.Column="0"
+                         Grid.Row="1"
+                         Margin="10,10,0,0">
+                <Label Text="Informativos"
+                       FontSize="20"
+                       TextColor="{StaticResource OrangeRed}"/>
+            </StackLayout>
+
+            <Frame Grid.Column="0"
+                   Grid.Row="2"
+                   Margin="10,10,10,0"
+                   CornerRadius="5">
+                <Grid ColumnDefinitions="3*,4*,3*"
+                      RowDefinitions="50,40,50,20">
+                    <Image Source="Cardapio.jpeg"
+                           Grid.Column="0"
+                           Grid.Row="0"/>
+
+                    <Label Text="Cardápio"
+                           Grid.Column="0"
+                           Grid.Row="1"
+                           FontSize="15"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"/>
+
+                    <Image Source="VirusCovid.jpeg"
+                           Grid.Column="1"
+                           Grid.Row="0"/>
+                    <Label Text="Informativo Covid"
+                           Grid.Column="1"
+                           Grid.Row="1"
+                           FontSize="15"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"/>
+
+                    <Image Source="DiaT.jpeg"
+                           Grid.Column="2"
+                           Grid.Row="0"/>
+                    <Label Text="Dia T"
+                           Grid.Column="2"
+                           Grid.Row="1"
+                           FontSize="15"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"/>
+
+                    <Image Source="PautaFixa.jpeg"
+                           Grid.Column="0"
+                           Grid.Row="2"/>
+                    <Label Text="Pauta Fixa"
+                           Grid.Column="0"
+                           Grid.Row="3"
+                           FontSize="15"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"/>
+                </Grid>
+            </Frame>
+
+            <StackLayout Grid.Column="0"
+                         Grid.Row="3"
+                         Margin="10,10,0,0">
+                <Label Text="Serviços"
+                       FontSize="20"
+                       TextColor="{StaticResource OrangeRed}"/>
+            </StackLayout>
+
+            <!--Serviços-->
+            <Frame Grid.Column="0"
+                   Grid.Row="4"
+                   Margin="10,10,10,0"
+                   CornerRadius="5">
+                    <Grid ColumnDefinitions="2*,2*,2*"
+                      RowDefinitions="50,40,50,20">
+
+                        <Image Source="aberturachamadologo.jpeg"
+                           Grid.Column="0"
+                           Grid.Row="0"/>
+
+                        <Label Text="Abrir Chamado"
+                           Grid.Column="0"
+                           Grid.Row="1"
+                           FontSize="15"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"/>
+
+                        <Image Source="calendariocqlogo.jpeg"                               
+                           Grid.Column="1"
+                           Grid.Row="0"/>
+
+                        <Label Text="Calendário CQ"
+                           Grid.Column="1"
+                           Grid.Row="1"
+                           FontSize="15"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"/>
+
+                        <Image Source="bibliotecalogo.jpeg"
+                              
+                           Grid.Column="2"
+                           Grid.Row="0"/>
+
+                        <Label Text="Biblioteca"
+                           Grid.Column="2"
+                           Grid.Row="1"
+                           FontSize="15"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"/>
+                    </Grid>
+
+                </Frame >
+
+
+                <StackLayout Grid.Column="0"
+                         Grid.Row="5"
+                         Margin="10,10,0,0">
+                    <Label Text="Setores"
+                       FontSize="20"
+                       TextColor="{StaticResource OrangeRed}"/>
+                </StackLayout>
+            
+            <!--Setores-->
+                <Frame Grid.Column="0"
+                   Grid.Row="5"
+                   Margin="10,10,10,0"
+                   CornerRadius="5">
+                    <Grid ColumnDefinitions="2*,2*"
+                          RowDefinitions="50,40">
+
+                        <Image Source="tilogo.jpeg"                               
+                           Grid.Column="0"
+                           Grid.Row="0"/>
+
+                        <Label Text="TI"
+                           Grid.Column="0"
+                           Grid.Row="1"
+                           FontSize="15"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"/>
+
+                        <Image Source="rhlogo.jpeg"                               
+                           Grid.Column="1"
+                           Grid.Row="0"/>
+
+                        <Label Text="RH"
+                           Grid.Column="1"
+                           Grid.Row="1"
+                           FontSize="15"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"/>                        
+
+                    </Grid>
+
+                </Frame >
+
+
+            </Grid>
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
