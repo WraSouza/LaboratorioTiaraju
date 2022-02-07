@@ -10,6 +10,7 @@
 
     <TabBar>
         <Tab Title="Início"
+             Route="Main"
              Icon="home.png">
             <ShellContent ContentTemplate="{DataTemplate views:PrincipalView}"/>
         </Tab>

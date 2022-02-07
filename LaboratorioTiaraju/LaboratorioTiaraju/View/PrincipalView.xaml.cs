@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LaboratorioTiaraju.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,8 @@ namespace LaboratorioTiaraju.View
         public PrincipalView()
         {
             InitializeComponent();
+
+            BindingContext = new PrincipalViewModel(Navigation);
         }
     }
 }

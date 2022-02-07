@@ -1,10 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mvvm="clr-namespace:LaboratorioTiaraju.ViewModel"
              x:Class="LaboratorioTiaraju.View.PrincipalView">
+    <ContentPage.BindingContext>
+        <mvvm:PrincipalViewModel/>
+    </ContentPage.BindingContext>
+    
+    
     <ContentPage.Content>
-        <ScrollView>
-            
+        <ScrollView>            
         
         <Grid RowDefinitions="170,30,220,30,120,120" BackgroundColor="#F8F8F8">
             
@@ -96,7 +101,11 @@
 
                         <Image Source="aberturachamadologo.jpeg"
                            Grid.Column="0"
-                           Grid.Row="0"/>
+                           Grid.Row="0">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenGLPI}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
 
                         <Label Text="Abrir Chamado"
                            Grid.Column="0"

@@ -15,6 +15,8 @@ namespace LaboratorioTiaraju.View
         public AppShell()
         {
             InitializeComponent();
+
+            Routing.RegisterRoute(nameof(GLPIView),typeof(GLPIView));
         }
     }
 }
