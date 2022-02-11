@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+             x:Class="LaboratorioTiaraju.View.RHView">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#F8F8F8">
+            <StackLayout Margin="20,50,20,0">
+                <Label Text="Envio de Arquivos"
+                       FontSize="20"                      
+                       FontFamily="MontserratMedium"
+                       TextColor="{StaticResource OrangeRed}"/>
+
+                <Frame CornerRadius="5">
+                    <Grid ColumnDefinitions="3*,4*,3*"
+                      RowDefinitions="50,40,50,20">
+                        <Image Source="Cardapio.jpeg"
+                           Grid.Column="0"
+                           Grid.Row="0"/>
+
+                        <Label Text="Cardápio"
+                           Grid.Column="0"
+                           Grid.Row="1"
+                           FontSize="15"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"/>
+
+                        <Image Source="VirusCovid.jpeg"
+                           Grid.Column="1"
+                           Grid.Row="0"/>
+                        <Label Text="Informativo Covid"
+                           Grid.Column="1"
+                           Grid.Row="1"
+                           FontSize="15"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"/>
+
+                        <Image Source="DiaT.jpeg"
+                           Grid.Column="2"
+                           Grid.Row="0"/>
+                        <Label Text="Dia T"
+                           Grid.Column="2"
+                           Grid.Row="1"
+                           FontSize="15"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"/>
+
+                        <Image Source="PautaFixa.jpeg"
+                           Grid.Column="0"
+                           Grid.Row="2"/>
+                        <Label Text="Pauta Fixa"
+                           Grid.Column="0"
+                           Grid.Row="3"
+                           FontSize="15"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"/>
+                    </Grid>
+                </Frame>
+
+                <Label Text="Colaboradores"
+                       Margin="0,30,0,0"
+                       FontSize="20"                      
+                       FontFamily="MontserratMedium"
+                       TextColor="{StaticResource OrangeRed}"/>
+
+                <Frame CornerRadius="5">
+                    <Grid ColumnDefinitions="3*,4*,3*"
+                          RowDefinitions="50,40">
+                        <Image Source="novocolaboradorimage.jpeg"
+                           Grid.Column="0"
+                           Grid.Row="0"/>
+
+                        <Label Text="Novo Colaborador"
+                           Grid.Column="0"
+                           Grid.Row="1"
+                           FontSize="15"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"/>
+
+                        <Image Source="alteracaocadastral.jpeg"
+                           Grid.Column="2"
+                           Grid.Row="0"/>
+
+                        <Label Text="Alterações Cadastrais"
+                           Grid.Column="2"
+                           Grid.Row="1"
+                           FontSize="15"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"/>
+                    </Grid>
+                </Frame>
+            </StackLayout>           
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

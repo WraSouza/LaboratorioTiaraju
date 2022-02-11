@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace LaboratorioTiaraju.ViewModel
 {
-    internal class GLPIViewModel : BaseViewModel
+    internal class EnviaImagemViewModel : BaseViewModel
     {
         async Task GetBack()
         {

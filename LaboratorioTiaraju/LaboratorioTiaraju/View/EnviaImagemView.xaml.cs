@@ -10,17 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace LaboratorioTiaraju.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AppShell : Shell
+    public partial class EnviaImagemView : ContentPage
     {
-        public AppShell()
+        public EnviaImagemView()
         {
             InitializeComponent();
-
-            Routing.RegisterRoute(nameof(GLPIView),typeof(GLPIView));
-
-            Routing.RegisterRoute(nameof(EnviaImagemView), typeof(EnviaImagemView));
-
-            Routing.RegisterRoute(nameof(RHView), typeof(RHView));
         }
     }
 }

@@ -170,7 +170,11 @@
 
                         <Image Source="rhlogo.jpeg"                               
                            Grid.Column="1"
-                           Grid.Row="0"/>
+                           Grid.Row="0">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenRH}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
 
                         <Label Text="RH"
                            Grid.Column="1"

@@ -9,6 +9,7 @@ namespace LaboratorioTiaraju.ViewModel
     internal class PrincipalViewModel
     {
         public Command OpenGLPI { get; set; }
+        public Command OpenRH {  get; set; }
         public INavigation Navigation { get; set; }
 
         public PrincipalViewModel()
@@ -19,6 +20,8 @@ namespace LaboratorioTiaraju.ViewModel
         public PrincipalViewModel(INavigation navigation)
         {
             OpenGLPI = new Command(async () => await OpenGLPIView());
+
+            OpenRH = new Command(async () => await OpenRHView());
         }
 
         private async Task OpenGLPIView()
@@ -28,6 +31,17 @@ namespace LaboratorioTiaraju.ViewModel
             await Shell.Current.GoToAsync(route);
         }
 
+        private async Task OpenRHView()
+        {
+            var route = $"{nameof(View.RHView)}";
+            await Shell.Current.GoToAsync(route);
+        }
+
+        private async Task OpenEnviaImagemView()
+        {           
+            var route = $"{nameof(View.EnviaImagemView)}";
+            await Shell.Current.GoToAsync(route);
+        }
 
     }
 }

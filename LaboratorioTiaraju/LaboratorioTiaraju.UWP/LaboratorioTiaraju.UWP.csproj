@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="aberturachamadologo.jpg" />
+    <Content Include="alteracaocadastral.jpg" />
     <Content Include="aniversariologo.jpg" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
@@ -139,7 +140,9 @@
     <Content Include="DiaT.jpeg" />
     <Content Include="home.png" />
     <Content Include="loginLogo.jpg" />
+    <Content Include="logotiaraju.jpg" />
     <Content Include="meetingroomlogo.jpg" />
+    <Content Include="novocolaboradorimage.jpg" />
     <Content Include="PautaFixa.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="rhlogo.jpg" />
