@@ -3,11 +3,50 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mvvm="clr-namespace:LaboratorioTiaraju.ViewModel"
              x:Class="LaboratorioTiaraju.View.EnviaImagemView">
+    <ContentPage.BindingContext>
+        <mvvm:EnviaImagemViewModel/>
+    </ContentPage.BindingContext>
+    
     <ContentPage.Content>
+        <Grid>
+            
+        
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Frame Margin="20,50,20,0"
+                   HeightRequest="300">
+                <Grid>
+                    <Image
+                        BackgroundColor="Transparent"                        
+                        Source="{Binding CaminhoImagem}"/>
+                    <StackLayout VerticalOptions="End"
+                                 HorizontalOptions="End">
+                        <Image Source="camera.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelecionarImagem}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+                </Grid>
+
+            </Frame>
+
+            
+                <Button Text="Salvar"
+                        Margin="20,0,20,0"
+                        CornerRadius="10"
+                        VerticalOptions="EndAndExpand"
+                        Command="{Binding CadastrarImagem}"
+                        ImageSource="save.png"
+                        TextColor="White"
+                        BackgroundColor="OrangeRed"/>            
+
         </StackLayout>
+
+            <ActivityIndicator IsRunning="{Binding IsBusy}" 
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Color="OrangeRed"/>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

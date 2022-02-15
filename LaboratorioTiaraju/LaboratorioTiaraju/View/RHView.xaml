@@ -1,7 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"     
+             xmlns:mvvm="clr-namespace:LaboratorioTiaraju.ViewModel"
              x:Class="LaboratorioTiaraju.View.RHView">
+    <ContentPage.BindingContext>
+        <mvvm:RHViewModel/>
+    </ContentPage.BindingContext>
+    
     <ContentPage.Content>
         <StackLayout BackgroundColor="#F8F8F8">
             <StackLayout Margin="20,50,20,0">
@@ -15,7 +20,11 @@
                       RowDefinitions="50,40,50,20">
                         <Image Source="Cardapio.jpeg"
                            Grid.Column="0"
-                           Grid.Row="0"/>
+                           Grid.Row="0">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenEnviaImagem}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
 
                         <Label Text="Cardápio"
                            Grid.Column="0"
