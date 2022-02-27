@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LaboratorioTiaraju.Model
 {
-    internal class Cardapio
+    internal class Imagem
     {
         public string CaminhoImagem { get; set; }
     }

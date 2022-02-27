@@ -136,6 +136,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="bibliotecalogo.jpg" />
     <Content Include="calendariocqlogo.jpg" />
+    <Content Include="camera.png" />
     <Content Include="Cardapio.jpeg" />
     <Content Include="DiaT.jpeg" />
     <Content Include="home.png" />

@@ -22,7 +22,7 @@
                            Grid.Column="0"
                            Grid.Row="0">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OpenEnviaImagem}"/>
+                                <TapGestureRecognizer Command="{Binding OpenEnviaImagemCardapio}"/>
                             </Image.GestureRecognizers>
                         </Image>
 
@@ -58,6 +58,20 @@
                            Grid.Row="2"/>
                         <Label Text="Pauta Fixa"
                            Grid.Column="0"
+                           Grid.Row="3"
+                           FontSize="15"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"/>
+
+                        <Image Source="rhinforma.jpg"
+                           Grid.Column="1"
+                           Grid.Row="2">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenEnviaImagemRHInforma}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Text="RH Informa"
+                           Grid.Column="1"
                            Grid.Row="3"
                            FontSize="15"
                            TextColor="Black"

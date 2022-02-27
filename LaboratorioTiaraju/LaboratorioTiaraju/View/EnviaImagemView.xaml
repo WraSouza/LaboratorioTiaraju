@@ -8,15 +8,15 @@
     </ContentPage.BindingContext>
     
     <ContentPage.Content>
-        <Grid>
-            
+        <Grid>            
         
         <StackLayout>
             <Frame Margin="20,50,20,0"
+                   BorderColor="Gainsboro"
                    HeightRequest="300">
                 <Grid>
                     <Image
-                        BackgroundColor="Transparent"                        
+                        BackgroundColor="Transparent"                         
                         Source="{Binding CaminhoImagem}"/>
                     <StackLayout VerticalOptions="End"
                                  HorizontalOptions="End">

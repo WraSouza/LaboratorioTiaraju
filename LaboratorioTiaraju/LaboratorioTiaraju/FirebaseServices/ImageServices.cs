@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace LaboratorioTiaraju.FirebaseServices
 {
@@ -17,10 +18,12 @@ namespace LaboratorioTiaraju.FirebaseServices
         {
             firebase = new FirebaseClient("https://tiaraju-afa0a-default-rtdb.firebaseio.com/");
         }
-        public async Task<bool> EnviarCardapio(string referenciaImage)
+        public async Task<bool> EnviarImagem(string referenciaImage)
         {
-            await firebase.Child("Cardapio")
-                    .PostAsync(new Cardapio()
+            var pastaImagem = Preferences.Get("Imagem", "default_value");
+
+            await firebase.Child(pastaImagem)
+                    .PostAsync(new Imagem()
                     {                        
                         CaminhoImagem = referenciaImage,
                         
@@ -29,11 +32,12 @@ namespace LaboratorioTiaraju.FirebaseServices
             return true;
         }
 
-        public async Task<List<Cardapio>> VerificaCardapio()
+        public async Task<List<Imagem>> VerificaCardapio()
         {
+            var pastaImagem = Preferences.Get("Imagem", "default_value");
             return (await firebase
-                .Child("Cardapio")
-                .OnceAsync<Cardapio>()).Select(item => new Cardapio
+                .Child(pastaImagem)
+                .OnceAsync<Imagem>()).Select(item => new Imagem
                 {
                     CaminhoImagem = item.Object.CaminhoImagem,
                 }).ToList();
@@ -49,7 +53,7 @@ namespace LaboratorioTiaraju.FirebaseServices
         public async Task<bool> EnviarPrevencaoCovid(string referenciaImage)
         {
             await firebase.Child("Prevencao Covid")
-                    .PostAsync(new Cardapio()
+                    .PostAsync(new Imagem()
                     {
                         CaminhoImagem = referenciaImage,
 
@@ -61,7 +65,7 @@ namespace LaboratorioTiaraju.FirebaseServices
         public async Task<bool> EnviarDiaT(string referenciaImage)
         {
             await firebase.Child("DiaT")
-                    .PostAsync(new Cardapio()
+                    .PostAsync(new Imagem()
                     {
                         CaminhoImagem = referenciaImage,
 

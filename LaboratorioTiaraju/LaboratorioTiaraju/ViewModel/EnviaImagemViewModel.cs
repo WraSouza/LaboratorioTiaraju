@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace LaboratorioTiaraju.ViewModel
@@ -69,17 +70,18 @@ namespace LaboratorioTiaraju.ViewModel
 
             IsBusy = true;
 
-            List<Cardapio> verificaCardapio = await imageServices.VerificaCardapio();
+            List<Imagem> verificaCardapio = await imageServices.VerificaCardapio();
 
             if (verificaCardapio.Count == 0)
             {
                 
                 string imagemSelecionada = CaminhoImagem.ToString();
+                var pastaImagem = Preferences.Get("Imagem", "default_value");
                 string imgurl = null;
                 string storageImage = null;
                 
                     storageImage = await new FirebaseStorage("tiaraju-afa0a.appspot.com")
-                  .Child("Cardapio")
+                  .Child(pastaImagem)
                   .Child(imagemSelecionada + ".jpg")
                   .PutAsync(imageStream);
                     imgurl = storageImage;
@@ -105,12 +107,12 @@ namespace LaboratorioTiaraju.ViewModel
 
             ImageServices cardapioImage = new ImageServices();
 
-            bool confirmaCadastroLanche = await cardapioImage.EnviarCardapio(referenciaImagem);
+            bool confirmaCadastroLanche = await cardapioImage.EnviarImagem(referenciaImagem);
 
             if (confirmaCadastroLanche)
             {
                 IsBusy = false;
-                await Application.Current.MainPage.DisplayAlert("Sucesso", "Cardápio Cadastrado Com Sucesso", "OK");
+                await Application.Current.MainPage.DisplayAlert("Sucesso", "Imagem Cadastrada Com Sucesso", "OK");
             }
         }
 
