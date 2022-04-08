@@ -73,5 +73,14 @@ namespace LaboratorioTiaraju.FirebaseServices
 
             return true;
         }
+
+        public async Task<List<Imagem>> RetornaImagem(string opcaoDesejada)
+        {
+            return (await firebase.Child(opcaoDesejada)
+                .OnceAsync<Imagem>()).Select(item => new Imagem
+                {
+                    CaminhoImagem = item.Object.CaminhoImagem,
+                }).ToList();
+        }
     }
 }

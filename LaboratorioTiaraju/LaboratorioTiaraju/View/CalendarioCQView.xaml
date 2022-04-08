@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Calendário"
+             x:Class="LaboratorioTiaraju.View.CalendarioCQView">
+    <CollectionView>
+        <CollectionView.EmptyView>
+            <ContentView>
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label
+                        FontSize="15"
+                        Text="Não Há Dados Cadastrados No Momento"
+                        FontFamily="MontserratBold"
+                        TextColor="Black" />
+                </StackLayout>
+            </ContentView>
+        </CollectionView.EmptyView>
+    </CollectionView>
+</ContentPage>

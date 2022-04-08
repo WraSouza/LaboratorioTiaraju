@@ -88,7 +88,6 @@ namespace LaboratorioTiaraju.ViewModel
 
                 
                 return imgurl;
-
                 
             }
             else

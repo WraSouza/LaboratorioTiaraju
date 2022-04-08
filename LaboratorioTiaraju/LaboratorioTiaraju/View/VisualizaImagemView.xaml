@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LaboratorioTiaraju.View.VisualizaImagemView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mvvm="clr-namespace:LaboratorioTiaraju.ViewModel">
+
+    <ContentPage.BindingContext>
+        <mvvm:VisualizaImagemViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid VerticalOptions="Center" HorizontalOptions="Center" Margin="0,120,0,0">
+        <CollectionView x:Name="collectionview" VerticalOptions="Center" HorizontalOptions="Center">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding CaminhoImagem}"
+                           VerticalOptions="CenterAndExpand"
+                       Aspect="Fill"/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+    
+
+    <!--<ContentPage.Content>
+        <StackLayout>
+            <Image
+                x:Name="_caminhoImagem"
+                HeightRequest="200"
+                Source="{Binding CaminhoImagem}" />
+        </StackLayout>
+    </ContentPage.Content>-->
+</ContentPage>

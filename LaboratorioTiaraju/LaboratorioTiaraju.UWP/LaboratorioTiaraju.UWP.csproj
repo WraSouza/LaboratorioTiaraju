@@ -134,11 +134,14 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="Biblioteca.png" />
     <Content Include="bibliotecalogo.jpg" />
+    <Content Include="bonustiarajuimagem.jpg" />
     <Content Include="calendariocqlogo.jpg" />
     <Content Include="camera.png" />
     <Content Include="Cardapio.jpeg" />
     <Content Include="DiaT.jpeg" />
+    <Content Include="glpi.jpg" />
     <Content Include="home.png" />
     <Content Include="loginLogo.jpg" />
     <Content Include="logotiaraju.jpg" />
@@ -146,7 +149,12 @@
     <Content Include="novocolaboradorimage.jpg" />
     <Content Include="PautaFixa.jpg" />
     <Content Include="Properties\Default.rd.xml" />
+    <Content Include="rh.jpg" />
+    <Content Include="rhinforma.jpg" />
     <Content Include="rhlogo.jpg" />
+    <Content Include="saladereuniaoimagem.jpg" />
+    <Content Include="tempoempresaimagem.jpg" />
+    <Content Include="TI.jpg" />
     <Content Include="tilogo.jpg" />
     <Content Include="VirusCovid.jpeg" />
   </ItemGroup>

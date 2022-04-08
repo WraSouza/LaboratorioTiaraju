@@ -12,10 +12,10 @@
     <ContentPage.Content>
         <ScrollView>
 
-            <Grid BackgroundColor="#F8F8F8" RowDefinitions="170,30,200,30,120,30,110">
+            <Grid BackgroundColor="#F8F8F8" RowDefinitions="170,30,350,30,120,30,110">
 
                 <Grid Margin="10,20,10,0">
-                    <Image Aspect="Fill" Source="meetingroomlogo.jpg" />
+                    <Image Aspect="Fill" Source="saladereuniaoimagem.jpg" />
                     <StackLayout Orientation="Horizontal">
                         <Label
                             FontAttributes="Bold"
@@ -43,11 +43,15 @@
                     Margin="10,0,10,0"
                     BackgroundColor="White"
                     CornerRadius="5">
-                    <Grid ColumnDefinitions="3*,4*,3*" RowDefinitions="50,40,50,20">
+                    <Grid ColumnDefinitions="3*,4*,3*" RowDefinitions="50,40,50,20,50,40">
                         <Image
                             Grid.Row="0"
                             Grid.Column="0"
-                            Source="Cardapio.jpeg" />
+                            Source="Cardapio.jpeg" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenImagemCardapio}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
 
                         <Label
                             Grid.Row="1"
@@ -60,7 +64,7 @@
                         <Image
                             Grid.Row="0"
                             Grid.Column="1"
-                            Source="VirusCovid.jpg" />
+                            Source="VirusCovid.jpeg" />
                         <Label
                             Grid.Row="1"
                             Grid.Column="1"
@@ -96,7 +100,11 @@
                         <Image
                             Grid.Row="2"
                             Grid.Column="1"
-                            Source="rhinforma.jpg" />
+                            Source="rhinforma.jpg">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenRHInforma}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
                         <Label
                             Grid.Row="3"
                             Grid.Column="1"
@@ -104,6 +112,36 @@
                             HorizontalTextAlignment="Center"
                             Text="RH Informa"
                             TextColor="Black" />
+
+                        <!--Bônus Tiarajú-->
+                        <Image Source="bonustiarajuimagem.jpg"
+                           Grid.Column="2"
+                           Grid.Row="2">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenEnviaImagemBonusTiaraju}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Text="Bônus Tiarajú"
+                           Grid.Column="2"
+                           Grid.Row="3"
+                           FontSize="15"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"/>
+
+                        <!--Tempo de Empresa-->
+                        <Image Source="tempoempresaimagem.jpg"
+                           Grid.Column="0"
+                           Grid.Row="4">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenEnviaImagemTempoEmpresa}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Text="Tempo de Empresa"
+                           Grid.Column="0"
+                           Grid.Row="5"
+                           FontSize="15"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"/>
                     </Grid>
                 </Frame>
 
@@ -128,8 +166,9 @@
 
                         <Image
                             Grid.Row="0"
+                            BackgroundColor="Transparent"
                             Grid.Column="0"
-                            Source="aberturachamadologo.jpg">
+                            Source="glpi.jpg">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenGLPI}" />
                             </Image.GestureRecognizers>
@@ -146,7 +185,11 @@
                         <Image
                             Grid.Row="0"
                             Grid.Column="1"
-                            Source="calendariocqlogo.jpg" />
+                            Source="tempoempresaimagem.jpg">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenCalendarioCQ}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
 
                         <Label
                             Grid.Row="1"
@@ -158,8 +201,8 @@
 
                         <Image
                             Grid.Row="0"
-                            Grid.Column="2"
-                            Source="bibliotecalogo.jpg" />
+                            Grid.Column="2"                            
+                            Source="Biblioteca.png" />
 
                         <Label
                             Grid.Row="1"
@@ -195,7 +238,7 @@
                         <Image
                             Grid.Row="0"
                             Grid.Column="0"
-                            Source="tilogo.jpg" />
+                            Source="TI.jpg" />
 
                         <Label
                             Grid.Row="1"
@@ -208,7 +251,7 @@
                         <Image
                             Grid.Row="0"
                             Grid.Column="1"
-                            Source="rhlogo.jpg">
+                            Source="rh.jpg">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenRH}" />
                             </Image.GestureRecognizers>

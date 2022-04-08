@@ -17,7 +17,7 @@
 
                 <Frame CornerRadius="5">
                     <Grid ColumnDefinitions="3*,4*,3*"
-                      RowDefinitions="50,40,50,20">
+                      RowDefinitions="50,40,50,40,50,40">
                         <Image Source="Cardapio.jpeg"
                            Grid.Column="0"
                            Grid.Row="0">
@@ -73,6 +73,36 @@
                         <Label Text="RH Informa"
                            Grid.Column="1"
                            Grid.Row="3"
+                           FontSize="15"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"/>
+                        
+                        <!--Bônus Tiarajú-->
+                        <Image Source="bonustiarajuimagem.jpg"
+                           Grid.Column="2"
+                           Grid.Row="2">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenEnviaImagemBonusTiaraju}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Text="Bônus Tiarajú"
+                           Grid.Column="2"
+                           Grid.Row="3"
+                           FontSize="15"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"/>
+                        
+                        <!--Tempo de Empresa-->
+                        <Image Source="tempoempresaimagem.jpg"
+                           Grid.Column="0"
+                           Grid.Row="4">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenEnviaImagemTempoEmpresa}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Text="Tempo de Empresa"
+                           Grid.Column="0"
+                           Grid.Row="5"
                            FontSize="15"
                            TextColor="Black"
                            HorizontalTextAlignment="Center"/>

@@ -21,6 +21,10 @@ namespace LaboratorioTiaraju.View
             Routing.RegisterRoute(nameof(EnviaImagemView), typeof(EnviaImagemView));
 
             Routing.RegisterRoute(nameof(RHView), typeof(RHView));
+
+            Routing.RegisterRoute(nameof(VisualizaImagemView), typeof(VisualizaImagemView));
+
+            Routing.RegisterRoute(nameof(TabbedPageCalendarioCQ), typeof(TabbedPageCalendarioCQ));
         }
     }
 }

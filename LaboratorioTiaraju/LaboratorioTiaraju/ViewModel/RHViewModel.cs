@@ -12,14 +12,54 @@ namespace LaboratorioTiaraju.ViewModel
         
         public Command OpenEnviaImagemCardapio { get; set; }
         public Command OpenEnviaImagemRHInforma { get; set; }
+        public Command OpenEnviaImagemInformativoCovid { get; set; }
+        public Command OpenEnviaImagemPautaFixa { get; set; }
+        public Command OpenEnviaImagemBonusTiaraju { get; set; }
+        public Command OpenEnviaImagemTempoEmpresa { get; set; }
 
         public RHViewModel()
         {
             OpenEnviaImagemCardapio = new Command(async () => await OpenEnviaImagemCardapioView());
-            OpenEnviaImagemRHInforma = new Command(async () => await OpenEnviaImagemRHInformarView());
+            OpenEnviaImagemRHInforma = new Command(async () => await OpenEnviaImagemRHInformaView());
+            OpenEnviaImagemInformativoCovid = new Command(async () => await OpenEnviaImagemInformativoCovidView());
+            OpenEnviaImagemPautaFixa = new Command(async () => await OpenEnviaImagemPautaFixaView());
+            OpenEnviaImagemBonusTiaraju = new Command(async () => await OpenEnviaImagemBonusTiarajuView());
+            OpenEnviaImagemTempoEmpresa = new Command(async () => await OpenEnviaImagemTempoEmpresaView());
         }
 
-        private async Task OpenEnviaImagemRHInformarView()
+        private async Task OpenEnviaImagemTempoEmpresaView()
+        {
+            const string tempoEmpresa = "TempoEmpresa";
+            Preferences.Set("Imagem", tempoEmpresa);
+            var route = $"{nameof(View.EnviaImagemView)}";
+            await Shell.Current.GoToAsync(route);
+        }
+
+        private async Task OpenEnviaImagemBonusTiarajuView()
+        {
+            const string bonusTiaraju = "BonusTiaraju";
+            Preferences.Set("Imagem", bonusTiaraju);
+            var route = $"{nameof(View.EnviaImagemView)}";
+            await Shell.Current.GoToAsync(route);
+        }
+
+        private async Task OpenEnviaImagemInformativoCovidView()
+        {
+            const string informativoCovid = "InformativoCovid";
+            Preferences.Set("Imagem", informativoCovid);
+            var route = $"{nameof(View.EnviaImagemView)}";
+            await Shell.Current.GoToAsync(route);
+        }
+
+        private async Task OpenEnviaImagemPautaFixaView()
+        {
+            const string pautaFixa = "PautaFixa";
+            Preferences.Set("Imagem", pautaFixa);
+            var route = $"{nameof(View.EnviaImagemView)}";
+            await Shell.Current.GoToAsync(route);
+        }
+
+        private async Task OpenEnviaImagemRHInformaView()
         {
             const string rhInforma = "RHInforma";
             Preferences.Set("Imagem", rhInforma);
