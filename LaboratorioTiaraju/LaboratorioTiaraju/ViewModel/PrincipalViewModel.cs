@@ -64,8 +64,18 @@ namespace LaboratorioTiaraju.ViewModel
 
         private async Task OpenRHView()
         {
-            var route = $"{nameof(View.RHView)}";
-            await Shell.Current.GoToAsync(route);
+            const string rh = "RH";
+            string departamento = Preferences.Get("Departamento", "default_value");
+            if(departamento == rh)
+            {
+                var route = $"{nameof(View.RHView)}";
+                await Shell.Current.GoToAsync(route);
+            }
+            else
+            {
+               await App.Current.MainPage.DisplayAlert("", "Acesso Não Autorizado", "OK");
+            }
+           
         }
 
         private async Task OpenEnviaImagemView()

@@ -4,9 +4,11 @@ using System.Text;
 
 namespace LaboratorioTiaraju.Model
 {
-    internal class CalendarioCQ
+    public class CalendarioCQ
     {
-        public DateTime DataColeta { get; set; }
+        //public string DataColeta { get; set; }
+        public string Mes { get; set; }
+        public string Dia { get; set; }
         public string Descricao { get; set; }
     }
 }

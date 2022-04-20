@@ -3,7 +3,13 @@
     x:Class="LaboratorioTiaraju.View.CadastroCalendarioCQView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mvvm="clr-namespace:LaboratorioTiaraju.ViewModel"
     Title="Adicionar">
+
+    <ContentPage.BindingContext>
+        <mvvm:CadastroCalendarioCQViewModel/>
+    </ContentPage.BindingContext>
+    
     <ContentPage.Content>
         <Grid>
 
@@ -15,7 +21,7 @@
 
                 <Frame>
                     <StackLayout>
-                        <DatePicker Format="D"/>
+                        <DatePicker x:Name="datePicker" Date="{Binding DataColeta}"/>
                     </StackLayout>
                 </Frame>
                 
@@ -27,7 +33,8 @@
 
                 <Frame>
                     <StackLayout>
-                        <Editor HeightRequest="100" />
+                        <Editor HeightRequest="100"
+                                Text="{Binding Observacao}"/>
                     </StackLayout>
                 </Frame>
                 
@@ -38,7 +45,8 @@
                     CornerRadius="10"
                     Text="Salvar"
                     TextColor="White"
-                    VerticalOptions="EndAndExpand" />
+                    VerticalOptions="EndAndExpand" 
+                    Command="{Binding SalvarCalendario}"/>
 
             </StackLayout>
 

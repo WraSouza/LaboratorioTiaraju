@@ -10,11 +10,14 @@ namespace LaboratorioTiaraju.ViewModel
 {
     internal class VisualizaImagemViewModel : BaseViewModel
     {
-        private ImageSource _caminhoImagem;
+        private string _caminhoImagem;
 
-        public ImageSource CaminhoImagem
+        ImageServices referenciaImagem = new ImageServices();
+        string opcaoDesejada = Preferences.Get("Imagem", "default_value");
+
+        public string CaminhoImagem
         {
-            get { return _caminhoImagem; }
+            get {  return referenciaImagem.RetornaImagem(opcaoDesejada).ToString(); }
             set { _caminhoImagem = value; OnPropertyChanged(); }
         }
 
