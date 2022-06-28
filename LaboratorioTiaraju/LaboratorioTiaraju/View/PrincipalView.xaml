@@ -8,7 +8,6 @@
         <mvvm:PrincipalViewModel />
     </ContentPage.BindingContext>
 
-
     <ContentPage.Content>
         <ScrollView>
 
@@ -19,8 +18,9 @@
                     <StackLayout Orientation="Horizontal">
                         <Label
                             FontAttributes="Bold"
-                            FontSize="20"
+                            FontSize="18"
                             HorizontalOptions="StartAndExpand"
+                            FontFamily="MontserratBold"
                             Text="Sala de Reuniões"
                             TextColor="White"
                             VerticalOptions="End" />
@@ -34,6 +34,7 @@
                     <Label
                         FontSize="20"
                         Text="Informativos"
+                        FontFamily="MontserratSemiBold"
                         TextColor="{StaticResource OrangeRed}" />
                 </StackLayout>
 
@@ -59,6 +60,7 @@
                             FontSize="15"
                             HorizontalTextAlignment="Center"
                             Text="Cardápio"
+                            FontFamily="MontserratSemiBold"
                             TextColor="Black" />
 
                         <Image
@@ -71,6 +73,7 @@
                             FontSize="15"
                             HorizontalTextAlignment="Center"
                             Text="Informativo Covid"
+                            FontFamily="MontserratSemiBold"
                             TextColor="Black" />
 
                         <Image
@@ -83,6 +86,7 @@
                             FontSize="15"
                             HorizontalTextAlignment="Center"
                             Text="Dia T"
+                            FontFamily="MontserratSemiBold"
                             TextColor="Black" />
 
                         <Image
@@ -95,6 +99,7 @@
                             FontSize="15"
                             HorizontalTextAlignment="Center"
                             Text="Pauta Fixa"
+                            FontFamily="MontserratSemiBold"
                             TextColor="Black" />
 
                         <Image
@@ -111,6 +116,7 @@
                             FontSize="15"
                             HorizontalTextAlignment="Center"
                             Text="RH Informa"
+                            FontFamily="MontserratSemiBold"
                             TextColor="Black" />
 
                         <!--Bônus Tiarajú-->
@@ -126,6 +132,7 @@
                            Grid.Row="3"
                            FontSize="15"
                            TextColor="Black"
+                           FontFamily="MontserratSemiBold"
                            HorizontalTextAlignment="Center"/>
 
                         <!--Tempo de Empresa-->
@@ -141,6 +148,7 @@
                            Grid.Row="5"
                            FontSize="15"
                            TextColor="Black"
+                           FontFamily="MontserratSemiBold"
                            HorizontalTextAlignment="Center"/>
                     </Grid>
                 </Frame>
@@ -152,6 +160,7 @@
                     <Label
                         FontSize="20"
                         Text="Serviços"
+                        FontFamily="MontserratSemiBold"
                         TextColor="{StaticResource OrangeRed}" />
                 </StackLayout>
 
@@ -180,6 +189,7 @@
                             FontSize="15"
                             HorizontalTextAlignment="Center"
                             Text="Abrir Chamado"
+                            FontFamily="MontserratSemiBold"
                             TextColor="Black" />
 
                         <Image
@@ -197,6 +207,7 @@
                             FontSize="15"
                             HorizontalTextAlignment="Center"
                             Text="Calendário CQ"
+                            FontFamily="MontserratSemiBold"
                             TextColor="Black" />
 
                         <Image
@@ -210,6 +221,7 @@
                             FontSize="15"
                             HorizontalTextAlignment="Center"
                             Text="Biblioteca"
+                            FontFamily="MontserratSemiBold"
                             TextColor="Black" />
                     </Grid>
 
@@ -223,6 +235,7 @@
                     <Label
                         FontSize="20"
                         Text="Setores"
+                        FontFamily="MontserratSemiBold"
                         TextColor="{StaticResource OrangeRed}" />
                 </StackLayout>
 
@@ -246,6 +259,7 @@
                             FontSize="15"
                             HorizontalTextAlignment="Center"
                             Text="TI"
+                            FontFamily="MontserratSemiBold"
                             TextColor="Black" />
 
                         <Image
@@ -263,6 +277,7 @@
                             FontSize="15"
                             HorizontalTextAlignment="Center"
                             Text="RH"
+                            FontFamily="MontserratSemiBold"
                             TextColor="Black" />
 
                     </Grid>

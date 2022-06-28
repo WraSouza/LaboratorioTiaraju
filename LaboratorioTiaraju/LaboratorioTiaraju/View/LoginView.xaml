@@ -30,6 +30,7 @@
 
                     <Label
                         FontAttributes="Bold"
+                        FontFamily="MontserratBold"
                         FontSize="20"
                         Text="Usuário"
                         TextColor="#006600" />
@@ -40,6 +41,7 @@
                     <Label
                         Margin="0,30,0,0"
                         FontAttributes="Bold"
+                        FontFamily="MontserratBold"
                         FontSize="20"
                         Text="Senha"
                         TextColor="#006600" />
@@ -50,9 +52,7 @@
 
                 <Button
                     Margin="20,30,20,30"
-                    BackgroundColor="OrangeRed"
                     Command="{Binding LoginCommand}"
-                    CornerRadius="10"
                     Text="Acessar"
                     TextColor="White"
                     VerticalOptions="EndAndExpand" />

@@ -78,12 +78,14 @@ namespace LaboratorioTiaraju.ViewModel
                 if (verificaConexao)
                 {
                     IsBusy = true;
+                    string senhaDigitada = Criptografia.CriptografaSenha(Senha);
                     var userService = new UserServices();
-                    Result = await userService.LoginUser(Nome, Senha);
+                    Result = await userService.LoginUser(Nome, senhaDigitada);
 
                     if (Result)
                     {
-                        Preferences.Set("Nome", Nome.ToUpper());
+                        //Preferences.Set("Nome", Nome.ToUpper());
+                        Preferences.Set("Nome", Nome);
 
                         string responsabilidade = await userService.GetUserResponsability(Nome);
 

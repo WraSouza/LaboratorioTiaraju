@@ -21,7 +21,9 @@
 
                 <Frame>
                     <StackLayout>
-                        <DatePicker x:Name="datePicker" Date="{Binding DataColeta}"/>
+                        <DatePicker x:Name="datePicker" Date="{Binding DataColeta}">
+                            <DatePicker.Format>dd-MMMM-yyyy</DatePicker.Format>
+                        </DatePicker>
                     </StackLayout>
                 </Frame>
                 
@@ -40,11 +42,8 @@
                 
 
                 <Button
-                    Margin="0,150,0,0"
-                    BackgroundColor="OrangeRed"
-                    CornerRadius="10"
-                    Text="Salvar"
-                    TextColor="White"
+                    Margin="0,150,0,0"                   
+                    Text="Salvar"                   
                     VerticalOptions="EndAndExpand" 
                     Command="{Binding SalvarCalendario}"/>
 

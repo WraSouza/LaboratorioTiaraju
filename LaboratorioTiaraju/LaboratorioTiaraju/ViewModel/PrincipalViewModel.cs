@@ -36,8 +36,19 @@ namespace LaboratorioTiaraju.ViewModel
 
         private async Task OpenCalendarioCQView()
         {
-            var route = $"{nameof(View.TabbedPageCalendarioCQ)}";
-            await Shell.Current.GoToAsync(route);
+            //var route = $"{nameof(View.TabbedPageCalendarioCQ)}";
+            //await Shell.Current.GoToAsync(route);
+            const string cq = "CQ";
+            string departamento = Preferences.Get("Departamento", "default_value");
+            if (departamento == cq)
+            {
+                var route = $"{nameof(View.TabbedPageCalendarioCQ)}";
+                await Shell.Current.GoToAsync(route);
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("", "Acesso Não Autorizado", "OK");
+            }
         }
 
         private async Task OpenRHInformaView()

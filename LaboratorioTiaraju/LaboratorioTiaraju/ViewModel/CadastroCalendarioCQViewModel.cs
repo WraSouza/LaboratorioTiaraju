@@ -14,6 +14,7 @@ namespace LaboratorioTiaraju.ViewModel
     {
         private DateTime _dataColeta;
         private string _observacao;
+        private string _mes;
 
         public Command SalvarCalendario { get; set; }
 
@@ -50,12 +51,72 @@ namespace LaboratorioTiaraju.ViewModel
             {
                 var calendarioService = new CalendarioCQServices();
 
+                _mes = DataColeta.ToString("MMMM").ToUpper();
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "JANUARY")
+                {
+                    _mes = "JANEIRO";
+                }
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "FEBRUARY")
+                {
+                    _mes = "FEVEREIRO";
+                }
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "MARCH")
+                {
+                    _mes = "MARÇO";
+                }
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "APRIL")
+                {
+                    _mes = "ABRIL";
+                }
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "MAY")
+                {
+                    _mes = "MAIO";
+                }
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "JUNE")
+                {
+                    _mes = "JUNHO";
+                }
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "JULY")
+                {
+                    _mes = "JULHO";
+                }
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "AUGUST")
+                {
+                    _mes = "AGOSTO";
+                }
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "SEPTEMBER")
+                {
+                    _mes = "SETEMBRO";
+                }
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "OCTOBER")
+                {
+                    _mes = "OUTUBRO";
+                }
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "NOVEMBER")
+                {
+                    _mes = "NOVEMBRO";
+                }
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "DECEMBER")
+                {
+                    _mes = "DEZEMBRO";
+                }
+
                 var novoCalendario = new CalendarioCQ()
                 {
                     Dia = DataColeta.Day.ToString(),
-                    Mes = DataColeta.ToString("MMMM").ToUpper(),
-                    
-                    //DataColeta = DataColeta.Date.ToString("dd-MM-yyyy"),
+                    Mes = _mes,                    
                     Descricao = Observacao
                 };
 

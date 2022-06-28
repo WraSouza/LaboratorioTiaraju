@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Firebase.Database;
+using Firebase.Database.Query;
 using LaboratorioTiaraju.Model;
 
 namespace LaboratorioTiaraju.FirebaseServices
@@ -27,6 +28,20 @@ namespace LaboratorioTiaraju.FirebaseServices
 
 
             return (user != null);
+        }
+
+        public async Task<List<Usuario>> RetornaUsuarios()
+        {
+            return (await firebase.Child("Usuario")
+                .OnceAsync<Usuario>()).Select(item => new Usuario
+                {
+                    Departamento = item.Object.Departamento,
+                    Empresa = item.Object.Empresa,
+                    NomeUsuario = item.Object.NomeUsuario,
+                    Responsabilidade = item.Object.Responsabilidade,
+                    Senha = item.Object.Senha,
+                    Status = item.Object.Status
+                }).ToList();
         }
 
         public async Task<string> GetUserResponsability(string name)
@@ -67,6 +82,25 @@ namespace LaboratorioTiaraju.FirebaseServices
                .FirstOrDefault();
 
             return user.Object.Senha;
+        }
+
+        public async Task<bool> AtualizarSenha(string name, string senhaNova)
+        {
+            var usuarios = await RetornaUsuarios();
+
+            var toUpdatePerson = (await firebase
+              .Child("Usuario")
+              .OnceAsync<Usuario>()).Where(a => a.Object.NomeUsuario == name).FirstOrDefault();
+
+            toUpdatePerson.Object.Senha = senhaNova;
+
+            await firebase
+           .Child("Usuario")
+           .Child(toUpdatePerson.Key)
+           .PutAsync(toUpdatePerson.Object);
+
+            return true;
+
         }
     }
 }

@@ -1,12 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mvvm="clr-namespace:LaboratorioTiaraju.ViewModel"
              x:Class="LaboratorioTiaraju.View.TrocarSenhaView">
+    <ContentPage.BindingContext>
+        <mvvm:TrocarSenhaViewModel/>
+    </ContentPage.BindingContext>
+    
+    
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <StackLayout BackgroundColor="White">
+                <Image Source="logotiaraju.jpg" />
+
+                <StackLayout Margin="20,30,20,0">
+                    <Image Margin="20,0,20,0" Source="loginLogo.jpg">
+                        <Image.HeightRequest>
+                            <OnPlatform x:TypeArguments="x:Double">
+                                <On Platform="Android" Value="250" />
+                                <On Platform="UWP" Value="150" />
+                            </OnPlatform>
+                        </Image.HeightRequest>
+                        <Image.WidthRequest>
+                            <OnPlatform x:TypeArguments="x:Double">
+                                <On Platform="UWP" Value="150" />
+                            </OnPlatform>
+                        </Image.WidthRequest>
+                    </Image>
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        Text="Nova Senha"
+                        FontFamily="MontserratBold"
+                        TextColor="#006600" />
+
+                    <Entry Text="{Binding SenhaNova}"
+                           IsPassword="true"
+                           Margin="0,20,0,0"/>                    
+
+                </StackLayout>
+
+                <Button
+                    Margin="20,30,20,30"                    
+                    Command="{Binding AtualizarSenhaCommand}"                    
+                    Text="Acessar"
+                    TextColor="White"
+                    VerticalOptions="EndAndExpand" />
+            </StackLayout>
+
+            <ActivityIndicator
+                HorizontalOptions="Center"
+                IsRunning="{Binding IsBusy}"
+                VerticalOptions="Center"
+                Color="OrangeRed" />
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

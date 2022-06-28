@@ -8,54 +8,61 @@
         <mvvm:CalendarioCQViewModel/>
     </ContentPage.BindingContext>
 
-    <CollectionView Margin="10,20,10,0" IsGrouped="True" ItemsSource="{Binding Calendarios}">
-        <CollectionView.ItemsLayout>
-            <GridItemsLayout
+    <RefreshView Command="{Binding AtualizaTela}" RefreshColor="OrangeRed" IsRefreshing="{Binding IsRefreshing}">
+        <CollectionView Margin="10,20,10,0" IsGrouped="True" ItemsSource="{Binding Calendarios}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
                 HorizontalItemSpacing="2"
                 Orientation="Vertical"
                 Span="2"
                 VerticalItemSpacing="5" />
-        </CollectionView.ItemsLayout>
-        <CollectionView.EmptyView>
-            <ContentView>
-                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                    <Label
+            </CollectionView.ItemsLayout>
+            <CollectionView.EmptyView>
+                <ContentView>
+                    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Label
                         FontSize="15"
                         Text="Não Há Dados Cadastrados No Momento"
                         FontFamily="MontserratBold"
                         TextColor="Black" />
-                </StackLayout>
-            </ContentView>
-        </CollectionView.EmptyView>              
+                    </StackLayout>
+                </ContentView>
+            </CollectionView.EmptyView>
 
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <Grid RowDefinitions="100" Margin="10,0,10,0">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid RowDefinitions="100" Margin="10,0,10,0">
 
-                    <Frame BorderColor="LightGray" Padding="0" Grid.Column="0" Grid.Row="0">
-                        <StackLayout Margin="5">
-                            <Label Text="{Binding Dia}"
+                        <Frame BorderColor="LightGray" CornerRadius="5" Padding="0" Grid.Column="0" Grid.Row="0">
+                            <StackLayout Margin="5">
+                                <Label Text="{Binding Dia}"
                                    TextColor="Black"
                                    HorizontalOptions="Start"
                                    FontSize="20"/>
-                            <Label Text="{Binding Descricao}"/>
-                        </StackLayout>
-                    </Frame>
-                                                              
-                </Grid>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
+                                <Label Text="{Binding Descricao}"
+                                   BackgroundColor="WhiteSmoke"
+                                   TextColor="Black"
+                                   FontFamily="MontserratMedium"/>
+                            </StackLayout>
+                        </Frame>
 
-        <CollectionView.GroupHeaderTemplate>
-            <DataTemplate>
-                <Label Text="{Binding Mes}"
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            <CollectionView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding Mes}"
                        Margin="0,5,0,0"
                        TextColor="White"
-                   BackgroundColor="OrangeRed"
-                   FontSize="Large"
-                   FontAttributes="Bold" />
-            </DataTemplate>
-        </CollectionView.GroupHeaderTemplate>
-        
-    </CollectionView>
+                       BackgroundColor="OrangeRed"
+                       FontSize="20"
+                       FontFamily="MontserratSemiBold" />
+                </DataTemplate>
+            </CollectionView.GroupHeaderTemplate>
+
+        </CollectionView>
+    </RefreshView>
+
+   
 </ContentPage>
