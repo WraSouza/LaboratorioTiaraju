@@ -15,7 +15,8 @@
                        FontFamily="MontserratMedium"
                        TextColor="{StaticResource OrangeRed}"/>
 
-                <Frame CornerRadius="5">
+                <Frame CornerRadius="5"
+                       BackgroundColor="White">
                     <Grid ColumnDefinitions="3*,4*,3*"
                       RowDefinitions="50,40,50,40,50,40">
                         <Image Source="Cardapio.jpeg"
@@ -43,7 +44,7 @@
                            TextColor="Black"
                            HorizontalTextAlignment="Center"/>
 
-                        <Image Source="DiaT.jpeg"
+                        <Image Source="DiaT.jpeg"                               
                            Grid.Column="2"
                            Grid.Row="0"/>
                         <Label Text="Dia T"

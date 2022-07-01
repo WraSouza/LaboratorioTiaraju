@@ -44,7 +44,7 @@
                 <Button
                     Margin="20,30,20,30"                    
                     Command="{Binding AtualizarSenhaCommand}"                    
-                    Text="Acessar"
+                    Text="Atualizar"
                     TextColor="White"
                     VerticalOptions="EndAndExpand" />
             </StackLayout>

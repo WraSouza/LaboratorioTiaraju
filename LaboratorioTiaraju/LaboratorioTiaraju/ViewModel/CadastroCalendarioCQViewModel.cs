@@ -116,8 +116,10 @@ namespace LaboratorioTiaraju.ViewModel
                 var novoCalendario = new CalendarioCQ()
                 {
                     Dia = DataColeta.Day.ToString(),
-                    Mes = _mes,                    
-                    Descricao = Observacao
+                    Mes = _mes,
+                    Descricao = Observacao,
+                    IsFinished = false,
+                    FinalizadoPor = " "
                 };
 
                 bool confirmaCadastro = await calendarioService.CadastrarDadosCalendario(novoCalendario);

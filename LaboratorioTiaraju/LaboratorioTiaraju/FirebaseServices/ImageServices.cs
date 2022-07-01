@@ -24,13 +24,34 @@ namespace LaboratorioTiaraju.FirebaseServices
 
             await firebase.Child(pastaImagem)
                     .PostAsync(new Imagem()
-                    {                        
+                    {
+                        PastaImagem = pastaImagem,
                         CaminhoImagem = referenciaImage,
-                        
+
                     });
 
             return true;
         }
+
+        public async Task<bool> AtualizarImagem(string referenciaImagem)
+        {
+            var pastaImagem = Preferences.Get("Imagem", "default_value");
+
+            var toUpdateImagem = (await firebase
+                .Child(pastaImagem)
+                .OnceAsync<Imagem>()).Where(x => x.Object.PastaImagem == pastaImagem).FirstOrDefault();            
+
+            toUpdateImagem.Object.CaminhoImagem = referenciaImagem;
+
+            await firebase
+           .Child(pastaImagem)
+
+           .Child(toUpdateImagem.Key)
+           .PutAsync(toUpdateImagem.Object);
+
+            return true;
+        }
+                
 
         public async Task<List<Imagem>> VerificaCardapio()
         {

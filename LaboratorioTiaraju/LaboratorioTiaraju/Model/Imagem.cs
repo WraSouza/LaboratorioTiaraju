@@ -6,6 +6,7 @@ namespace LaboratorioTiaraju.Model
 {
     internal class Imagem
     {
+        public string PastaImagem { get; set; }
         public string CaminhoImagem { get; set; }
     }
 }

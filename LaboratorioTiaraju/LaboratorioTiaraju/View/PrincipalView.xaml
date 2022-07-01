@@ -18,9 +18,9 @@
                     <StackLayout Orientation="Horizontal">
                         <Label
                             FontAttributes="Bold"
+                            FontFamily="MontserratBold"
                             FontSize="18"
                             HorizontalOptions="StartAndExpand"
-                            FontFamily="MontserratBold"
                             Text="Sala de Reuniões"
                             TextColor="White"
                             VerticalOptions="End" />
@@ -32,9 +32,9 @@
                     Grid.Column="0"
                     Margin="10,10,0,0">
                     <Label
+                        FontFamily="MontserratSemiBold"
                         FontSize="20"
                         Text="Informativos"
-                        FontFamily="MontserratSemiBold"
                         TextColor="{StaticResource OrangeRed}" />
                 </StackLayout>
 
@@ -44,23 +44,23 @@
                     Margin="10,0,10,0"
                     BackgroundColor="White"
                     CornerRadius="5">
-                    <Grid ColumnDefinitions="3*,4*,3*" RowDefinitions="50,40,50,20,50,40">
+                    <Grid ColumnDefinitions="3*,4*,3*" RowDefinitions="50,40,50,40,50,40">
                         <Image
                             Grid.Row="0"
                             Grid.Column="0"
-                            Source="Cardapio.jpeg" >
+                            Source="Cardapio.jpeg">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OpenImagemCardapio}"/>
+                                <TapGestureRecognizer Command="{Binding OpenImagemCardapio}" />
                             </Image.GestureRecognizers>
                         </Image>
 
                         <Label
                             Grid.Row="1"
                             Grid.Column="0"
+                            FontFamily="MontserratSemiBold"
                             FontSize="15"
                             HorizontalTextAlignment="Center"
                             Text="Cardápio"
-                            FontFamily="MontserratSemiBold"
                             TextColor="Black" />
 
                         <Image
@@ -70,10 +70,10 @@
                         <Label
                             Grid.Row="1"
                             Grid.Column="1"
+                            FontFamily="MontserratSemiBold"
                             FontSize="15"
                             HorizontalTextAlignment="Center"
                             Text="Informativo Covid"
-                            FontFamily="MontserratSemiBold"
                             TextColor="Black" />
 
                         <Image
@@ -83,10 +83,10 @@
                         <Label
                             Grid.Row="1"
                             Grid.Column="2"
+                            FontFamily="MontserratSemiBold"
                             FontSize="15"
                             HorizontalTextAlignment="Center"
                             Text="Dia T"
-                            FontFamily="MontserratSemiBold"
                             TextColor="Black" />
 
                         <Image
@@ -96,10 +96,10 @@
                         <Label
                             Grid.Row="3"
                             Grid.Column="0"
+                            FontFamily="MontserratSemiBold"
                             FontSize="15"
                             HorizontalTextAlignment="Center"
                             Text="Pauta Fixa"
-                            FontFamily="MontserratSemiBold"
                             TextColor="Black" />
 
                         <Image
@@ -107,49 +107,53 @@
                             Grid.Column="1"
                             Source="rhinforma.jpg">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OpenRHInforma}"/>
+                                <TapGestureRecognizer Command="{Binding OpenRHInforma}" />
                             </Image.GestureRecognizers>
                         </Image>
                         <Label
                             Grid.Row="3"
                             Grid.Column="1"
+                            FontFamily="MontserratSemiBold"
                             FontSize="15"
                             HorizontalTextAlignment="Center"
                             Text="RH Informa"
-                            FontFamily="MontserratSemiBold"
                             TextColor="Black" />
 
-                        <!--Bônus Tiarajú-->
-                        <Image Source="bonustiarajuimagem.jpg"
-                           Grid.Column="2"
-                           Grid.Row="2">
+                        <!--  Bônus Tiarajú  -->
+                        <Image
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            Source="bonustiarajuimagem.jpg">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OpenEnviaImagemBonusTiaraju}"/>
+                                <TapGestureRecognizer Command="{Binding OpenEnviaImagemBonusTiaraju}" />
                             </Image.GestureRecognizers>
                         </Image>
-                        <Label Text="Bônus Tiarajú"
-                           Grid.Column="2"
-                           Grid.Row="3"
-                           FontSize="15"
-                           TextColor="Black"
-                           FontFamily="MontserratSemiBold"
-                           HorizontalTextAlignment="Center"/>
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="2"
+                            FontFamily="MontserratSemiBold"
+                            FontSize="15"
+                            HorizontalTextAlignment="Center"
+                            Text="Bônus Tiarajú"
+                            TextColor="Black" />
 
-                        <!--Tempo de Empresa-->
-                        <Image Source="tempoempresaimagem.jpg"
-                           Grid.Column="0"
-                           Grid.Row="4">
+                        <!--  Tempo de Empresa  -->
+                        <Image
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            Source="tempoempresaimagem.png">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OpenEnviaImagemTempoEmpresa}"/>
+                                <TapGestureRecognizer Command="{Binding OpenEnviaImagemTempoEmpresa}" />
                             </Image.GestureRecognizers>
                         </Image>
-                        <Label Text="Tempo de Empresa"
-                           Grid.Column="0"
-                           Grid.Row="5"
-                           FontSize="15"
-                           TextColor="Black"
-                           FontFamily="MontserratSemiBold"
-                           HorizontalTextAlignment="Center"/>
+                        <Label
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            FontFamily="MontserratSemiBold"
+                            FontSize="15"
+                            HorizontalTextAlignment="Center"
+                            Text="Tempo de Empresa"
+                            TextColor="Black" />
                     </Grid>
                 </Frame>
 
@@ -158,9 +162,9 @@
                     Grid.Column="0"
                     Margin="10,5,0,0">
                     <Label
+                        FontFamily="MontserratSemiBold"
                         FontSize="20"
                         Text="Serviços"
-                        FontFamily="MontserratSemiBold"
                         TextColor="{StaticResource OrangeRed}" />
                 </StackLayout>
 
@@ -175,8 +179,8 @@
 
                         <Image
                             Grid.Row="0"
-                            BackgroundColor="Transparent"
                             Grid.Column="0"
+                            BackgroundColor="Transparent"
                             Source="glpi.jpg">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenGLPI}" />
@@ -186,10 +190,10 @@
                         <Label
                             Grid.Row="1"
                             Grid.Column="0"
+                            FontFamily="MontserratSemiBold"
                             FontSize="15"
                             HorizontalTextAlignment="Center"
                             Text="Abrir Chamado"
-                            FontFamily="MontserratSemiBold"
                             TextColor="Black" />
 
                         <Image
@@ -197,31 +201,31 @@
                             Grid.Column="1"
                             Source="tempoempresaimagem.jpg">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OpenCalendarioCQ}"/>
+                                <TapGestureRecognizer Command="{Binding OpenCalendarioCQ}" />
                             </Image.GestureRecognizers>
                         </Image>
 
                         <Label
                             Grid.Row="1"
                             Grid.Column="1"
+                            FontFamily="MontserratSemiBold"
                             FontSize="15"
                             HorizontalTextAlignment="Center"
                             Text="Calendário CQ"
-                            FontFamily="MontserratSemiBold"
                             TextColor="Black" />
 
                         <Image
                             Grid.Row="0"
-                            Grid.Column="2"                            
+                            Grid.Column="2"
                             Source="Biblioteca.png" />
 
                         <Label
                             Grid.Row="1"
                             Grid.Column="2"
+                            FontFamily="MontserratSemiBold"
                             FontSize="15"
                             HorizontalTextAlignment="Center"
                             Text="Biblioteca"
-                            FontFamily="MontserratSemiBold"
                             TextColor="Black" />
                     </Grid>
 
@@ -233,9 +237,9 @@
                     Grid.Column="0"
                     Margin="10,10,0,0">
                     <Label
+                        FontFamily="MontserratSemiBold"
                         FontSize="20"
                         Text="Setores"
-                        FontFamily="MontserratSemiBold"
                         TextColor="{StaticResource OrangeRed}" />
                 </StackLayout>
 
@@ -256,10 +260,10 @@
                         <Label
                             Grid.Row="1"
                             Grid.Column="0"
+                            FontFamily="MontserratSemiBold"
                             FontSize="15"
                             HorizontalTextAlignment="Center"
                             Text="TI"
-                            FontFamily="MontserratSemiBold"
                             TextColor="Black" />
 
                         <Image
@@ -274,10 +278,10 @@
                         <Label
                             Grid.Row="1"
                             Grid.Column="1"
+                            FontFamily="MontserratSemiBold"
                             FontSize="15"
                             HorizontalTextAlignment="Center"
                             Text="RH"
-                            FontFamily="MontserratSemiBold"
                             TextColor="Black" />
 
                     </Grid>

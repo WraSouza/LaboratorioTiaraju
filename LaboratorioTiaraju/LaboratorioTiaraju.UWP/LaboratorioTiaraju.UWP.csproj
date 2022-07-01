@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="aberturachamadologo.jpg" />
+    <Content Include="agree.png" />
     <Content Include="alteracaocadastral.jpg" />
     <Content Include="aniversariologo.jpg" />
     <Content Include="Assets\LargeTile.scale-100.png" />
@@ -148,14 +149,18 @@
     <Content Include="meetingroomlogo.jpg" />
     <Content Include="novocolaboradorimage.jpg" />
     <Content Include="PautaFixa.jpg" />
+    <Content Include="plus.png" />
     <Content Include="Properties\Default.rd.xml" />
+    <Content Include="refresh.png" />
     <Content Include="rh.jpg" />
     <Content Include="rhinforma.jpg" />
     <Content Include="rhlogo.jpg" />
     <Content Include="saladereuniaoimagem.jpg" />
     <Content Include="tempoempresaimagem.jpg" />
+    <Content Include="tempoempresaimagem.png" />
     <Content Include="TI.jpg" />
     <Content Include="tilogo.jpg" />
+    <Content Include="trashcan.png" />
     <Content Include="VirusCovid.jpeg" />
   </ItemGroup>
   <ItemGroup>
@@ -175,9 +180,21 @@
     <PackageReference Include="FirebaseStorage.net">
       <Version>1.0.3</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.13" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.1" />
+    <PackageReference Include="Microsoft.AppCenter">
+      <Version>4.5.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AppCenter.Analytics">
+      <Version>4.5.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AppCenter.Crashes">
+      <Version>4.5.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AppCenter.Distribute">
+      <Version>4.5.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2478" />
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.14" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LaboratorioTiaraju\LaboratorioTiaraju.csproj">

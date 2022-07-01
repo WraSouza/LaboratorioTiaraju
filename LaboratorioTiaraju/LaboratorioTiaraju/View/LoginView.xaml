@@ -51,10 +51,10 @@
                 </StackLayout>
 
                 <Button
-                    Margin="20,30,20,30"
+                    Margin="50,30,50,40"
+                    HeightRequest="{OnPlatform UWP=35}"
                     Command="{Binding LoginCommand}"
                     Text="Acessar"
-                    TextColor="White"
                     VerticalOptions="EndAndExpand" />
             </StackLayout>
 

@@ -77,15 +77,14 @@ namespace LaboratorioTiaraju.ViewModel
 
                 if (verificaConexao)
                 {
-                    IsBusy = true;
-                    string senhaDigitada = Criptografia.CriptografaSenha(Senha);
+                    IsBusy = true;                    
                     var userService = new UserServices();
-                    Result = await userService.LoginUser(Nome, senhaDigitada);
+                    Result = await userService.LoginUser(Nome, Senha);
 
                     if (Result)
                     {
                         //Preferences.Set("Nome", Nome.ToUpper());
-                        Preferences.Set("Nome", Nome);
+                        Preferences.Set("Nome", Nome);                        
 
                         string responsabilidade = await userService.GetUserResponsability(Nome);
 
@@ -120,7 +119,30 @@ namespace LaboratorioTiaraju.ViewModel
                     }
                     else
                     {
-                        await Application.Current.MainPage.DisplayAlert("Erro", "Usuário/Senha Inválidos", "OK");
+                        string senhaDigitada = Criptografia.CriptografaSenha(Senha);
+                        Result = await userService.LoginUser(Nome, senhaDigitada);
+
+                        if (Result)
+                        {
+                            Preferences.Set("Nome", Nome);
+
+                            string responsabilidade = await userService.GetUserResponsability(Nome);
+
+                            string departamento = await userService.GetUserDept(Nome);
+
+                            string status = await userService.GetUserStatus(Nome);
+
+                            Preferences.Set("Departamento", departamento);
+
+                            Preferences.Set("Responsabilidade", responsabilidade);
+
+                            Application.Current.MainPage = new View.AppShell();
+                        }
+                        else
+                        {
+                            await Application.Current.MainPage.DisplayAlert("Erro", "Usuário/Senha Inválidos", "OK");
+                        }
+                        
                     }
                 }
                 else

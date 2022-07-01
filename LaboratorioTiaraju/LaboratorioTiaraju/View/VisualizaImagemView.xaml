@@ -10,7 +10,7 @@
         <mvvm:VisualizaImagemViewModel />
     </ContentPage.BindingContext>
 
-    <CollectionView x:Name="collectionview">
+    <CollectionView x:Name="collectionview" EmptyView="Não Há Imagem Cadastrada">
         <CollectionView.ItemTemplate>
             <DataTemplate>
 

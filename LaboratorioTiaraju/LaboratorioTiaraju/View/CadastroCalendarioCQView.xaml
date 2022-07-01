@@ -42,7 +42,7 @@
                 
 
                 <Button
-                    Margin="0,150,0,0"                   
+                    Margin="20,180,20,0"                   
                     Text="Salvar"                   
                     VerticalOptions="EndAndExpand" 
                     Command="{Binding SalvarCalendario}"/>

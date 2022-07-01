@@ -70,49 +70,92 @@ namespace LaboratorioTiaraju.ViewModel
 
             IsBusy = true;
 
-            List<Imagem> verificaCardapio = await imageServices.VerificaCardapio();
+            //List<Imagem> verificaCardapio = await imageServices.VerificaCardapio();
 
-            if (verificaCardapio.Count == 0)
-            {
-                
-                string imagemSelecionada = CaminhoImagem.ToString();
-                var pastaImagem = Preferences.Get("Imagem", "default_value");
-                string imgurl = null;
-                string storageImage = null;
-                
-                    storageImage = await new FirebaseStorage("tiaraju-afa0a.appspot.com")
-                  .Child(pastaImagem)
-                  .Child(imagemSelecionada + ".jpg")
-                  .PutAsync(imageStream);
-                    imgurl = storageImage;
+            string imagemSelecionada = CaminhoImagem.ToString();
+            var pastaImagem = Preferences.Get("Imagem", "default_value");
+            string imgurl = null;
+            string storageImage = null;
 
-                
-                return imgurl;
-                
-            }
-            else
-            {
-                return "";
-            }
-           
+            storageImage = await new FirebaseStorage("tiaraju-afa0a.appspot.com")
+          .Child(pastaImagem)
+          .Child(imagemSelecionada + ".jpg")
+          .PutAsync(imageStream);
+            imgurl = storageImage;
+
+
+            return imgurl;
+
+            //if (verificaCardapio.Count == 0)
+            //{
+            //    string imagemSelecionada = CaminhoImagem.ToString();
+            //    var pastaImagem = Preferences.Get("Imagem", "default_value");
+            //    string imgurl = null;
+            //    string storageImage = null;
+
+            //    storageImage = await new FirebaseStorage("tiaraju-afa0a.appspot.com")
+            //  .Child(pastaImagem)
+            //  .Child(imagemSelecionada + ".jpg")
+            //  .PutAsync(imageStream);
+            //    imgurl = storageImage;
+
+
+            //    return imgurl;
+
+            //}
+            //else
+            //{
+            //    string imagemSelecionada = CaminhoImagem.ToString();
+            //    var pastaImagem = Preferences.Get("Imagem", "default_value");
+            //    string imgurl = null;
+            //    string storageImage = null;
+
+            //    storageImage = await new FirebaseStorage("tiaraju-afa0a.appspot.com")
+            //  .Child(pastaImagem)
+            //  .Child(imagemSelecionada + ".jpg")
+            //  .PutAsync(imageStream);
+            //    imgurl = storageImage;
+
+
+            //    return imgurl;
+            //}
+
         }       
 
         private async Task EnviarImagem()
         {
             IsBusy = true;
             var imagemURL = await StoreImages(file.GetStream());
-            
+            var imageServices = new ImageServices();
+
             string referenciaImagem = imagemURL.ToString();
 
             ImageServices cardapioImage = new ImageServices();
 
-            bool confirmaCadastroLanche = await cardapioImage.EnviarImagem(referenciaImagem);
+            List<Imagem> verificaCardapio = await imageServices.VerificaCardapio();
 
-            if (confirmaCadastroLanche)
+            if(verificaCardapio.Count == 0)
             {
-                IsBusy = false;
-                await Application.Current.MainPage.DisplayAlert("Sucesso", "Imagem Cadastrada Com Sucesso", "OK");
+                bool confirmaCadastro = await cardapioImage.EnviarImagem(referenciaImagem);
+
+                if (confirmaCadastro)
+                {
+                    IsBusy = false;
+                    await Application.Current.MainPage.DisplayAlert("Sucesso", "Imagem Cadastrada Com Sucesso", "OK");
+                }
             }
+            else
+            {
+                bool confirmaCadastro = await cardapioImage.AtualizarImagem(referenciaImagem);
+
+                if (confirmaCadastro)
+                {
+                    IsBusy = false;
+                    await Application.Current.MainPage.DisplayAlert("Sucesso", "Imagem Atuailzada Com Sucesso", "OK");
+                }
+            }
+
+            
         }
 
         async Task GetBack()

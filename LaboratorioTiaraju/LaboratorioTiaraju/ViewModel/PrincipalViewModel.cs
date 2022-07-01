@@ -35,14 +35,13 @@ namespace LaboratorioTiaraju.ViewModel
         }
 
         private async Task OpenCalendarioCQView()
-        {
-            //var route = $"{nameof(View.TabbedPageCalendarioCQ)}";
-            //await Shell.Current.GoToAsync(route);
+        {            
             const string cq = "CQ";
+            const string micro = "MICRO";
             string departamento = Preferences.Get("Departamento", "default_value");
-            if (departamento == cq)
+            if ((departamento == cq) || (departamento == micro))
             {
-                var route = $"{nameof(View.TabbedPageCalendarioCQ)}";
+                var route = $"{nameof(View.CalendarioCQView)}";
                 await Shell.Current.GoToAsync(route);
             }
             else
