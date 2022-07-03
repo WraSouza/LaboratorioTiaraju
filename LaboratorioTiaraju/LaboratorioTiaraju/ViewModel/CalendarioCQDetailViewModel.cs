@@ -17,6 +17,7 @@ namespace LaboratorioTiaraju.ViewModel
         private bool _isFinished = true;
 
         public Command AlterarStatusCalendario { get; set; }
+        public Command ExcluirCalendario { get; set; }
 
         public DateTime DataColeta
         {
@@ -40,7 +41,38 @@ namespace LaboratorioTiaraju.ViewModel
 
         public CalendarioCQDetailViewModel()
         {
-            AlterarStatusCalendario = new Command<CalendarioCQ>((model) => AlterarStatusCalendarioCommand(model));
+            AlterarStatusCalendario = new Command<CalendarioCQ>(async (model) => await AlterarStatusCalendarioCommand(model));
+            ExcluirCalendario = new Command<CalendarioCQ>(async (model) => await ExcluirCalendarioCommand(model));
+        }
+
+        private async Task ExcluirCalendarioCommand(CalendarioCQ model)
+        {
+            CalendarioCQServices calendarioServices = new CalendarioCQServices();
+            string descricao = model.Descricao;
+            string dia = model.Dia;
+            string mes = model.Mes;
+            string finalizadoPor = Preferences.Get("Nome", "default_value");
+
+            bool verificaStatusCalendario = await calendarioServices.GetCalendarioCQStatusExcluded(dia, mes, descricao);
+
+            if (verificaStatusCalendario)
+            {
+                await Application.Current.MainPage.DisplayAlert("Info", "Evento Já Foi Excluído", "OK");
+            }
+            else
+            {
+                string motivo = await Application.Current.MainPage.DisplayPromptAsync("Cuidado", "Informe Motivo da Exclusão","OK","Cancel");
+
+                if(!(motivo == null))
+                {
+                    bool confirmaStatusAlterado = await calendarioServices.ExcluirCalendario(dia, mes, descricao, finalizadoPor, motivo);
+
+                    if (confirmaStatusAlterado)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Sucesso", "Evento Excluído Com Sucesso", "OK");
+                    }
+                }                
+            }
         }
 
         private async Task AlterarStatusCalendarioCommand(CalendarioCQ model)
@@ -55,7 +87,7 @@ namespace LaboratorioTiaraju.ViewModel
 
             if (verificaStatusCalendario)
             {
-                await Application.Current.MainPage.DisplayAlert("Info", "Calendário Já Foi Finalizado", "OK");
+                await Application.Current.MainPage.DisplayAlert("Info", "Evento Já Foi Finalizado", "OK");
             }
             else
             {
@@ -63,7 +95,7 @@ namespace LaboratorioTiaraju.ViewModel
 
                 if (confirmaStatusAlterado)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Sucesso", "Serviço Finalizado Com Sucesso", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Sucesso", "Evento Finalizado Com Sucesso", "OK");
                 }
             }
 

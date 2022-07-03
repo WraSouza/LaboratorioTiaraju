@@ -10,6 +10,8 @@ namespace LaboratorioTiaraju.Model
         public string Dia { get; set; }
         public string Descricao { get; set; }
         public bool IsFinished { get; set; }
+        public bool IsExcluded { get; set; }
         public string FinalizadoPor { get; set; }
+        public string MotivoExclusao { get; set; }
     }
 }

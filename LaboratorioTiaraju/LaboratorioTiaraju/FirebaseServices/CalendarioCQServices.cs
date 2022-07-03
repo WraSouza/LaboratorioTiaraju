@@ -28,6 +28,16 @@ namespace LaboratorioTiaraju.FirebaseServices
             return user.Object.IsFinished;
         }
 
+        public async Task<bool> GetCalendarioCQStatusExcluded(string dia, string mes, string descricao)
+        {
+            var user = (await firebase.Child("CalendarioCQ")
+               .OnceAsync<CalendarioCQ>())
+               .Where(u => u.Object.Dia == dia && u.Object.Mes == mes && u.Object.Descricao == descricao)
+               .FirstOrDefault();
+
+            return user.Object.IsExcluded;
+        }
+
         public async Task<List<CalendarioCQ>> RetornaCalendarioEspecifico(string dia, string mes, string descricao)
         {
             var calendarios = await RetornaInformacoes();
@@ -38,17 +48,21 @@ namespace LaboratorioTiaraju.FirebaseServices
             return calendarios.Where(a => a.Dia == dia && a.Mes == mes && a.Descricao == descricao).ToList();
         }
 
-        public async Task<bool> ApagarDadosCalendario(CalendarioCQ calendario)
+        public async Task<bool> ExcluirCalendario(string dia, string mes, string descricao, string finalizadoPor, string motivoExclusao)
         {
-            var dados = RetornaInformacoes();
+            var calendarios = await RetornaInformacoes();
+            var toUpdateCalendario = (await firebase
+              .Child("CalendarioCQ")
+              .OnceAsync<CalendarioCQ>()).Where(a => a.Object.Dia == dia && a.Object.Mes == mes && a.Object.Descricao == descricao).FirstOrDefault();
 
-            var toDeleteCalendar = (await firebase
-              .Child("CalendrioCQ")
-              .OnceAsync<CalendarioCQ>()).Where(a => a.Object.Mes == calendario.Mes
-              && a.Object.Dia == calendario.Dia
-              && a.Object.Descricao == calendario.Descricao).FirstOrDefault();
+            toUpdateCalendario.Object.IsExcluded = true;
+            toUpdateCalendario.Object.FinalizadoPor = finalizadoPor;
+            toUpdateCalendario.Object.MotivoExclusao = motivoExclusao;
 
-            await firebase.Child("CalendarioCQ").Child(toDeleteCalendar.Key).DeleteAsync();
+            await firebase
+           .Child("CalendarioCQ")
+           .Child(toUpdateCalendario.Key)
+           .PutAsync(toUpdateCalendario.Object);
 
             return true;
         }
@@ -93,7 +107,10 @@ namespace LaboratorioTiaraju.FirebaseServices
                     Dia = item.Object.Dia,
                     Mes = item.Object.Mes,                    
                     Descricao = item.Object.Descricao,
-                    IsFinished = item.Object.IsFinished
+                    IsFinished = item.Object.IsFinished,
+                    IsExcluded = item.Object.IsExcluded,
+                    FinalizadoPor = item.Object.FinalizadoPor,
+                    MotivoExclusao = item.Object.MotivoExclusao
 
                 }).ToList();
         }
@@ -106,7 +123,29 @@ namespace LaboratorioTiaraju.FirebaseServices
                 .Child("CalendarioCQ")
                 .OnceAsync<CalendarioCQ>();
 
-            return todosCalendarios.Where(m => m.IsFinished == false).ToList();
+            return todosCalendarios.Where(m => m.IsFinished == false && m.IsExcluded == false).ToList();
+        }
+
+        public async Task<List<CalendarioCQ>> RetornaCalendariosFinalizados()
+        {
+            var todosCalendarios = await RetornaInformacoes();
+
+            await firebase
+                .Child("CalendarioCQ")
+                .OnceAsync<CalendarioCQ>();
+
+            return todosCalendarios.Where(m => m.IsFinished == true && m.IsExcluded == false).ToList();
+        }
+
+        public async Task<List<CalendarioCQ>> RetornaCalendariosExcluidos()
+        {
+            var todosCalendarios = await RetornaInformacoes();
+
+            await firebase
+                .Child("CalendarioCQ")
+                .OnceAsync<CalendarioCQ>();
+
+            return todosCalendarios.Where(m => m.IsExcluded == true).ToList();
         }
 
 

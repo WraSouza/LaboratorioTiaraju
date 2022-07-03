@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="LaboratorioTiaraju.View.CalendarioCQView"
+    x:Class="LaboratorioTiaraju.View.CalendarioCQViewFinalizados"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:mvvm="clr-namespace:LaboratorioTiaraju.ViewModel"
-    Title="Eventos Agendados">
+    Title="Eventos Finalizados">
+
     <ContentPage.BindingContext>
-        <mvvm:CalendarioCQViewModel />
+        <mvvm:CalendarioCQFinalizadosViewModel/>
     </ContentPage.BindingContext>
 
     <Grid>
-
         <RefreshView
-            Command="{Binding AtualizaTela}"
+            Command="{Binding AtualizarTelaCommand}"
             IsRefreshing="{Binding IsRefreshing}"
             RefreshColor="OrangeRed">
             <CollectionView
@@ -41,7 +41,7 @@
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Margin="10,0,10,0" RowDefinitions="100">
+                        <Grid Margin="10,0,10,0" RowDefinitions="130">
 
                             <Frame
                                 Grid.Row="0"
@@ -52,6 +52,7 @@
                                 <StackLayout Margin="5">
                                     <Label
                                         FontSize="20"
+                                        FontFamily="MontserratMedium"
                                         HorizontalOptions="Start"
                                         Text="{Binding Dia}"
                                         TextColor="Black" />
@@ -60,10 +61,12 @@
                                         FontFamily="MontserratMedium"
                                         Text="{Binding Descricao}"
                                         TextColor="Black" />
+
+                                    <Label Text="Finalizado Por: " />
+
+                                    <Label FontFamily="MontserratBold" Text="{Binding FinalizadoPor}" />
+
                                 </StackLayout>
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.IrParaCalendarioCQDetailView, Source={x:Reference collectionView}}" CommandParameter="{Binding .}" />
-                                </Frame.GestureRecognizers>
                             </Frame>
 
                         </Grid>
@@ -85,16 +88,5 @@
             </CollectionView>
         </RefreshView>
 
-        <Image
-            Margin="0,0,10,10"
-            HeightRequest="40"
-            HorizontalOptions="EndAndExpand"
-            Source="plus.png"
-            VerticalOptions="EndAndExpand">
-            <Image.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding IrParaCadastroCalendarioView}" />
-            </Image.GestureRecognizers>
-        </Image>
     </Grid>
-
 </ContentPage>

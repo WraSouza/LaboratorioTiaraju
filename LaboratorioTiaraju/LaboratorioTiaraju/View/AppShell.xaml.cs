@@ -28,7 +28,11 @@ namespace LaboratorioTiaraju.View
 
             Routing.RegisterRoute(nameof(CadastroCalendarioCQView), typeof(CadastroCalendarioCQView));
 
-            Routing.RegisterRoute(nameof(CalendarioCQDetailView), typeof(CalendarioCQDetailView));
+            Routing.RegisterRoute(nameof(CalendarioCQDetailView), typeof(CalendarioCQDetailView));            
+
+            Routing.RegisterRoute(nameof(CalendarioCQExcluidos), typeof(CalendarioCQExcluidos));
+
+            Routing.RegisterRoute(nameof(CalendarioCQTabbedView), typeof(CalendarioCQTabbedView));
         }
     }
 }

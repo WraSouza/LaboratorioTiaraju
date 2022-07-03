@@ -7,17 +7,18 @@
     Title="Adicionar">
 
     <ContentPage.BindingContext>
-        <mvvm:CadastroCalendarioCQViewModel/>
+        <mvvm:CadastroCalendarioCQViewModel />
     </ContentPage.BindingContext>
-    
+
     <ContentPage.Content>
         <Grid>
 
             <StackLayout Margin="10,10,10,0" VerticalOptions="CenterAndExpand">
-                
-                <Label Text="Data da Coleta" 
-                       FontSize="20"
-                       TextColor="OrangeRed" />
+
+                <Label
+                    FontSize="20"
+                    Text="Data da Coleta"
+                    TextColor="OrangeRed" />
 
                 <Frame>
                     <StackLayout>
@@ -26,26 +27,26 @@
                         </DatePicker>
                     </StackLayout>
                 </Frame>
-                
 
-                <Label Text="Descrição" 
-                       Margin="0,20,0,0"
-                       FontSize="20"
-                       TextColor="OrangeRed" />
+
+                <Label
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="Descrição"
+                    TextColor="OrangeRed" />
 
                 <Frame>
                     <StackLayout>
-                        <Editor HeightRequest="100"
-                                Text="{Binding Observacao}"/>
+                        <Editor HeightRequest="100" Text="{Binding Observacao}" />
                     </StackLayout>
                 </Frame>
-                
+
 
                 <Button
-                    Margin="20,180,20,0"                   
-                    Text="Salvar"                   
-                    VerticalOptions="EndAndExpand" 
-                    Command="{Binding SalvarCalendario}"/>
+                    Margin="20,180,20,0"
+                    Command="{Binding SalvarCalendario}"
+                    Text="Salvar"
+                    VerticalOptions="EndAndExpand" />
 
             </StackLayout>
 

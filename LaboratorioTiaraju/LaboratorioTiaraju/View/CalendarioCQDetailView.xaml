@@ -89,6 +89,9 @@
                                             <Image Source="trashcan.png" />
                                             <Label HorizontalTextAlignment="Center" Text="Excluir Ordem" />
                                         </StackLayout>
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.ExcluirCalendario, Source={x:Reference collectionView}}" CommandParameter="{Binding .}" />
+                                        </Frame.GestureRecognizers>
                                     </Frame>
                                 </StackLayout>
                             </StackLayout>
@@ -108,6 +111,7 @@
                     <StackLayout Margin="10,10,10,0" VerticalOptions="CenterAndExpand">
 
                         <Label
+                            FontFamily="MontserratSemiBold"
                             FontSize="20"
                             Text="Data da Coleta"
                             TextColor="OrangeRed" />
@@ -123,6 +127,7 @@
 
                         <Label
                             Margin="0,20,0,0"
+                            FontFamily="MontserratSemiBold"
                             FontSize="20"
                             Text="Descrição"
                             TextColor="OrangeRed" />

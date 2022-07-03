@@ -41,7 +41,8 @@ namespace LaboratorioTiaraju.ViewModel
             string departamento = Preferences.Get("Departamento", "default_value");
             if ((departamento == cq) || (departamento == micro))
             {
-                var route = $"{nameof(View.CalendarioCQView)}";
+                var route = $"{nameof(View.CalendarioCQTabbedView)}";
+                //var route = $"{nameof(View.CalendarioCQView)}";
                 await Shell.Current.GoToAsync(route);
             }
             else

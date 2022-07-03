@@ -13,8 +13,7 @@ namespace LaboratorioTiaraju.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CalendarioCQView : ContentPage
-    {
-        
+    {        
         public CalendarioCQView()
         {
             InitializeComponent();           

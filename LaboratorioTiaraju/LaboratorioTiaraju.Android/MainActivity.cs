@@ -6,6 +6,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using Microsoft.AppCenter.Distribute;
 
 namespace LaboratorioTiaraju.Droid
 {
@@ -16,6 +17,9 @@ namespace LaboratorioTiaraju.Droid
         {
             AppCenter.Start("5597ba11-b4af-44e7-a7f9-2b180d8d185b",
                    typeof(Analytics), typeof(Crashes));
+
+            AppCenter.Start("5597ba11-b4af-44e7-a7f9-2b180d8d185b", typeof(Distribute));
+
             base.OnCreate(savedInstanceState);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);

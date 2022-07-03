@@ -199,7 +199,7 @@
                         <Image
                             Grid.Row="0"
                             Grid.Column="1"
-                            Source="tempoempresaimagem.jpg">
+                            Source="calendarioCQ.jpg">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenCalendarioCQ}" />
                             </Image.GestureRecognizers>
