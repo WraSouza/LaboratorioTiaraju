@@ -17,7 +17,7 @@ namespace LaboratorioTiaraju
 
         protected override void OnStart()
         {
-            AppCenter.Start("android=5597ba11 - b4af - 44e7 - a7f9 - 2b180d8d185b}", typeof(Distribute));
+            AppCenter.Start("uwp=218b4d89 - 2895 - 44d7 - 99e9 - ef06ac36de1f" + "android=5597ba11 - b4af - 44e7 - a7f9 - 2b180d8d185b", typeof(Distribute));
         }
 
         protected override void OnSleep()

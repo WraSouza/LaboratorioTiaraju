@@ -65,13 +65,21 @@ namespace LaboratorioTiaraju.ViewModel
 
                 if(!(motivo == null))
                 {
-                    bool confirmaStatusAlterado = await calendarioServices.ExcluirCalendario(dia, mes, descricao, finalizadoPor, motivo);
-
-                    if (confirmaStatusAlterado)
+                    if (String.IsNullOrEmpty(motivo))
                     {
-                        await Application.Current.MainPage.DisplayAlert("Sucesso", "Evento Excluído Com Sucesso", "OK");
+                        await Application.Current.MainPage.DisplayAlert("Ops", "É necessário Informar um Motivo.", "OK");
                     }
-                }                
+                    else
+                    {
+                        bool confirmaStatusAlterado = await calendarioServices.ExcluirCalendario(dia, mes, descricao, finalizadoPor, motivo);
+
+                        if (confirmaStatusAlterado)
+                        {
+                            await Application.Current.MainPage.DisplayAlert("Sucesso", "Evento Excluído Com Sucesso", "OK");
+                        }
+                    }
+                    
+                }         
             }
         }
 

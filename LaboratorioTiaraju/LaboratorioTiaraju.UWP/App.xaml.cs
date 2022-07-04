@@ -1,8 +1,14 @@
-﻿using System;
+﻿using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Distribute;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -54,6 +60,13 @@ namespace LaboratorioTiaraju.UWP
             {
                 // Create a Frame to act as the navigation context and navigate to the first page
                 rootFrame = new Frame();
+
+                AppCenter.Start("218b4d89-2895-44d7-99e9-ef06ac36de1f",
+                   typeof(Analytics), typeof(Crashes));
+
+                AppCenter.Start("218b4d89-2895-44d7-99e9-ef06ac36de1f", typeof(Distribute));
+
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("pt-BR");
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
                 Xamarin.Forms.Forms.SetFlags("Shell_UWP_Experimental");
