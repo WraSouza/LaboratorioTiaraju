@@ -17,10 +17,11 @@
 
                 <Label
                     FontSize="20"
+                    FontFamily="MontserratSemiBold"
                     Text="Data da Coleta"
                     TextColor="OrangeRed" />
 
-                <Frame>
+                <Frame CornerRadius="10">
                     <StackLayout>
                         <DatePicker x:Name="datePicker" Date="{Binding DataColeta}">
                             <DatePicker.Format>dd-MMMM-yyyy</DatePicker.Format>
@@ -32,10 +33,11 @@
                 <Label
                     Margin="0,20,0,0"
                     FontSize="20"
+                    FontFamily="MontserratSemiBold"
                     Text="Descrição"
                     TextColor="OrangeRed" />
 
-                <Frame>
+                <Frame CornerRadius="10">
                     <StackLayout>
                         <Editor HeightRequest="100" Text="{Binding Observacao}" />
                     </StackLayout>
@@ -45,6 +47,7 @@
                 <Button
                     Margin="20,180,20,0"
                     Command="{Binding SalvarCalendario}"
+                    FontFamily="MontserratSemiBold"
                     Text="Salvar"
                     VerticalOptions="EndAndExpand" />
 

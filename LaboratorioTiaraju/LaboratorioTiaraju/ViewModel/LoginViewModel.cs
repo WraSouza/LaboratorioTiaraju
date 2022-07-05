@@ -110,7 +110,7 @@ namespace LaboratorioTiaraju.ViewModel
                                 Application.Current.MainPage = new View.TrocarSenhaView();
                             }
                             else
-                            {
+                            {                                
                                 Application.Current.MainPage = new View.AppShell();
                             }
 

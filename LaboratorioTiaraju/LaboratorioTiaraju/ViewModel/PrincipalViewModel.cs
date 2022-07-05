@@ -14,6 +14,8 @@ namespace LaboratorioTiaraju.ViewModel
         public Command OpenRHInforma { get; set; }
         public Command OpenGLPI { get; set; }
         public Command OpenRH {  get; set; }
+        public Command OpenTI { get; set; }
+        public Command OpenBiblioteca { get; set; }
         public INavigation Navigation { get; set; }
 
         public PrincipalViewModel()
@@ -32,6 +34,36 @@ namespace LaboratorioTiaraju.ViewModel
             OpenRHInforma = new Command(async () => await OpenRHInformaView());
 
             OpenCalendarioCQ = new Command(async () => await OpenCalendarioCQView());
+
+            OpenBiblioteca = new Command(async () => await OpenBibliotecaView());
+
+            OpenTI = new Command(async () => await OpenTIView());
+        }
+
+        private async Task OpenBibliotecaView()
+        {            
+                await Application.Current.MainPage.DisplayAlert("Ops!", "Página Em Construção...", "OK");
+                //var route = $"{nameof(View.BibliotecaView)}";
+
+                //await Shell.Current.GoToAsync(route);           
+        }
+
+        private async Task OpenTIView()
+        {
+            const string ti = "TI";
+
+            string departamento = Preferences.Get("Departamento", "default_value");
+            if (departamento == ti)
+            {
+                await Application.Current.MainPage.DisplayAlert("Ops!","Página Em Construção...","OK");
+                //var route = $"{nameof(View.TIView)}";
+
+                //await Shell.Current.GoToAsync(route);
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("", "Acesso Não Autorizado", "OK");
+            }
         }
 
         private async Task OpenCalendarioCQView()

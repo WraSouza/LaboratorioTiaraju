@@ -119,7 +119,10 @@ namespace LaboratorioTiaraju.ViewModel
                     Mes = _mes,
                     Descricao = Observacao,
                     IsFinished = false,
-                    FinalizadoPor = " "
+                    IsExcluded = false,
+                    FinalizadoPor = " ",
+                    MotivoExclusao = " "
+
                 };
 
                 bool confirmaCadastro = await calendarioService.CadastrarDadosCalendario(novoCalendario);

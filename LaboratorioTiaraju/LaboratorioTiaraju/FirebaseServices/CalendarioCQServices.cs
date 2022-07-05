@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace LaboratorioTiaraju.FirebaseServices
 {
@@ -75,26 +76,53 @@ namespace LaboratorioTiaraju.FirebaseServices
                     Dia = calendario.Dia,
                     Mes = calendario.Mes,                    
                     Descricao = calendario.Descricao,
-                    FinalizadoPor = calendario.FinalizadoPor
+                    IsFinished = calendario.IsFinished,
+                    IsExcluded = calendario.IsExcluded,
+                    FinalizadoPor = calendario.FinalizadoPor,
+                    MotivoExclusao = " "
                 });
 
             return true;
         }
 
-        public async Task<bool> FinalizarCalendario(string dia, string mes, string descricao,string finalizadoPor)
+        public async Task<bool> AtualizaDadosCalendario(string dia, string mes, string descricao)
         {
             var calendarios = await RetornaInformacoes();
-            var toUpdatePerson = (await firebase
-              .Child("CalendarioCQ")
-              .OnceAsync<CalendarioCQ>()).Where(a => a.Object.Dia == dia && a.Object.Mes == mes && a.Object.Descricao == descricao).FirstOrDefault();
+            string diaCalendario = Preferences.Get("DiaCalendario", "default_value");
+            string mesCalendario = Preferences.Get("MesCalendario", "default_value");
+            string descricaoCalendario = Preferences.Get("DescricaoCalendario", "default_value");
 
-            toUpdatePerson.Object.IsFinished = true;
-            toUpdatePerson.Object.FinalizadoPor = finalizadoPor;
+            var toUpdateCalendar = (await firebase
+              .Child("CalendarioCQ")
+              .OnceAsync<CalendarioCQ>()).Where(a => a.Object.Dia == diaCalendario && a.Object.Mes == mesCalendario && a.Object.Descricao == descricaoCalendario).FirstOrDefault();
+
+            toUpdateCalendar.Object.Dia = dia;
+            toUpdateCalendar.Object.Mes = mes;
+            toUpdateCalendar.Object.Descricao = descricao;
 
             await firebase
            .Child("CalendarioCQ")
-           .Child(toUpdatePerson.Key)
-           .PutAsync(toUpdatePerson.Object);
+           .Child(toUpdateCalendar.Key)
+           .PutAsync(toUpdateCalendar.Object);
+
+            return true;
+
+        }
+
+        public async Task<bool> FinalizarCalendario(string dia, string mes, string descricao,string finalizadoPor)
+        {
+            var calendarios = await RetornaInformacoes();
+            var toUpdateCalendar = (await firebase
+              .Child("CalendarioCQ")
+              .OnceAsync<CalendarioCQ>()).Where(a => a.Object.Dia == dia && a.Object.Mes == mes && a.Object.Descricao == descricao).FirstOrDefault();
+
+            toUpdateCalendar.Object.IsFinished = true;
+            toUpdateCalendar.Object.FinalizadoPor = finalizadoPor;
+
+            await firebase
+           .Child("CalendarioCQ")
+           .Child(toUpdateCalendar.Key)
+           .PutAsync(toUpdateCalendar.Object);
 
             return true;
         }

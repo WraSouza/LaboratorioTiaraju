@@ -217,7 +217,11 @@
                         <Image
                             Grid.Row="0"
                             Grid.Column="2"
-                            Source="Biblioteca.png" />
+                            Source="Biblioteca.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenBiblioteca}" />
+                            </Image.GestureRecognizers>
+                        </Image>
 
                         <Label
                             Grid.Row="1"
@@ -255,7 +259,11 @@
                         <Image
                             Grid.Row="0"
                             Grid.Column="0"
-                            Source="TI.jpg" />
+                            Source="TI.jpg">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenTI}" />
+                            </Image.GestureRecognizers>
+                        </Image>
 
                         <Label
                             Grid.Row="1"
@@ -287,7 +295,6 @@
                     </Grid>
 
                 </Frame>
-
 
             </Grid>
 

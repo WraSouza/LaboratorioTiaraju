@@ -1,11 +1,13 @@
 ﻿using LaboratorioTiaraju.FirebaseServices;
 using LaboratorioTiaraju.Model;
+using LaboratorioTiaraju.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.CommunityToolkit.Extensions;
 
 namespace LaboratorioTiaraju.ViewModel
 {
@@ -15,9 +17,11 @@ namespace LaboratorioTiaraju.ViewModel
         private string _observacao;
         private string _mes;
         private bool _isFinished = true;
+        private INavigation navigation { get; set; }
 
         public Command AlterarStatusCalendario { get; set; }
         public Command ExcluirCalendario { get; set; }
+        public Command AtualizarCalendario { get; set; }
 
         public DateTime DataColeta
         {
@@ -43,6 +47,92 @@ namespace LaboratorioTiaraju.ViewModel
         {
             AlterarStatusCalendario = new Command<CalendarioCQ>(async (model) => await AlterarStatusCalendarioCommand(model));
             ExcluirCalendario = new Command<CalendarioCQ>(async (model) => await ExcluirCalendarioCommand(model));
+            AtualizarCalendario = new Command(async () => await AtualizarCalendarioCommand());
+        }
+
+        private async Task AtualizarCalendarioCommand()
+        {
+            bool verificaConexao = Conectividade.VerificaConectividade();
+
+            if (verificaConexao)
+            {
+                CalendarioCQServices calendarioServices = new CalendarioCQServices();
+                string descricao = Observacao;
+                string dia = DataColeta.Day.ToString();
+                _mes = DataColeta.ToString("MMMM").ToUpper();
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "JANUARY")
+                {
+                    _mes = "JANEIRO";
+                }
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "FEBRUARY")
+                {
+                    _mes = "FEVEREIRO";
+                }
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "MARCH")
+                {
+                    _mes = "MARÇO";
+                }
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "APRIL")
+                {
+                    _mes = "ABRIL";
+                }
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "MAY")
+                {
+                    _mes = "MAIO";
+                }
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "JUNE")
+                {
+                    _mes = "JUNHO";
+                }
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "JULY")
+                {
+                    _mes = "JULHO";
+                }
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "AUGUST")
+                {
+                    _mes = "AGOSTO";
+                }
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "SEPTEMBER")
+                {
+                    _mes = "SETEMBRO";
+                }
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "OCTOBER")
+                {
+                    _mes = "OUTUBRO";
+                }
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "NOVEMBER")
+                {
+                    _mes = "NOVEMBRO";
+                }
+
+                if (DataColeta.ToString("MMMM").ToUpper() == "DECEMBER")
+                {
+                    _mes = "DEZEMBRO";
+                }
+
+                bool confirmaStatusAlterado = await calendarioServices.AtualizaDadosCalendario(dia, _mes, descricao);
+
+                if (confirmaStatusAlterado)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Sucesso", "Evento Atualizado Com Sucesso", "OK");
+                }
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Ops!", "Algo deu errado.Verifique Sua Conexão de Internet.", "OK");
+            }
+
         }
 
         private async Task ExcluirCalendarioCommand(CalendarioCQ model)
@@ -71,12 +161,36 @@ namespace LaboratorioTiaraju.ViewModel
                     }
                     else
                     {
-                        bool confirmaStatusAlterado = await calendarioServices.ExcluirCalendario(dia, mes, descricao, finalizadoPor, motivo);
+                        UserServices userServices = new UserServices();
 
-                        if (confirmaStatusAlterado)
-                        {
-                            await Application.Current.MainPage.DisplayAlert("Sucesso", "Evento Excluído Com Sucesso", "OK");
-                        }
+                        string usuarioLogado = Preferences.Get("Nome", "default_value");
+
+                        var result = await navigation.ShowPopupAsync(new View.PopupSenhaView());
+
+                        if(!(result == null))
+                        {                            
+
+                                string senhaCriptografada = Criptografia.CriptografaSenha(result.ToString());
+
+                                bool verificaSenha = await userServices.LoginUser(usuarioLogado, senhaCriptografada);
+
+                                if (verificaSenha)
+                                {
+                                    bool confirmaStatusAlterado = await calendarioServices.ExcluirCalendario(dia, mes, descricao, finalizadoPor, motivo);
+
+                                    if (confirmaStatusAlterado)
+                                    {
+                                        await Application.Current.MainPage.DisplayAlert("Sucesso", "Evento Excluído Com Sucesso", "OK");
+                                    }
+                                }
+                                else
+                                {
+                                    await Application.Current.MainPage.DisplayAlert("Erro", "Dados Não Conferem", "OK");
+                                }
+                            
+                        }                
+
+                            
                     }
                     
                 }         

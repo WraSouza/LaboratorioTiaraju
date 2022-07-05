@@ -55,6 +55,7 @@
                     HeightRequest="{OnPlatform UWP=35}"
                     Command="{Binding LoginCommand}"
                     Text="Acessar"
+                    FontFamily="MontserratSemiBold"
                     VerticalOptions="EndAndExpand" />
             </StackLayout>
 
