@@ -37,6 +37,8 @@ namespace LaboratorioTiaraju.ViewModel
             Preferences.Set("DiaCalendario", model.Dia);
             Preferences.Set("MesCalendario", model.Mes);
             Preferences.Set("DescricaoCalendario", model.Descricao);
+            Preferences.Set("StatusFinalizado", model.IsFinished);
+            Preferences.Set("StatusExcluido", model.IsExcluded);
             var route = $"{nameof(View.CalendarioCQDetailView)}";
             await Shell.Current.GoToAsync(route);
         }

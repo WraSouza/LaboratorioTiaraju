@@ -46,7 +46,7 @@ namespace LaboratorioTiaraju.FirebaseServices
                 .Child("CalendarioCQ")
                 .OnceAsync<CalendarioCQ>();
 
-            return calendarios.Where(a => a.Dia == dia && a.Mes == mes && a.Descricao == descricao).ToList();
+            return calendarios.Where(a => a.Dia == dia && a.Mes == mes && a.Descricao == descricao && a.IsExcluded == false && a.IsFinished == false).ToList();
         }
 
         public async Task<List<CalendarioCQ>> RetornaCalendarioFinalizadoEspecifico(string dia, string mes, string descricao)

@@ -24,7 +24,7 @@ namespace LaboratorioTiaraju.View
         {
             var dia = Preferences.Get("DiaCalendario", "default_value");
             var mes = Preferences.Get("MesCalendario", "default_value");
-            var descricao = Preferences.Get("DescricaoCalendario", "default_value");
+            var descricao = Preferences.Get("DescricaoCalendario", "default_value");            
             CalendarioCQServices calendarios = new CalendarioCQServices();
             collectionView.ItemsSource = await calendarios.RetornaCalendarioEspecifico(dia,mes,descricao);
         }

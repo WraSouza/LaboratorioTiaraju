@@ -11,8 +11,10 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
+        
         <Grid>
 
+            <ScrollView>
             <StackLayout Margin="10,50,10,0" VerticalOptions="CenterAndExpand">
 
                 <Label
@@ -64,9 +66,16 @@
                     Text="Salvar"
                     VerticalOptions="EndAndExpand" />
 
-            </StackLayout>
+            </StackLayout>                
+            </ScrollView>
 
+            <ActivityIndicator
+                HorizontalOptions="Center"
+                IsRunning="{Binding IsBusy}"
+                VerticalOptions="Center"
+                Color="OrangeRed" />
 
         </Grid>
+        
     </ContentPage.Content>
 </ContentPage>
