@@ -33,6 +33,16 @@ namespace LaboratorioTiaraju.View
             Routing.RegisterRoute(nameof(CalendarioCQExcluidos), typeof(CalendarioCQExcluidos));
 
             Routing.RegisterRoute(nameof(CalendarioCQTabbedView), typeof(CalendarioCQTabbedView));
+
+            Routing.RegisterRoute(nameof(BibliotecaView), typeof(BibliotecaView));
+
+            Routing.RegisterRoute(nameof(TIView), typeof(TIView));
+
+            Routing.RegisterRoute(nameof(SalaReunioesView), typeof(SalaReunioesView));
+
+            Routing.RegisterRoute(nameof(CalendarioCQExcluidosDetailView), typeof(CalendarioCQExcluidosDetailView));
+
+            Routing.RegisterRoute(nameof(CalendarioCQFinalizadosDetailView), typeof(CalendarioCQFinalizadosDetailView));
         }
     }
 }

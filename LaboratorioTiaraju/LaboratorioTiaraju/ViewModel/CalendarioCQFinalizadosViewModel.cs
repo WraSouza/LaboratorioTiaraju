@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace LaboratorioTiaraju.ViewModel
@@ -14,11 +15,27 @@ namespace LaboratorioTiaraju.ViewModel
         public ObservableCollection<CalendarioGroup> Calendarios { get; private set; } = new ObservableCollection<CalendarioGroup>();
 
         public Command AtualizarTelaCommand { get; }
+        public Command IrParaFinalizadosDetail { get; set; }
 
         public CalendarioCQFinalizadosViewModel()
         {
             BuscaCalendario();
             AtualizarTelaCommand = new Command(AtualizarTela);
+            IrParaFinalizadosDetail = new Command<CalendarioCQ>((model) => AbrirCalendarioFinalizadosExcluidosDetailView(model));
+        }
+
+        private async void AbrirCalendarioFinalizadosExcluidosDetailView(CalendarioCQ model)
+        {
+            if (model is null)
+            {
+                return;
+            }
+
+            Preferences.Set("DiaCalendario", model.Dia);
+            Preferences.Set("MesCalendario", model.Mes);
+            Preferences.Set("DescricaoCalendario", model.Descricao);
+            var route = $"{nameof(View.CalendarioCQFinalizadosDetailView)}";
+            await Shell.Current.GoToAsync(route);
         }
 
         bool isRefreshing;

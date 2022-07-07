@@ -15,6 +15,7 @@ namespace LaboratorioTiaraju.ViewModel
         private DateTime _dataColeta;
         private string _observacao;
         private string _mes;
+        private string _titulo;
 
         public Command SalvarCalendario { get; set; }
 
@@ -24,6 +25,16 @@ namespace LaboratorioTiaraju.ViewModel
             set
             {
                 _dataColeta = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Titulo
+        {
+            get => _titulo;
+            set
+            {
+                _titulo = value;
                 OnPropertyChanged();
             }
         }
@@ -121,7 +132,8 @@ namespace LaboratorioTiaraju.ViewModel
                     IsFinished = false,
                     IsExcluded = false,
                     FinalizadoPor = " ",
-                    MotivoExclusao = " "
+                    MotivoExclusao = " ",
+                    Titulo = Titulo
 
                 };
 

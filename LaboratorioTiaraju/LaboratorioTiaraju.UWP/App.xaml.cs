@@ -2,7 +2,7 @@
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Distribute;
-using Syncfusion.XForms.UWP.PopupLayout;
+
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -71,9 +71,7 @@ namespace LaboratorioTiaraju.UWP
                 Thread.CurrentThread.CurrentUICulture = new CultureInfo("pt-BR");
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
-                Xamarin.Forms.Forms.SetFlags("Shell_UWP_Experimental");
-                List<Assembly> assembliesToInclude = new List<Assembly>();
-                assembliesToInclude.Add(typeof(SfPopupLayoutRenderer).GetTypeInfo().Assembly);
+                Xamarin.Forms.Forms.SetFlags("Shell_UWP_Experimental");                
                 Xamarin.Forms.Forms.Init(e);
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)

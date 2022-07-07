@@ -16,6 +16,8 @@ namespace LaboratorioTiaraju.ViewModel
         public Command OpenRH {  get; set; }
         public Command OpenTI { get; set; }
         public Command OpenBiblioteca { get; set; }
+
+        public Command OpenSalaDeReunioes { get; set; }
         public INavigation Navigation { get; set; }
 
         public PrincipalViewModel()
@@ -38,14 +40,22 @@ namespace LaboratorioTiaraju.ViewModel
             OpenBiblioteca = new Command(async () => await OpenBibliotecaView());
 
             OpenTI = new Command(async () => await OpenTIView());
+
+            OpenSalaDeReunioes = new Command(async () => await OpenSalaReunioesView());
+        }
+
+        private async Task OpenSalaReunioesView()
+        {            
+            var route = $"{nameof(View.SalaReunioesView)}";
+
+            await Shell.Current.GoToAsync(route);
         }
 
         private async Task OpenBibliotecaView()
         {            
-                await Application.Current.MainPage.DisplayAlert("Ops!", "Página Em Construção...", "OK");
-                //var route = $"{nameof(View.BibliotecaView)}";
+            var route = $"{nameof(View.BibliotecaView)}";
 
-                //await Shell.Current.GoToAsync(route);           
+            await Shell.Current.GoToAsync(route);
         }
 
         private async Task OpenTIView()
@@ -54,11 +64,10 @@ namespace LaboratorioTiaraju.ViewModel
 
             string departamento = Preferences.Get("Departamento", "default_value");
             if (departamento == ti)
-            {
-                await Application.Current.MainPage.DisplayAlert("Ops!","Página Em Construção...","OK");
-                //var route = $"{nameof(View.TIView)}";
+            {                
+                var route = $"{nameof(View.TIView)}";
 
-                //await Shell.Current.GoToAsync(route);
+                await Shell.Current.GoToAsync(route);
             }
             else
             {
@@ -74,7 +83,7 @@ namespace LaboratorioTiaraju.ViewModel
             if ((departamento == cq) || (departamento == micro))
             {
                 var route = $"{nameof(View.CalendarioCQTabbedView)}";
-                //var route = $"{nameof(View.CalendarioCQView)}";
+                
                 await Shell.Current.GoToAsync(route);
             }
             else

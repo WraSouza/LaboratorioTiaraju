@@ -49,6 +49,26 @@ namespace LaboratorioTiaraju.FirebaseServices
             return calendarios.Where(a => a.Dia == dia && a.Mes == mes && a.Descricao == descricao).ToList();
         }
 
+        public async Task<List<CalendarioCQ>> RetornaCalendarioFinalizadoEspecifico(string dia, string mes, string descricao)
+        {
+            var calendarios = await RetornaInformacoes();
+            await firebase
+                .Child("CalendarioCQ")
+                .OnceAsync<CalendarioCQ>();
+
+            return calendarios.Where(a => a.Dia == dia && a.Mes == mes && a.Descricao == descricao && a.IsFinished == true).ToList();
+        }
+
+        public async Task<List<CalendarioCQ>> RetornaCalendarioExcluidoEspecifico(string dia, string mes, string descricao)
+        {
+            var calendarios = await RetornaInformacoes();
+            await firebase
+                .Child("CalendarioCQ")
+                .OnceAsync<CalendarioCQ>();
+
+            return calendarios.Where(a => a.Dia == dia && a.Mes == mes && a.Descricao == descricao && a.IsExcluded == true).ToList();
+        }
+
         public async Task<bool> ExcluirCalendario(string dia, string mes, string descricao, string finalizadoPor, string motivoExclusao)
         {
             var calendarios = await RetornaInformacoes();
@@ -79,7 +99,8 @@ namespace LaboratorioTiaraju.FirebaseServices
                     IsFinished = calendario.IsFinished,
                     IsExcluded = calendario.IsExcluded,
                     FinalizadoPor = calendario.FinalizadoPor,
-                    MotivoExclusao = " "
+                    MotivoExclusao = " ",
+                    Titulo = calendario.Titulo
                 });
 
             return true;
@@ -138,10 +159,11 @@ namespace LaboratorioTiaraju.FirebaseServices
                     IsFinished = item.Object.IsFinished,
                     IsExcluded = item.Object.IsExcluded,
                     FinalizadoPor = item.Object.FinalizadoPor,
-                    MotivoExclusao = item.Object.MotivoExclusao
+                    MotivoExclusao = item.Object.MotivoExclusao,
+                    Titulo = item.Object.Titulo
 
                 }).ToList();
-        }
+        }        
 
         public async Task<List<CalendarioCQ>> RetornaCalendariosNaoFinalizados()
         {

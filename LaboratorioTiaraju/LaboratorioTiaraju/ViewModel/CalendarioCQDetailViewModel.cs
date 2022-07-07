@@ -161,34 +161,18 @@ namespace LaboratorioTiaraju.ViewModel
                     }
                     else
                     {
-                        UserServices userServices = new UserServices();
-
-                        string usuarioLogado = Preferences.Get("Nome", "default_value");
-
-                        var result = await navigation.ShowPopupAsync(new View.PopupSenhaView());
-
-                        if(!(result == null))
-                        {                            
-
-                                string senhaCriptografada = Criptografia.CriptografaSenha(result.ToString());
-
-                                bool verificaSenha = await userServices.LoginUser(usuarioLogado, senhaCriptografada);
-
-                                if (verificaSenha)
-                                {
-                                    bool confirmaStatusAlterado = await calendarioServices.ExcluirCalendario(dia, mes, descricao, finalizadoPor, motivo);
+                                
+                        bool confirmaStatusAlterado = await calendarioServices.ExcluirCalendario(dia, mes, descricao, finalizadoPor, motivo);
 
                                     if (confirmaStatusAlterado)
                                     {
                                         await Application.Current.MainPage.DisplayAlert("Sucesso", "Evento Excluído Com Sucesso", "OK");
                                     }
-                                }
+                                
                                 else
                                 {
                                     await Application.Current.MainPage.DisplayAlert("Erro", "Dados Não Conferem", "OK");
-                                }
-                            
-                        }                
+                                }                                     
 
                             
                     }

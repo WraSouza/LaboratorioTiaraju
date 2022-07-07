@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+             x:Class="LaboratorioTiaraju.View.CalendarioCQFinalizadosDetailView">    
+    
+    <ContentPage.Content>
+       
+            <StackLayout>
+                <Label
+                    Margin="0,20,0,0"
+                    FontFamily="MontserratBold"
+                    FontSize="25"
+                    HorizontalOptions="Center"
+                    Text="Dados do Calendário"
+                    TextColor="OrangeRed" />
+
+                <CollectionView
+                    x:Name="collectionView"
+                    Margin="10,25,10,0"
+                    EmptyView="Nenhum Calendario Cadastrado No Momento."                    
+                    SelectionMode="Single">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Margin="20,10,20,0">
+                                <StackLayout>
+
+                                    <Label
+                                        FontFamily="MontserratRegular"
+                                        FontSize="20"
+                                        Text="Mês" />
+
+                                    <Label
+                                        FontFamily="MontserratRegular"
+                                        FontSize="30"
+                                        Text="{Binding Mes}"
+                                        TextColor="OrangeRed" />
+
+                                    <Label
+                                        FontFamily="MontserratRegular"
+                                        FontSize="20"
+                                        Margin="0,20,0,0"
+                                        Text="Dia" />
+
+                                    <Label
+                                        FontFamily="MontserratRegular"
+                                        FontSize="25"
+                                        Text="{Binding Dia}"
+                                        TextColor="OrangeRed" />
+
+                                    <Label
+                                        FontFamily="MontserratRegular"
+                                        Margin="0,20,0,0"
+                                        FontSize="20"
+                                        Text="Descrição" />
+
+                                    <Label
+                                        FontFamily="MontserratRegular"
+                                        FontSize="25"
+                                        Text="{Binding Descricao}"
+                                        TextColor="OrangeRed" />
+
+                                    <Label
+                                        FontFamily="MontserratRegular"
+                                        Margin="0,20,0,0"
+                                        FontSize="20"
+                                        Text="Finalizado Por: " />
+
+                                    <Label
+                                        FontFamily="MontserratRegular"
+                                        FontSize="25"
+                                        Text="{Binding FinalizadoPor}"
+                                        TextColor="OrangeRed" />
+
+                                </StackLayout>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+            </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

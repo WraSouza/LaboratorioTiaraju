@@ -166,6 +166,7 @@
     <Content Include="camera.png" />
     <Content Include="Cardapio.jpeg" />
     <Content Include="DiaT.jpeg" />
+    <Content Include="emconstrucao.png" />
     <Content Include="glpi.jpg" />
     <Content Include="home.png" />
     <Content Include="loginLogo.jpg" />
@@ -215,9 +216,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Distribute">
       <Version>4.5.1</Version>
-    </PackageReference>
-    <PackageReference Include="Syncfusion.Xamarin.SfPopupLayout">
-      <Version>20.2.0.36</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.CommunityToolkit">
       <Version>2.0.2</Version>

@@ -25,6 +25,9 @@
                             TextColor="White"
                             VerticalOptions="End" />
                     </StackLayout>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenSalaDeReunioes}"/>
+                    </Grid.GestureRecognizers>
                 </Grid>
 
                 <StackLayout

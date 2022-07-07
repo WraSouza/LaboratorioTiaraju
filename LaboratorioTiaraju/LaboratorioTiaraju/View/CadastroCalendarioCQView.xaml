@@ -13,10 +13,23 @@
     <ContentPage.Content>
         <Grid>
 
-            <StackLayout Margin="10,10,10,0" VerticalOptions="CenterAndExpand">
+            <StackLayout Margin="10,50,10,0" VerticalOptions="CenterAndExpand">
 
                 <Label
                     FontSize="20"
+                    FontFamily="MontserratSemiBold"
+                    Text="Título do Evento"
+                    TextColor="OrangeRed" />
+
+                <Frame CornerRadius="10">
+                    <StackLayout>
+                        <Editor HeightRequest="50" Text="{Binding Titulo}" />
+                    </StackLayout>
+                </Frame>
+
+                <Label
+                    FontSize="20"
+                    Margin="0,30,0,0"
                     FontFamily="MontserratSemiBold"
                     Text="Data da Coleta"
                     TextColor="OrangeRed" />
@@ -31,7 +44,7 @@
 
 
                 <Label
-                    Margin="0,20,0,0"
+                    Margin="0,30,0,0"
                     FontSize="20"
                     FontFamily="MontserratSemiBold"
                     Text="Descrição"
@@ -45,7 +58,7 @@
 
 
                 <Button
-                    Margin="20,180,20,0"
+                    Margin="20,90,20,0"
                     Command="{Binding SalvarCalendario}"
                     FontFamily="MontserratSemiBold"
                     Text="Salvar"

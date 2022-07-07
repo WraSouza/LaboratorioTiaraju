@@ -58,7 +58,7 @@
                                     <Label
                                         BackgroundColor="WhiteSmoke"
                                         FontFamily="MontserratMedium"
-                                        Text="{Binding Descricao}"
+                                        Text="{Binding Titulo}"
                                         TextColor="Black" />
                                 </StackLayout>
                                 <Frame.GestureRecognizers>

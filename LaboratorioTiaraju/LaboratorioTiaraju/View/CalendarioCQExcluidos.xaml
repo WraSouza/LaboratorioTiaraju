@@ -59,7 +59,7 @@
                                     <Label
                                         BackgroundColor="WhiteSmoke"
                                         FontFamily="MontserratMedium"
-                                        Text="{Binding Descricao}"
+                                        Text="{Binding Titulo}"
                                         TextColor="Black" />
 
                                     <Label Text="Excluído Por: " />
@@ -70,9 +70,11 @@
 
                                     <Label FontFamily="MontserratBold" Text="{Binding MotivoExclusao}" />
 
-
-
                                 </StackLayout>
+
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.IrParaExcluidosDetail, Source={x:Reference collectionView}}" CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
                             </Frame>
 
                         </Grid>
