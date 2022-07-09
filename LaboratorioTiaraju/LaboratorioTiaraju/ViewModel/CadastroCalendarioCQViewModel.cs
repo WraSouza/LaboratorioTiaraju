@@ -157,7 +157,8 @@ namespace LaboratorioTiaraju.ViewModel
 
                     var novoCalendario = new CalendarioCQ()
                     {
-                        Dia = DataColeta.Day.ToString(),
+                        //Dia = DataColeta.Day.ToString(),
+                        Dia = DataColeta.Day,
                         Mes = _mes,
                         Descricao = Observacao,
                         IsFinished = false,
@@ -168,12 +169,23 @@ namespace LaboratorioTiaraju.ViewModel
 
                     };
 
-                    bool confirmaCadastro = await calendarioService.CadastrarDadosCalendario(novoCalendario);
+                    bool verificaData = DataHora.VerificaData(DataColeta);
 
-                    if (confirmaCadastro)
+                    if (verificaData)
                     {
-                        await Application.Current.MainPage.DisplayAlert("", "Informações Salvas Com Sucesso.", "OK");
+                        bool confirmaCadastro = await calendarioService.CadastrarDadosCalendario(novoCalendario);
+
+                        if (confirmaCadastro)
+                        {
+                            await Application.Current.MainPage.DisplayAlert("", "Informações Salvas Com Sucesso.", "OK");
+                        }
                     }
+                    else
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Ops", "A Data Informada Deve Ser Maior ou Igual a Hoje.", "OK");
+                    }
+
+                    
                 }
                 else
                 {

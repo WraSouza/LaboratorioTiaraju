@@ -16,7 +16,7 @@ namespace LaboratorioTiaraju.ViewModel
         private DateTime _dataColeta;
         private string _observacao;
         private string _mes;
-        private bool _isFinished = true;
+        
         private INavigation navigation { get; set; }
 
         public Command AlterarStatusCalendario { get; set; }
@@ -58,7 +58,7 @@ namespace LaboratorioTiaraju.ViewModel
             {
                 CalendarioCQServices calendarioServices = new CalendarioCQServices();
                 string descricao = Observacao;
-                string dia = DataColeta.Day.ToString();
+                int dia = DataColeta.Day;
                 _mes = DataColeta.ToString("MMMM").ToUpper();
 
                 if (DataColeta.ToString("MMMM").ToUpper() == "JANUARY")
@@ -139,7 +139,7 @@ namespace LaboratorioTiaraju.ViewModel
         {
             CalendarioCQServices calendarioServices = new CalendarioCQServices();
             string descricao = model.Descricao;
-            string dia = model.Dia;
+            int dia = model.Dia;
             string mes = model.Mes;
             string finalizadoPor = Preferences.Get("Nome", "default_value");
 
@@ -185,7 +185,7 @@ namespace LaboratorioTiaraju.ViewModel
         {
             CalendarioCQServices calendarioServices = new CalendarioCQServices();
             string descricao = model.Descricao;
-            string dia = model.Dia;
+            int dia = model.Dia;
             string mes = model.Mes;
             string finalizadoPor = Preferences.Get("Nome", "default_value");
 

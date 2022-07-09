@@ -7,7 +7,7 @@ namespace LaboratorioTiaraju.Model
     public class CalendarioCQ
     {        
         public string Mes { get; set; }
-        public string Dia { get; set; }
+        public int Dia { get; set; }
         public string Titulo { get; set; }
         public string Descricao { get; set; }
         public bool IsFinished { get; set; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LaboratorioTiaraju.Services;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -80,16 +81,27 @@ namespace LaboratorioTiaraju.ViewModel
             const string cq = "CQ";
             const string micro = "MICRO";
             string departamento = Preferences.Get("Departamento", "default_value");
-            if ((departamento == cq) || (departamento == micro))
+
+            bool verificaConexao = Conectividade.VerificaConectividade();
+
+            if (verificaConexao)
             {
-                var route = $"{nameof(View.CalendarioCQTabbedView)}";
-                
-                await Shell.Current.GoToAsync(route);
+                if ((departamento == cq) || (departamento == micro))
+                {
+                    var route = $"{nameof(View.CalendarioCQTabbedView)}";
+
+                    await Shell.Current.GoToAsync(route);
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Acesso Não Autorizado", "OK");
+                }
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("", "Acesso Não Autorizado", "OK");
+                await Application.Current.MainPage.DisplayAlert("Ops!", "Verifique Sua Conexão de Internet.", "OK");
             }
+
         }
 
         private async Task OpenRHInformaView()

@@ -22,7 +22,7 @@ namespace LaboratorioTiaraju.View
 
         protected async override void OnAppearing()
         {
-            var dia = Preferences.Get("DiaCalendario", "default_value");
+            int dia = int.Parse(Preferences.Get("DiaCalendario", "default_value"));
             var mes = Preferences.Get("MesCalendario", "default_value");
             var descricao = Preferences.Get("DescricaoCalendario", "default_value");            
             CalendarioCQServices calendarios = new CalendarioCQServices();

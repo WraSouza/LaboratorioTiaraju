@@ -19,7 +19,7 @@ namespace LaboratorioTiaraju.FirebaseServices
             firebase = new FirebaseClient("https://tiaraju-afa0a-default-rtdb.firebaseio.com/");
         }
 
-        public async Task<bool> GetCalendarioCQStatus(string dia, string mes, string descricao)
+        public async Task<bool> GetCalendarioCQStatus(int dia, string mes, string descricao)
         {
             var user = (await firebase.Child("CalendarioCQ")
                .OnceAsync<CalendarioCQ>())
@@ -29,7 +29,7 @@ namespace LaboratorioTiaraju.FirebaseServices
             return user.Object.IsFinished;
         }
 
-        public async Task<bool> GetCalendarioCQStatusExcluded(string dia, string mes, string descricao)
+        public async Task<bool> GetCalendarioCQStatusExcluded(int dia, string mes, string descricao)
         {
             var user = (await firebase.Child("CalendarioCQ")
                .OnceAsync<CalendarioCQ>())
@@ -39,7 +39,7 @@ namespace LaboratorioTiaraju.FirebaseServices
             return user.Object.IsExcluded;
         }
 
-        public async Task<List<CalendarioCQ>> RetornaCalendarioEspecifico(string dia, string mes, string descricao)
+        public async Task<List<CalendarioCQ>> RetornaCalendarioEspecifico(int dia, string mes, string descricao)
         {
             var calendarios = await RetornaInformacoes();
             await firebase
@@ -49,7 +49,7 @@ namespace LaboratorioTiaraju.FirebaseServices
             return calendarios.Where(a => a.Dia == dia && a.Mes == mes && a.Descricao == descricao && a.IsExcluded == false && a.IsFinished == false).ToList();
         }
 
-        public async Task<List<CalendarioCQ>> RetornaCalendarioFinalizadoEspecifico(string dia, string mes, string descricao)
+        public async Task<List<CalendarioCQ>> RetornaCalendarioFinalizadoEspecifico(int dia, string mes, string descricao)
         {
             var calendarios = await RetornaInformacoes();
             await firebase
@@ -59,7 +59,7 @@ namespace LaboratorioTiaraju.FirebaseServices
             return calendarios.Where(a => a.Dia == dia && a.Mes == mes && a.Descricao == descricao && a.IsFinished == true).ToList();
         }
 
-        public async Task<List<CalendarioCQ>> RetornaCalendarioExcluidoEspecifico(string dia, string mes, string descricao)
+        public async Task<List<CalendarioCQ>> RetornaCalendarioExcluidoEspecifico(int dia, string mes, string descricao)
         {
             var calendarios = await RetornaInformacoes();
             await firebase
@@ -69,7 +69,7 @@ namespace LaboratorioTiaraju.FirebaseServices
             return calendarios.Where(a => a.Dia == dia && a.Mes == mes && a.Descricao == descricao && a.IsExcluded == true).ToList();
         }
 
-        public async Task<bool> ExcluirCalendario(string dia, string mes, string descricao, string finalizadoPor, string motivoExclusao)
+        public async Task<bool> ExcluirCalendario(int dia, string mes, string descricao, string finalizadoPor, string motivoExclusao)
         {
             var calendarios = await RetornaInformacoes();
             var toUpdateCalendario = (await firebase
@@ -106,10 +106,10 @@ namespace LaboratorioTiaraju.FirebaseServices
             return true;
         }
 
-        public async Task<bool> AtualizaDadosCalendario(string dia, string mes, string descricao)
+        public async Task<bool> AtualizaDadosCalendario(int dia, string mes, string descricao)
         {
             var calendarios = await RetornaInformacoes();
-            string diaCalendario = Preferences.Get("DiaCalendario", "default_value");
+            int diaCalendario = int.Parse(Preferences.Get("DiaCalendario", "default_value"));
             string mesCalendario = Preferences.Get("MesCalendario", "default_value");
             string descricaoCalendario = Preferences.Get("DescricaoCalendario", "default_value");
 
@@ -130,7 +130,7 @@ namespace LaboratorioTiaraju.FirebaseServices
 
         }
 
-        public async Task<bool> FinalizarCalendario(string dia, string mes, string descricao,string finalizadoPor)
+        public async Task<bool> FinalizarCalendario(int dia, string mes, string descricao,string finalizadoPor)
         {
             var calendarios = await RetornaInformacoes();
             var toUpdateCalendar = (await firebase
