@@ -16,12 +16,34 @@ namespace LaboratorioTiaraju.ViewModel
         private DateTime _dataColeta;
         private string _observacao;
         private string _mes;
-        
-        private INavigation navigation { get; set; }
+        private bool _Result;
+        private bool _IsBusy;        
 
         public Command AlterarStatusCalendario { get; set; }
         public Command ExcluirCalendario { get; set; }
         public Command AtualizarCalendario { get; set; }
+
+        //Método para verificar se o login foi realizado com sucesso
+        public bool Result
+        {
+            get => _IsBusy;
+            set
+            {
+                _IsBusy = value;
+                OnPropertyChanged();
+            }
+        }
+
+        //Método para verificar se o login está sendo realizado para evitar concorrência
+        public bool IsBusy
+        {
+            get => _Result;
+            set
+            {
+                _Result = value;
+                OnPropertyChanged();
+            }
+        }
 
         public DateTime DataColeta
         {
@@ -183,27 +205,54 @@ namespace LaboratorioTiaraju.ViewModel
 
         private async Task AlterarStatusCalendarioCommand(CalendarioCQ model)
         {
-            CalendarioCQServices calendarioServices = new CalendarioCQServices();
-            string descricao = model.Descricao;
-            int dia = model.Dia;
-            string mes = model.Mes;
-            string finalizadoPor = Preferences.Get("Nome", "default_value");
+            bool verificaConexao = Conectividade.VerificaConectividade();
 
-            bool verificaStatusCalendario = await calendarioServices.GetCalendarioCQStatus(dia, mes, descricao);
-
-            if (verificaStatusCalendario)
+            if (verificaConexao)
             {
-                await Application.Current.MainPage.DisplayAlert("Info", "Evento Já Foi Finalizado", "OK");
+                if (IsBusy)
+                    return;
+
+                try
+                {
+                    CalendarioCQServices calendarioServices = new CalendarioCQServices();
+                    string descricao = model.Descricao;
+                    int dia = model.Dia;
+                    string mes = model.Mes;
+                    string finalizadoPor = Preferences.Get("Nome", "default_value");
+
+                    bool verificaStatusCalendario = await calendarioServices.GetCalendarioCQStatus(dia, mes, descricao);
+
+                    if (verificaStatusCalendario)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Info", "Evento Já Foi Finalizado", "OK");
+                    }
+                    else
+                    {
+                        bool confirmaStatusAlterado = await calendarioServices.FinalizarCalendario(dia, mes, descricao, finalizadoPor);
+
+                        if (confirmaStatusAlterado)
+                        {
+                            await Application.Current.MainPage.DisplayAlert("Sucesso", "Evento Finalizado Com Sucesso", "OK");
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Ops!", e.Message, "OK");
+                }
+                finally
+                {
+                    IsBusy = false;
+                }
             }
             else
             {
-                bool confirmaStatusAlterado = await calendarioServices.FinalizarCalendario(dia, mes, descricao, finalizadoPor);
-
-                if (confirmaStatusAlterado)
-                {
-                    await Application.Current.MainPage.DisplayAlert("Sucesso", "Evento Finalizado Com Sucesso", "OK");
-                }
+                await Application.Current.MainPage.DisplayAlert("Erro", "Verifique Sua Conexão de Internet.", "OK");
             }
+
+            
+
+            
 
             
         }

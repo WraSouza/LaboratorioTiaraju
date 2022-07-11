@@ -10,150 +10,158 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout>
-                <Label
-                    Margin="0,20,0,0"
-                    FontFamily="MontserratBold"
-                    FontSize="25"
-                    HorizontalOptions="Center"
-                    Text="Dados do Calendário"
-                    TextColor="OrangeRed" />
+        <Grid>
+            <ScrollView>
+                <StackLayout>
+                    <Label
+                        Margin="0,20,0,0"
+                        FontFamily="MontserratBold"
+                        FontSize="25"
+                        HorizontalOptions="Center"
+                        Text="Dados do Calendário"
+                        TextColor="OrangeRed" />
 
-                <CollectionView
-                    x:Name="collectionView"
-                    Margin="10,25,10,0"
-                    EmptyView="Nenhum Calendario Cadastrado No Momento."
-                    HeightRequest="350"
-                    SelectionMode="Single">
+                    <CollectionView
+                        x:Name="collectionView"
+                        Margin="10,25,10,0"
+                        EmptyView="Nenhum Calendario Cadastrado No Momento."
+                        HeightRequest="350"
+                        SelectionMode="Single">
 
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout Margin="20,10,20,0">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Margin="20,10,20,0">
+                                    <StackLayout>
+
+                                        <Label
+                                            FontFamily="MontserratRegular"
+                                            FontSize="20"
+                                            Text="Mês" />
+
+                                        <Label
+                                            FontFamily="MontserratRegular"
+                                            FontSize="30"
+                                            Text="{Binding Mes}"
+                                            TextColor="OrangeRed" />
+
+                                        <Label
+                                            FontFamily="MontserratRegular"
+                                            FontSize="20"
+                                            Text="Dia" />
+
+                                        <Label
+                                            FontFamily="MontserratRegular"
+                                            FontSize="25"
+                                            Text="{Binding Dia}"
+                                            TextColor="OrangeRed" />
+
+                                        <Label
+                                            FontFamily="MontserratRegular"
+                                            FontSize="20"
+                                            Text="Descrição" />
+
+                                        <Label
+                                            FontFamily="MontserratRegular"
+                                            FontSize="25"
+                                            Text="{Binding Descricao}"
+                                            TextColor="OrangeRed" />
+
+                                    </StackLayout>
+
+                                    <StackLayout
+                                        Margin="0,30,0,0"
+                                        HorizontalOptions="Center"
+                                        Orientation="Horizontal">
+                                        <Frame HorizontalOptions="Center">
+                                            <StackLayout>
+                                                <Image Source="agree.png" />
+                                                <Label
+                                                    FontSize="15"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="Finalizar Ordem" />
+                                            </StackLayout>
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Path=BindingContext.AlterarStatusCalendario, Source={x:Reference collectionView}}" CommandParameter="{Binding .}" />
+                                            </Frame.GestureRecognizers>
+                                        </Frame>
+
+                                        <Frame>
+                                            <StackLayout>
+                                                <Image Source="trashcan.png" />
+                                                <Label HorizontalTextAlignment="Center" Text="Excluir Ordem" />
+                                            </StackLayout>
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Path=BindingContext.ExcluirCalendario, Source={x:Reference collectionView}}" CommandParameter="{Binding .}" />
+                                            </Frame.GestureRecognizers>
+                                        </Frame>
+                                    </StackLayout>
+
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+
+                    </CollectionView>
+
+                    <Label
+                        FontFamily="MontserratBold"
+                        FontSize="25"
+                        HorizontalOptions="Center"
+                        Text="Atualização de Dados"
+                        TextColor="OrangeRed" />
+
+                    <Grid>
+                        <StackLayout Margin="10,10,10,0" VerticalOptions="CenterAndExpand">
+
+                            <Label
+                                FontFamily="MontserratSemiBold"
+                                FontSize="20"
+                                Text="Data da Coleta"
+                                TextColor="OrangeRed" />
+
+                            <Frame>
                                 <StackLayout>
-
-                                    <Label
-                                        FontFamily="MontserratRegular"
-                                        FontSize="20"
-                                        Text="Mês" />
-
-                                    <Label
-                                        FontFamily="MontserratRegular"
-                                        FontSize="30"
-                                        Text="{Binding Mes}"
-                                        TextColor="OrangeRed" />
-
-                                    <Label
-                                        FontFamily="MontserratRegular"
-                                        FontSize="20"
-                                        Text="Dia" />
-
-                                    <Label
-                                        FontFamily="MontserratRegular"
-                                        FontSize="25"
-                                        Text="{Binding Dia}"
-                                        TextColor="OrangeRed" />
-
-                                    <Label
-                                        FontFamily="MontserratRegular"
-                                        FontSize="20"
-                                        Text="Descrição" />
-
-                                    <Label
-                                        FontFamily="MontserratRegular"
-                                        FontSize="25"
-                                        Text="{Binding Descricao}"
-                                        TextColor="OrangeRed" />
-
+                                    <DatePicker x:Name="datePicker" Date="{Binding DataColeta}">
+                                        <DatePicker.Format>dd-MMMM-yyyy</DatePicker.Format>
+                                    </DatePicker>
                                 </StackLayout>
+                            </Frame>
 
-                                <StackLayout
-                                    Margin="0,30,0,0"
-                                    HorizontalOptions="Center"
-                                    Orientation="Horizontal">
-                                    <Frame HorizontalOptions="Center">
-                                        <StackLayout>
-                                            <Image Source="agree.png" />
-                                            <Label
-                                                FontSize="15"
-                                                HorizontalTextAlignment="Center"
-                                                Text="Finalizar Ordem" />
-                                        </StackLayout>
-                                        <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.AlterarStatusCalendario, Source={x:Reference collectionView}}" CommandParameter="{Binding .}" />
-                                        </Frame.GestureRecognizers>
-                                    </Frame>
 
-                                    <Frame>
-                                        <StackLayout>
-                                            <Image Source="trashcan.png" />
-                                            <Label HorizontalTextAlignment="Center" Text="Excluir Ordem" />
-                                        </StackLayout>
-                                        <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.ExcluirCalendario, Source={x:Reference collectionView}}" CommandParameter="{Binding .}" />
-                                        </Frame.GestureRecognizers>
-                                    </Frame>
+                            <Label
+                                Margin="0,20,0,0"
+                                FontFamily="MontserratSemiBold"
+                                FontSize="20"
+                                Text="Descrição"
+                                TextColor="OrangeRed" />
+
+                            <Frame>
+                                <StackLayout>
+                                    <Editor HeightRequest="100" Text="{Binding Observacao}" />
                                 </StackLayout>
-                                
-                            </StackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
+                            </Frame>
 
-                </CollectionView>
+                        </StackLayout>
+                    </Grid>
 
-                <Label
-                    FontFamily="MontserratBold"
-                    FontSize="25"
-                    HorizontalOptions="Center"
-                    Text="Atualização de Dados"
-                    TextColor="OrangeRed" />
+                    <Frame Margin="0,10,0,0" HorizontalOptions="Center">
+                        <StackLayout>
+                            <Image Source="refresh.png" />
+                            <Label HorizontalTextAlignment="Center" Text="Atualizar Evento" />
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AtualizarCalendario}" />
+                        </Frame.GestureRecognizers>
 
-                <Grid>
-                    <StackLayout Margin="10,10,10,0" VerticalOptions="CenterAndExpand">
+                    </Frame>
 
-                        <Label
-                            FontFamily="MontserratSemiBold"
-                            FontSize="20"
-                            Text="Data da Coleta"
-                            TextColor="OrangeRed" />
+                </StackLayout>
+            </ScrollView>
 
-                        <Frame>
-                            <StackLayout>
-                                <DatePicker x:Name="datePicker" Date="{Binding DataColeta}">
-                                    <DatePicker.Format>dd-MMMM-yyyy</DatePicker.Format>
-                                </DatePicker>
-                            </StackLayout>
-                        </Frame>
-
-
-                        <Label
-                            Margin="0,20,0,0"
-                            FontFamily="MontserratSemiBold"
-                            FontSize="20"
-                            Text="Descrição"
-                            TextColor="OrangeRed" />
-
-                        <Frame>
-                            <StackLayout>
-                                <Editor HeightRequest="100" Text="{Binding Observacao}" />
-                            </StackLayout>
-                        </Frame>
-
-                    </StackLayout>
-                </Grid>
-
-                <Frame Margin="0,10,0,0" HorizontalOptions="Center">
-                    <StackLayout>
-                        <Image Source="refresh.png" />
-                        <Label HorizontalTextAlignment="Center" Text="Atualizar Evento" />
-                    </StackLayout>
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding AtualizarCalendario}"/>
-                    </Frame.GestureRecognizers>
-
-                </Frame>
-
-            </StackLayout>
-        </ScrollView>
+            <ActivityIndicator
+                HorizontalOptions="Center"
+                IsRunning="{Binding IsBusy}"
+                VerticalOptions="Center"
+                Color="OrangeRed" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

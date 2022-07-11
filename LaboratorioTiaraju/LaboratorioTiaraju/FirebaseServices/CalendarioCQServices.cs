@@ -119,7 +119,7 @@ namespace LaboratorioTiaraju.FirebaseServices
         public async Task<bool> AtualizaDadosCalendario(int dia, string mes, string descricao)
         {
             var calendarios = await RetornaInformacoes();
-            int diaCalendario = int.Parse(Preferences.Get("DiaCalendario", "default_value"));
+            int diaCalendario = Preferences.Get("DiaCalendario", 0);
             string mesCalendario = Preferences.Get("MesCalendario", "default_value");
             string descricaoCalendario = Preferences.Get("DescricaoCalendario", "default_value");
 
