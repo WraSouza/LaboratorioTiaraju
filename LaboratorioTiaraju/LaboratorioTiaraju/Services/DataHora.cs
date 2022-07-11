@@ -10,7 +10,7 @@ namespace LaboratorioTiaraju.Services
         {
             bool confirmacao = false;
 
-            if( dataDesejada > DateTime.Today)
+            if( dataDesejada >= DateTime.Today)
             {
                 confirmacao = true;
             }

@@ -19,6 +19,16 @@ namespace LaboratorioTiaraju.FirebaseServices
             firebase = new FirebaseClient("https://tiaraju-afa0a-default-rtdb.firebaseio.com/");
         }
 
+        public async Task<bool> IsCalendarioCQExists(CalendarioCQ calendario)
+        {
+            var evento = (await firebase.Child("CalendarioCQ")
+                .OnceAsync<CalendarioCQ>())
+                .Where(u => u.Object.Dia == calendario.Dia && u.Object.Mes == calendario.Mes && u.Object.Descricao == calendario.Descricao)
+                .FirstOrDefault();
+
+            return (evento != null);
+        }
+
         public async Task<bool> GetCalendarioCQStatus(int dia, string mes, string descricao)
         {
             var user = (await firebase.Child("CalendarioCQ")
