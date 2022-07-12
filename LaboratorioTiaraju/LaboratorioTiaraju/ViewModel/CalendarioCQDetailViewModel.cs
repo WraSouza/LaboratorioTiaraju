@@ -194,9 +194,7 @@ namespace LaboratorioTiaraju.ViewModel
                                 else
                                 {
                                     await Application.Current.MainPage.DisplayAlert("Erro", "Dados Não Conferem", "OK");
-                                }                                     
-
-                            
+                                }                            
                     }
                     
                 }         
@@ -232,7 +230,7 @@ namespace LaboratorioTiaraju.ViewModel
 
                         if (confirmaStatusAlterado)
                         {
-                            await Application.Current.MainPage.DisplayAlert("Sucesso", "Evento Finalizado Com Sucesso", "OK");
+                            await Application.Current.MainPage.DisplayAlert("Sucesso", "Evento Finalizado Com Sucesso.", "OK");
                         }
                     }
                 }
@@ -249,11 +247,6 @@ namespace LaboratorioTiaraju.ViewModel
             {
                 await Application.Current.MainPage.DisplayAlert("Erro", "Verifique Sua Conexão de Internet.", "OK");
             }
-
-            
-
-            
-
             
         }
     }

@@ -8,8 +8,8 @@
 
   <Identity
     Name="8964301F-75F1-4A56-A53B-D04DF1980A98"
-    Publisher="CN=30CAB73C-2BBA-47FC-8867-990E64684638"
-    Version="1.0.0.0" />
+    Publisher="CN=wladimir.souza"
+    Version="1.0.2.0" />
 
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
