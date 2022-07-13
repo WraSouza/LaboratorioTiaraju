@@ -19,7 +19,7 @@
         </Style>
 
         <Style TargetType="Entry">
-            <Setter Property="TextColor" Value="{StaticResource Black}"/>
+            <Setter Property="TextColor" Value="{StaticResource Black}" />
         </Style>
     </Application.Resources>
 </Application>
