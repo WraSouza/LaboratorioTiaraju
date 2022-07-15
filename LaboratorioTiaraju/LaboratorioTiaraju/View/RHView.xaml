@@ -1,149 +1,169 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"     
-             xmlns:mvvm="clr-namespace:LaboratorioTiaraju.ViewModel"
-             x:Class="LaboratorioTiaraju.View.RHView">
+<ContentPage
+    x:Class="LaboratorioTiaraju.View.RHView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mvvm="clr-namespace:LaboratorioTiaraju.ViewModel">
     <ContentPage.BindingContext>
-        <mvvm:RHViewModel/>
+        <mvvm:RHViewModel />
     </ContentPage.BindingContext>
-    
+
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#F8F8F8">
-            <StackLayout Margin="20,50,20,0">
-                <Label Text="Envio de Arquivos"
-                       FontSize="20"                      
-                       FontFamily="MontserratMedium"
-                       TextColor="{StaticResource OrangeRed}"/>
+        <ScrollView>
+            <StackLayout BackgroundColor="#F8F8F8">
+                <StackLayout Margin="20,50,20,0">
+                    <Label
+                        FontFamily="MontserratMedium"
+                        FontSize="20"
+                        Text="Envio de Arquivos"
+                        TextColor="{StaticResource OrangeRed}" />
 
-                <Frame CornerRadius="5"
-                       BackgroundColor="White">
-                    <Grid ColumnDefinitions="3*,4*,3*"
-                      RowDefinitions="50,40,50,40,50,40">
-                        <Image Source="Cardapio.jpeg"
-                           Grid.Column="0"
-                           Grid.Row="0">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OpenEnviaImagemCardapio}"/>
-                            </Image.GestureRecognizers>
-                        </Image>
+                    <Frame
+                        BackgroundColor="White"
+                        CornerRadius="5"
+                        HeightRequest="200">
+                        <Grid ColumnDefinitions="3*,4*,3*" RowDefinitions="50,40,50,40,50,40">
+                            <Image
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Source="Cardapio.jpeg">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenEnviaImagemCardapio}" />
+                                </Image.GestureRecognizers>
+                            </Image>
 
-                        <Label Text="Cardápio"
-                           Grid.Column="0"
-                           Grid.Row="1"
-                           FontSize="15"
-                           TextColor="Black"
-                           HorizontalTextAlignment="Center"/>
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                FontFamily="MontserratSemiBold"
+                                FontSize="15"
+                                HorizontalTextAlignment="Center"
+                                Text="Cardápio"
+                                TextColor="Black" />
 
-                        <Image Source="VirusCovid.jpeg"
-                           Grid.Column="1"
-                           Grid.Row="0"/>
-                        <Label Text="Informativo Covid"
-                           Grid.Column="1"
-                           Grid.Row="1"
-                           FontSize="15"
-                           TextColor="Black"
-                           HorizontalTextAlignment="Center"/>
+                            <!--  Tempo de Empresa  -->
+                            <Image
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Source="tempoempresaimagem.png">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenEnviaImagemTempoEmpresa}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                FontFamily="MontserratSemiBold"
+                                FontSize="15"
+                                HorizontalTextAlignment="Center"
+                                Text="Tempo de Empresa"
+                                TextColor="Black" />
 
-                        <Image Source="DiaT.jpeg"                               
-                           Grid.Column="2"
-                           Grid.Row="0"/>
-                        <Label Text="Dia T"
-                           Grid.Column="2"
-                           Grid.Row="1"
-                           FontSize="15"
-                           TextColor="Black"
-                           HorizontalTextAlignment="Center"/>
 
-                        <Image Source="PautaFixa.jpeg"
-                           Grid.Column="0"
-                           Grid.Row="2"/>
-                        <Label Text="Pauta Fixa"
-                           Grid.Column="0"
-                           Grid.Row="3"
-                           FontSize="15"
-                           TextColor="Black"
-                           HorizontalTextAlignment="Center"/>
+                            <Image
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                Source="DiaT.jpeg" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                FontFamily="MontserratSemiBold"
+                                FontSize="15"
+                                HorizontalTextAlignment="Center"
+                                Text="Dia T"
+                                TextColor="Black" />
 
-                        <Image Source="rhinforma.jpg"
-                           Grid.Column="1"
-                           Grid.Row="2">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OpenEnviaImagemRHInforma}"/>
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Label Text="RH Informa"
-                           Grid.Column="1"
-                           Grid.Row="3"
-                           FontSize="15"
-                           TextColor="Black"
-                           HorizontalTextAlignment="Center"/>
-                        
-                        <!--Bônus Tiarajú-->
-                        <Image Source="bonustiarajuimagem.jpg"
-                           Grid.Column="2"
-                           Grid.Row="2">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OpenEnviaImagemBonusTiaraju}"/>
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Label Text="Bônus Tiarajú"
-                           Grid.Column="2"
-                           Grid.Row="3"
-                           FontSize="15"
-                           TextColor="Black"
-                           HorizontalTextAlignment="Center"/>
-                        
-                        <!--Tempo de Empresa-->
-                        <Image Source="tempoempresaimagem.jpg"
-                           Grid.Column="0"
-                           Grid.Row="4">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OpenEnviaImagemTempoEmpresa}"/>
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Label Text="Tempo de Empresa"
-                           Grid.Column="0"
-                           Grid.Row="5"
-                           FontSize="15"
-                           TextColor="Black"
-                           HorizontalTextAlignment="Center"/>
-                    </Grid>
-                </Frame>
+                            <Image
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Source="PautaFixa.jpg" />
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                FontFamily="MontserratSemiBold"
+                                FontSize="15"
+                                HorizontalTextAlignment="Center"
+                                Text="Pauta Fixa"
+                                TextColor="Black" />
 
-                <Label Text="Colaboradores"
-                       Margin="0,30,0,0"
-                       FontSize="20"                      
-                       FontFamily="MontserratMedium"
-                       TextColor="{StaticResource OrangeRed}"/>
+                            <Image
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Source="rhinforma.jpg">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenEnviaImagemRHInforma}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                FontFamily="MontserratSemiBold"
+                                FontSize="15"
+                                HorizontalTextAlignment="Center"
+                                Text="RH Informa"
+                                TextColor="Black" />
 
-                <Frame CornerRadius="5">
-                    <Grid ColumnDefinitions="3*,4*,3*"
-                          RowDefinitions="50,40">
-                        <Image Source="novocolaboradorimage.jpeg"
-                           Grid.Column="0"
-                           Grid.Row="0"/>
+                            <!--  Bônus Tiarajú  -->
+                            <Image
+                                Grid.Row="2"
+                                Grid.Column="2"
+                                Source="bonustiarajuimagem.jpg">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenEnviaImagemBonusTiaraju}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="2"
+                                FontFamily="MontserratSemiBold"
+                                FontSize="15"
+                                HorizontalTextAlignment="Center"
+                                Text="Bônus Tiarajú"
+                                TextColor="Black" />
 
-                        <Label Text="Novo Colaborador"
-                           Grid.Column="0"
-                           Grid.Row="1"
-                           FontSize="15"
-                           TextColor="Black"
-                           HorizontalTextAlignment="Center"/>
 
-                        <Image Source="alteracaocadastral.jpeg"
-                           Grid.Column="2"
-                           Grid.Row="0"/>
+                        </Grid>
+                    </Frame>
 
-                        <Label Text="Alterações Cadastrais"
-                           Grid.Column="2"
-                           Grid.Row="1"
-                           FontSize="15"
-                           TextColor="Black"
-                           HorizontalTextAlignment="Center"/>
-                    </Grid>
-                </Frame>
-            </StackLayout>           
+                    <Label
+                        Margin="0,30,0,0"
+                        FontFamily="MontserratMedium"
+                        FontSize="20"
+                        Text="Colaboradores"
+                        TextColor="{StaticResource OrangeRed}" />
 
-        </StackLayout>
+                    <Frame CornerRadius="5">
+                        <Grid ColumnDefinitions="3*,4*,3*" RowDefinitions="50,40">
+                            <Image
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Source="novocolaboradorimage.jpeg" />
+
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                FontSize="15"
+                                HorizontalTextAlignment="Center"
+                                Text="Novo Colaborador"
+                                TextColor="Black" />
+
+                            <Image
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                Source="alteracaocadastral.jpeg" />
+
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                FontSize="15"
+                                HorizontalTextAlignment="Center"
+                                Text="Alterações Cadastrais"
+                                TextColor="Black" />
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

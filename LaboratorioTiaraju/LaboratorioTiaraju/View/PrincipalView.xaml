@@ -11,7 +11,7 @@
     <ContentPage.Content>
         <ScrollView>
 
-            <Grid BackgroundColor="#F8F8F8" RowDefinitions="170,30,350,30,120,30,110">
+            <Grid BackgroundColor="#F8F8F8" RowDefinitions="170,30,270,30,120,30,110">
 
                 <Grid Margin="10,20,10,0">
                     <Image Aspect="Fill" Source="saladereuniaoimagem.jpg" />
@@ -26,7 +26,7 @@
                             VerticalOptions="End" />
                     </StackLayout>
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OpenSalaDeReunioes}"/>
+                        <TapGestureRecognizer Command="{Binding OpenSalaDeReunioes}" />
                     </Grid.GestureRecognizers>
                 </Grid>
 
@@ -47,7 +47,7 @@
                     Margin="10,0,10,0"
                     BackgroundColor="White"
                     CornerRadius="5">
-                    <Grid ColumnDefinitions="3*,4*,3*" RowDefinitions="50,40,50,40,50,40">
+                    <Grid ColumnDefinitions="3*,4*,3*" RowDefinitions="50,60,50,40,50,40">
                         <Image
                             Grid.Row="0"
                             Grid.Column="0"
@@ -66,17 +66,22 @@
                             Text="Cardápio"
                             TextColor="Black" />
 
+                        <!--  Tempo de Empresa  -->
                         <Image
                             Grid.Row="0"
                             Grid.Column="1"
-                            Source="VirusCovid.jpeg" />
+                            Source="tempoempresaimagem.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenEnviaImagemTempoEmpresa}" />
+                            </Image.GestureRecognizers>
+                        </Image>
                         <Label
                             Grid.Row="1"
                             Grid.Column="1"
                             FontFamily="MontserratSemiBold"
                             FontSize="15"
                             HorizontalTextAlignment="Center"
-                            Text="Informativo Covid"
+                            Text="Tempo de Empresa"
                             TextColor="Black" />
 
                         <Image
@@ -140,23 +145,7 @@
                             Text="Bônus Tiarajú"
                             TextColor="Black" />
 
-                        <!--  Tempo de Empresa  -->
-                        <Image
-                            Grid.Row="4"
-                            Grid.Column="0"
-                            Source="tempoempresaimagem.png">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OpenEnviaImagemTempoEmpresa}" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Label
-                            Grid.Row="5"
-                            Grid.Column="0"
-                            FontFamily="MontserratSemiBold"
-                            FontSize="15"
-                            HorizontalTextAlignment="Center"
-                            Text="Tempo de Empresa"
-                            TextColor="Black" />
+
                     </Grid>
                 </Frame>
 

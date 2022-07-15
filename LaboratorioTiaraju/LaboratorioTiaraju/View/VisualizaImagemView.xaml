@@ -15,8 +15,8 @@
             <DataTemplate>
 
                 <Image
-                    Aspect="Fill"
-                    HeightRequest="700"
+                    Aspect="AspectFit"
+                    HeightRequest="700"                   
                     Source="{Binding CaminhoImagem}"
                     VerticalOptions="EndAndExpand" />
 

@@ -22792,7 +22792,10 @@ namespace LaboratorioTiaraju.Droid
 			public const int trashcan = 2131165397;
 			
 			// aapt resource value: 0x7F0700D6
-			public const int VirusCovid = 2131165398;
+			public const int user = 2131165398;
+			
+			// aapt resource value: 0x7F0700D7
+			public const int VirusCovid = 2131165399;
 			
 			static Drawable()
 			{

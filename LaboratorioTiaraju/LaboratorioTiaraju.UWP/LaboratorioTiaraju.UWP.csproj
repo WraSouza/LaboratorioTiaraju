@@ -194,6 +194,7 @@
     <Content Include="TI.jpg" />
     <Content Include="tilogo.jpg" />
     <Content Include="trashcan.png" />
+    <Content Include="user.png" />
     <Content Include="VirusCovid.jpeg" />
   </ItemGroup>
   <ItemGroup>

@@ -29,6 +29,15 @@ namespace LaboratorioTiaraju.View
             var descricao = Preferences.Get("DescricaoCalendario", "default_value");            
             CalendarioCQServices calendarios = new CalendarioCQServices();
             collectionView.ItemsSource = await calendarios.RetornaCalendarioEspecifico(dia,mes,descricao);
+
+            var dadosEvento = await calendarios.RetornaCalendarioEspecifico(dia, mes, descricao);
+
+            foreach(var itens in dadosEvento)
+            {
+                TextoEdicao.Text = itens.Descricao;
+            }
+
+            
         }
     }
 }

@@ -136,7 +136,8 @@
 
                             <Frame>
                                 <StackLayout>
-                                    <Editor HeightRequest="100" Text="{Binding Observacao}" />
+                                    <Editor HeightRequest="100" Text="{Binding Observacao}" 
+                                            x:Name="TextoEdicao"/>
                                 </StackLayout>
                             </Frame>
 

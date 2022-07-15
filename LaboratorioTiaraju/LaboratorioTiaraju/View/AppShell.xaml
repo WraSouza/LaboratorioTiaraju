@@ -15,7 +15,8 @@
             <ShellContent ContentTemplate="{DataTemplate views:PrincipalView}"/>
         </Tab>
 
-        <Tab Title="Perfil">
+        <Tab Title="Perfil"
+             Icon="user.png">
             <ShellContent ContentTemplate="{DataTemplate views:PerfilView}"/>
         </Tab>
     </TabBar>
