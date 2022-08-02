@@ -72,7 +72,7 @@
                             Grid.Column="1"
                             Source="tempoempresaimagem.png">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OpenEnviaImagemTempoEmpresa}" />
+                                <TapGestureRecognizer Command="{Binding OpenTempoEmpresa}" />
                             </Image.GestureRecognizers>
                         </Image>
                         <Label
@@ -87,7 +87,11 @@
                         <Image
                             Grid.Row="0"
                             Grid.Column="2"
-                            Source="DiaT.jpeg" />
+                            Source="DiaT.jpeg">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenDiaT}" />
+                            </Image.GestureRecognizers>
+                        </Image>
                         <Label
                             Grid.Row="1"
                             Grid.Column="2"
@@ -100,7 +104,11 @@
                         <Image
                             Grid.Row="2"
                             Grid.Column="0"
-                            Source="PautaFixa.jpg" />
+                            Source="PautaFixa.jpg" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenPautaFixa}" />
+                            </Image.GestureRecognizers>
+                        </Image>
                         <Label
                             Grid.Row="3"
                             Grid.Column="0"
@@ -133,7 +141,7 @@
                             Grid.Column="2"
                             Source="bonustiarajuimagem.jpg">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OpenEnviaImagemBonusTiaraju}" />
+                                <TapGestureRecognizer Command="{Binding OpenBonusTiaraju}" />
                             </Image.GestureRecognizers>
                         </Image>
                         <Label

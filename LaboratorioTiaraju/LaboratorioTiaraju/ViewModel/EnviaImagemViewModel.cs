@@ -56,7 +56,7 @@ namespace LaboratorioTiaraju.ViewModel
                 if (file == null)
                     return;
                 CaminhoImagem = ImageSource.FromStream(() => file.GetStream());
-                //await StoreImages(file.GetStream());
+                
             }
             catch (Exception ex)
             {
@@ -68,9 +68,7 @@ namespace LaboratorioTiaraju.ViewModel
         {
             var imageServices = new ImageServices();
 
-            IsBusy = true;
-
-            //List<Imagem> verificaCardapio = await imageServices.VerificaCardapio();
+            IsBusy = true;            
 
             string imagemSelecionada = CaminhoImagem.ToString();
             var pastaImagem = Preferences.Get("Imagem", "default_value");
@@ -84,41 +82,7 @@ namespace LaboratorioTiaraju.ViewModel
             imgurl = storageImage;
 
 
-            return imgurl;
-
-            //if (verificaCardapio.Count == 0)
-            //{
-            //    string imagemSelecionada = CaminhoImagem.ToString();
-            //    var pastaImagem = Preferences.Get("Imagem", "default_value");
-            //    string imgurl = null;
-            //    string storageImage = null;
-
-            //    storageImage = await new FirebaseStorage("tiaraju-afa0a.appspot.com")
-            //  .Child(pastaImagem)
-            //  .Child(imagemSelecionada + ".jpg")
-            //  .PutAsync(imageStream);
-            //    imgurl = storageImage;
-
-
-            //    return imgurl;
-
-            //}
-            //else
-            //{
-            //    string imagemSelecionada = CaminhoImagem.ToString();
-            //    var pastaImagem = Preferences.Get("Imagem", "default_value");
-            //    string imgurl = null;
-            //    string storageImage = null;
-
-            //    storageImage = await new FirebaseStorage("tiaraju-afa0a.appspot.com")
-            //  .Child(pastaImagem)
-            //  .Child(imagemSelecionada + ".jpg")
-            //  .PutAsync(imageStream);
-            //    imgurl = storageImage;
-
-
-            //    return imgurl;
-            //}
+            return imgurl;            
 
         }       
 

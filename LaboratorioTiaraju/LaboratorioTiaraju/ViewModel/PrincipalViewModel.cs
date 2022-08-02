@@ -17,7 +17,10 @@ namespace LaboratorioTiaraju.ViewModel
         public Command OpenRH {  get; set; }
         public Command OpenTI { get; set; }
         public Command OpenBiblioteca { get; set; }
-
+        public Command OpenPautaFixa { get; set; }
+        public Command OpenBonusTiaraju { get; set; }
+        public Command OpenDiaT { get; set; }
+        public Command OpenTempoEmpresa { get; set; }
         public Command OpenSalaDeReunioes { get; set; }
         public INavigation Navigation { get; set; }
 
@@ -43,6 +46,12 @@ namespace LaboratorioTiaraju.ViewModel
             OpenTI = new Command(async () => await OpenTIView());
 
             OpenSalaDeReunioes = new Command(async () => await OpenSalaReunioesView());
+
+            OpenPautaFixa = new Command(async () => await OpenPautaFixaView());
+
+            OpenBonusTiaraju = new Command(async () => await OpenBonusTiarajuView());
+            OpenDiaT = new Command(async () => await OpenDiaTView());
+            OpenTempoEmpresa = new Command(async () => await OpenTempoEmpresaView());
         }
 
         private async Task OpenSalaReunioesView()
@@ -102,6 +111,38 @@ namespace LaboratorioTiaraju.ViewModel
                 await Application.Current.MainPage.DisplayAlert("Ops!", "Verifique Sua Conexão de Internet.", "OK");
             }
 
+        }
+
+        private async Task OpenTempoEmpresaView()
+        {
+            const string tempoEmpresa = "TempoEmpresa";
+            Preferences.Set("Imagem", tempoEmpresa);
+            var route = $"{nameof(View.VisualizaImagemView)}";
+            await Shell.Current.GoToAsync(route);
+        }
+
+        private async Task OpenDiaTView()
+        {
+            const string diaT = "DiaT";
+            Preferences.Set("Imagem", diaT);
+            var route = $"{nameof(View.VisualizaImagemView)}";
+            await Shell.Current.GoToAsync(route);
+        }
+
+        private async Task OpenBonusTiarajuView()
+        {
+            const string bonusTiaraju = "BonusTiaraju";
+            Preferences.Set("Imagem", bonusTiaraju);
+            var route = $"{nameof(View.VisualizaImagemView)}";
+            await Shell.Current.GoToAsync(route);
+        }
+
+        private async Task OpenPautaFixaView()
+        {
+            const string pautaFixa = "PautaFixa";
+            Preferences.Set("Imagem", pautaFixa);
+            var route = $"{nameof(View.VisualizaImagemView)}";
+            await Shell.Current.GoToAsync(route);
         }
 
         private async Task OpenRHInformaView()

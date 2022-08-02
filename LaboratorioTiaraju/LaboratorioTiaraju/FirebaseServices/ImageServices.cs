@@ -62,26 +62,8 @@ namespace LaboratorioTiaraju.FirebaseServices
                 {
                     CaminhoImagem = item.Object.CaminhoImagem,
                 }).ToList();
-            //var cardapioExiste = (await firebase.Child("Cardapio")
-            //    .OnceAsync<Cardapio>())
-            //    .Where(u => u.Object.CaminhoImagem == null)
-            //    .FirstOrDefault();
-
-            //return (cardapioExiste != null);
-        }
-
-
-        public async Task<bool> EnviarPrevencaoCovid(string referenciaImage)
-        {
-            await firebase.Child("Prevencao Covid")
-                    .PostAsync(new Imagem()
-                    {
-                        CaminhoImagem = referenciaImage,
-
-                    });
-
-            return true;
-        }
+           
+        }        
 
         public async Task<bool> EnviarDiaT(string referenciaImage)
         {

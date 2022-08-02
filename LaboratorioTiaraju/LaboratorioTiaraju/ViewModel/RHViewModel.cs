@@ -16,6 +16,7 @@ namespace LaboratorioTiaraju.ViewModel
         public Command OpenEnviaImagemPautaFixa { get; set; }
         public Command OpenEnviaImagemBonusTiaraju { get; set; }
         public Command OpenEnviaImagemTempoEmpresa { get; set; }
+        public Command OpenEnviaImagemDiaT { get; set; }
 
         public RHViewModel()
         {
@@ -25,6 +26,15 @@ namespace LaboratorioTiaraju.ViewModel
             OpenEnviaImagemPautaFixa = new Command(async () => await OpenEnviaImagemPautaFixaView());
             OpenEnviaImagemBonusTiaraju = new Command(async () => await OpenEnviaImagemBonusTiarajuView());
             OpenEnviaImagemTempoEmpresa = new Command(async () => await OpenEnviaImagemTempoEmpresaView());
+            OpenEnviaImagemDiaT = new Command(async () => await OpenEnviaImagemDiaTView());
+        }
+
+        private async Task OpenEnviaImagemDiaTView()
+        {
+            const string diaT = "DiaT";
+            Preferences.Set("Imagem", diaT);
+            var route = $"{nameof(View.EnviaImagemView)}";
+            await Shell.Current.GoToAsync(route);
         }
 
         private async Task OpenEnviaImagemTempoEmpresaView()

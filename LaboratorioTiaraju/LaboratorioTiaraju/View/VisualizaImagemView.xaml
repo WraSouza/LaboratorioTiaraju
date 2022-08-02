@@ -15,7 +15,7 @@
             <DataTemplate>
 
                 <Image
-                    Aspect="AspectFit"
+                    Aspect="{OnPlatform Android=AspectFill, UWP=AspectFit}"
                     HeightRequest="700"                   
                     Source="{Binding CaminhoImagem}"
                     VerticalOptions="EndAndExpand" />
