@@ -154,4 +154,109 @@
       <Name>LaboratorioTiaraju</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\aberturachamadologo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\agree.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\alteracaocadastral.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\aniversariologo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Biblioteca.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bibliotecalogo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bonustiarajuimagem.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\calendarioCQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\calendariocqlogo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\camera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Cardapio.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\DiaT.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\emconstrucao.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\feriasimage.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\glpi.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\loginLogo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logotiaraju.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\meetingroomlogo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\novocolaboradorimage.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PautaFixa.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rh.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rhinforma.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rhlogo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\saladereuniaoimagem.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\splashscreen.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tempoempresaimagem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\TI.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tilogo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\trashcan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\VirusCovid.jpeg" />
+  </ItemGroup>
 </Project>
