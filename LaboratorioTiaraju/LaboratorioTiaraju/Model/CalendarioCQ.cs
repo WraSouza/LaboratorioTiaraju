@@ -14,5 +14,8 @@ namespace LaboratorioTiaraju.Model
         public bool IsExcluded { get; set; }
         public string FinalizadoPor { get; set; }
         public string MotivoExclusao { get; set; }
+        public DateTime DataFinalizacao { get; set; }
+
+
     }
 }

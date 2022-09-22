@@ -15,6 +15,7 @@ namespace LaboratorioTiaraju.ViewModel
         public Command OpenRHInforma { get; set; }
         public Command OpenGLPI { get; set; }
         public Command OpenRH {  get; set; }
+        public Command OpenGQ { get; set; }
         public Command OpenTI { get; set; }
         public Command OpenBiblioteca { get; set; }
         public Command OpenPautaFixa { get; set; }
@@ -34,6 +35,8 @@ namespace LaboratorioTiaraju.ViewModel
             OpenGLPI = new Command(async () => await OpenGLPIView());
 
             OpenRH = new Command(async () => await OpenRHView());
+
+            OpenGQ = new Command(async () => await OpenGQView());
 
             OpenImagemCardapio = new Command(async () => await OpenImagemCardapioView());
 
@@ -98,6 +101,34 @@ namespace LaboratorioTiaraju.ViewModel
                 if ((departamento == cq) || (departamento == micro))
                 {
                     var route = $"{nameof(View.CalendarioCQTabbedView)}";
+
+                    await Shell.Current.GoToAsync(route);
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Acesso Não Autorizado", "OK");
+                }
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Ops!", "Verifique Sua Conexão de Internet.", "OK");
+            }
+
+        }
+
+        private async Task OpenGQView()
+        {
+            const string gq = "GQ";
+            
+            string departamento = Preferences.Get("Departamento", "default_value");
+
+            bool verificaConexao = Conectividade.VerificaConectividade();
+
+            if (verificaConexao)
+            {
+                if (departamento == gq)
+                {
+                    var route = $"{nameof(View.GQTabbedView)}";
 
                     await Shell.Current.GoToAsync(route);
                 }

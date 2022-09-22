@@ -110,7 +110,8 @@ namespace LaboratorioTiaraju.FirebaseServices
                     IsExcluded = calendario.IsExcluded,
                     FinalizadoPor = calendario.FinalizadoPor,
                     MotivoExclusao = " ",
-                    Titulo = calendario.Titulo
+                    Titulo = calendario.Titulo,
+                    DataFinalizacao = calendario.DataFinalizacao
                 });
 
             return true;
@@ -140,7 +141,7 @@ namespace LaboratorioTiaraju.FirebaseServices
 
         }
 
-        public async Task<bool> FinalizarCalendario(int dia, string mes, string descricao,string finalizadoPor)
+        public async Task<bool> FinalizarCalendario(int dia, string mes, string descricao,string finalizadoPor, DateTime dataFinalizacao)
         {
             var calendarios = await RetornaInformacoes();
             var toUpdateCalendar = (await firebase
@@ -149,6 +150,7 @@ namespace LaboratorioTiaraju.FirebaseServices
 
             toUpdateCalendar.Object.IsFinished = true;
             toUpdateCalendar.Object.FinalizadoPor = finalizadoPor;
+            toUpdateCalendar.Object.DataFinalizacao = dataFinalizacao;
 
             await firebase
            .Child("CalendarioCQ")
@@ -156,6 +158,25 @@ namespace LaboratorioTiaraju.FirebaseServices
            .PutAsync(toUpdateCalendar.Object);
 
             return true;
+        }
+
+        public async Task ApagarCalendario()
+        {
+            var calendarios = await RetornaInformacoes();
+            DateTime diaHoje = DateTime.Today;
+            var toDeleteCalendar = (await firebase
+              .Child("CalendarioCQ")
+              .OnceAsync<CalendarioCQ>()).Where(a => ((diaHoje - a.Object.DataFinalizacao).Days) >=120 && a.Object.IsFinished == true).FirstOrDefault();
+
+            if (toDeleteCalendar != null)
+            {
+                await firebase
+                    .Child("CalendarioCQ")
+                    .Child(toDeleteCalendar.Key)
+                    .DeleteAsync();
+            }
+            
+            
         }
 
         public async Task<List<CalendarioCQ>> RetornaInformacoes()
@@ -173,7 +194,11 @@ namespace LaboratorioTiaraju.FirebaseServices
                     Titulo = item.Object.Titulo
 
                 }).ToList();
-        }        
+        }  
+        
+        
+            
+        
 
         public async Task<List<CalendarioCQ>> RetornaCalendariosNaoFinalizados()
         {

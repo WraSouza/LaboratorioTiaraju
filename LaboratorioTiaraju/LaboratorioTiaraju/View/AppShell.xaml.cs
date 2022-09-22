@@ -38,6 +38,8 @@ namespace LaboratorioTiaraju.View
 
             Routing.RegisterRoute(nameof(TIView), typeof(TIView));
 
+            Routing.RegisterRoute(nameof(GQTabbedView), typeof(GQTabbedView));
+
             Routing.RegisterRoute(nameof(SalaReunioesView), typeof(SalaReunioesView));
 
             Routing.RegisterRoute(nameof(CalendarioCQExcluidosDetailView), typeof(CalendarioCQExcluidosDetailView));

@@ -16,7 +16,7 @@ namespace LaboratorioTiaraju.ViewModel
         private bool _Result;
         private bool _IsBusy;
 
-        public Command LoginCommand { get; set; }
+        public Command LoginCommand { get; set; }        
 
         public string Nome
         {
@@ -83,7 +83,7 @@ namespace LaboratorioTiaraju.ViewModel
 
                     if (Result)
                     {
-                        //Preferences.Set("Nome", Nome.ToUpper());
+                        
                         Preferences.Set("Nome", Nome);                        
 
                         string responsabilidade = await userService.GetUserResponsability(Nome);
