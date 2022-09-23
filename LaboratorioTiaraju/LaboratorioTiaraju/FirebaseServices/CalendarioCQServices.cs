@@ -194,11 +194,7 @@ namespace LaboratorioTiaraju.FirebaseServices
                     Titulo = item.Object.Titulo
 
                 }).ToList();
-        }  
-        
-        
-            
-        
+        }         
 
         public async Task<List<CalendarioCQ>> RetornaCalendariosNaoFinalizados()
         {

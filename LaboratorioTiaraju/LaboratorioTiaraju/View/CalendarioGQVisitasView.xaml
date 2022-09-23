@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Informações de Terceiros"
+             xmlns:mvvm="clr-namespace:LaboratorioTiaraju.ViewModel"
+             x:Class="LaboratorioTiaraju.View.CalendarioGQVisitasView">
+
+    <ContentPage.BindingContext>
+        <mvvm:CalendarioGQVisitasViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+
+        <RefreshView
+            Command="{Binding AtualizaTela}"
+            IsRefreshing="{Binding IsRefreshing}"
+            RefreshColor="OrangeRed">
+            <CollectionView
+                x:Name="collectionView"
+                Margin="10,20,10,0"
+                IsGrouped="True"
+                ItemsSource="{Binding Calendarios}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        HorizontalItemSpacing="2"
+                        Orientation="Vertical"
+                        Span="2"
+                        VerticalItemSpacing="5" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontFamily="MontserratBold"
+                                FontSize="15"
+                                Text="Não Há Dados Cadastrados No Momento"
+                                TextColor="Black" />
+                        </StackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="10,0,10,0" RowDefinitions="100">
+
+                            <Frame
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Padding="0"
+                                BorderColor="LightGray"
+                                CornerRadius="5">
+                                <StackLayout Margin="5">
+                                    <Label
+                                        FontSize="20"
+                                        HorizontalOptions="Start"
+                                        Text="{Binding Dia}"
+                                        TextColor="Black" />
+                                    <Label
+                                        BackgroundColor="WhiteSmoke"
+                                        FontFamily="MontserratMedium"
+                                        Text="{Binding Titulo}"
+                                        TextColor="Black" />
+                                </StackLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.IrParaCalendarioCQDetailView, Source={x:Reference collectionView}}" CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
+                            </Frame>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+                <CollectionView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <Label
+                            Margin="0,5,0,0"
+                            BackgroundColor="OrangeRed"
+                            FontFamily="MontserratSemiBold"
+                            FontSize="20"
+                            Text="{Binding Mes}"
+                            TextColor="White" />
+                    </DataTemplate>
+                </CollectionView.GroupHeaderTemplate>
+
+            </CollectionView>
+        </RefreshView>
+
+        <Image
+            Margin="0,0,10,10"
+            HeightRequest="40"
+            HorizontalOptions="EndAndExpand"
+            Source="plus.png"
+            VerticalOptions="EndAndExpand">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding IrParaCadastroCalendarioGQVisitasView}" />
+            </Image.GestureRecognizers>
+        </Image>
+    </Grid>
+</ContentPage>

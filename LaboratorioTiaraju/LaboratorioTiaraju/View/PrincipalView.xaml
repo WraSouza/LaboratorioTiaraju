@@ -297,7 +297,7 @@
                             Grid.Column="2"
                             Source="gq.jpg">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OpenRH}" />
+                                <TapGestureRecognizer Command="{Binding OpenGQ}" />
                             </Image.GestureRecognizers>
                         </Image>
 
