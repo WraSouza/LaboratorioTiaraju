@@ -94,114 +94,103 @@ namespace LaboratorioTiaraju.ViewModel
                     var calendarioService = new CalendarioCQServices();
 
                     _mes = DataColeta.ToString("MMMM").ToUpper();
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "JANUARY")
-                    //{
-                    //    _mes = "JANEIRO";
-                    //}
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "FEBRUARY")
-                    //{
-                    //    _mes = "FEVEREIRO";
-                    //}
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "MARCH")
-                    //{
-                    //    _mes = "MARÇO";
-                    //}
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "APRIL")
-                    //{
-                    //    _mes = "ABRIL";
-                    //}
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "MAY")
-                    //{
-                    //    _mes = "MAIO";
-                    //}
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "JUNE")
-                    //{
-                    //    _mes = "JUNHO";
-                    //}
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "JULY")
-                    //{
-                    //    _mes = "JULHO";
-                    //}
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "AUGUST")
-                    //{
-                    //    _mes = "AGOSTO";
-                    //}
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "SEPTEMBER")
-                    //{
-                    //    _mes = "SETEMBRO";
-                    //}
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "OCTOBER")
-                    //{
-                    //    _mes = "OUTUBRO";
-                    //}
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "NOVEMBER")
-                    //{
-                    //    _mes = "NOVEMBRO";
-                    //}
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "DECEMBER")
-                    //{
-                    //    _mes = "DEZEMBRO";
-                    //}
-
-                    var novoCalendario = new CalendarioCQ()
+                    
+                    if(Observacao == null)
                     {
-                        
-                        Dia = DataColeta.Day,
-                        Mes = _mes,
-                        Descricao = Observacao,
-                        IsFinished = false,
-                        IsExcluded = false,
-                        FinalizadoPor = " ",
-                        MotivoExclusao = " ",
-                        Titulo = Titulo,
-                        DataFinalizacao = DateTime.Today
-
-                    };
-
-                    bool verificaData = DataHora.VerificaData(DataColeta);
-
-                    if (verificaData)
-                    {
-
-                        bool verificaSeExiste = await calendarioService.IsCalendarioCQExists(novoCalendario);
-
-                        if (verificaSeExiste)
+                        var novoCalendario = new CalendarioCQ()
                         {
-                            await Application.Current.MainPage.DisplayAlert("Ops!", "Evento Já Cadastrado.", "OK");
+
+                            Dia = DataColeta.Day,
+                            Mes = _mes,
+                            Descricao = " ",
+                            IsFinished = false,
+                            IsExcluded = false,
+                            FinalizadoPor = " ",
+                            MotivoExclusao = " ",
+                            Titulo = Titulo,
+                            DataFinalizacao = DateTime.Today.ToShortDateString()
+
+                        };
+
+                        bool verificaData = DataHora.VerificaData(DataColeta);
+
+                        if (verificaData)
+                        {
+
+                            bool verificaSeExiste = await calendarioService.IsCalendarioCQExists(novoCalendario);
+
+                            if (verificaSeExiste)
+                            {
+                                Mensagem.MensagemEventoJaCadastrado();                                
+                            }
+                            else
+                            {
+                                bool confirmaCadastro = await CalendarioCQ.CadastraCalendario(novoCalendario);                                
+
+                                if (confirmaCadastro)
+                                {
+                                    Mensagem.MensagemCadastroSucesso();
+                                }
+
+                            }
+
                         }
                         else
                         {
-                            bool confirmaCadastro = await calendarioService.CadastrarDadosCalendario(novoCalendario);
-
-                            if (confirmaCadastro)
-                            {
-                                await Application.Current.MainPage.DisplayAlert("", "Informações Salvas Com Sucesso.", "OK");
-                            }
-                            
+                            Mensagem.MensagemDataDeveSerMaior();
                         }
-                        
+
                     }
                     else
                     {
-                        await Application.Current.MainPage.DisplayAlert("Ops!", "A Data Informada Deve Ser Maior ou Igual a Hoje.", "OK");
-                    }
+                        var novoCalendario = new CalendarioCQ()
+                        {
+
+                            Dia = DataColeta.Day,
+                            Mes = _mes,
+                            Descricao = Observacao,
+                            IsFinished = false,
+                            IsExcluded = false,
+                            FinalizadoPor = " ",
+                            MotivoExclusao = " ",
+                            Titulo = Titulo,
+                            DataFinalizacao = DateTime.Today.ToShortDateString()
+
+                        };
+
+                        bool verificaData = DataHora.VerificaData(DataColeta);
+
+                        if (verificaData)
+                        {
+
+                            bool verificaSeExiste = await calendarioService.IsCalendarioCQExists(novoCalendario);
+
+                            if (verificaSeExiste)
+                            {
+                                Mensagem.MensagemEventoJaCadastrado();                                
+                            }
+                            else
+                            {
+                                bool confirmaCadastro = await CalendarioCQ.CadastraCalendario(novoCalendario);                                
+
+                                if (confirmaCadastro)
+                                {
+                                    Mensagem.MensagemCadastroSucesso();
+                                }
+
+                            }
+
+                        }
+                        else
+                        {
+                            Mensagem.MensagemDataDeveSerMaior();
+                        }
+                    }                   
                     
                 }
                 else
                 {
-                    await Application.Current.MainPage.DisplayAlert("Ops!", "Algo deu errado.Verifique Sua Conexão de Internet.", "OK");
+                    Mensagem.MensagemErroConexao();                    
                 }
             }
             catch (Exception e)

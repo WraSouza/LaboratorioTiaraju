@@ -22,6 +22,7 @@ namespace LaboratorioTiaraju.ViewModel
         public Command AlterarStatusCalendario { get; set; }
         public Command ExcluirCalendario { get; set; }
         public Command AtualizarCalendario { get; set; }
+        public Command AbrirCalendarioCQEditView { get; set; }
 
         //Método para verificar se o login foi realizado com sucesso
         public bool Result
@@ -70,6 +71,23 @@ namespace LaboratorioTiaraju.ViewModel
             AlterarStatusCalendario = new Command<CalendarioCQ>(async (model) => await AlterarStatusCalendarioCommand(model));
             ExcluirCalendario = new Command<CalendarioCQ>(async (model) => await ExcluirCalendarioCommand(model));
             AtualizarCalendario = new Command(async () => await AtualizarCalendarioCommand());
+            AbrirCalendarioCQEditView = new Command<CalendarioCQ>((model) => IrCalendarioEditView(model));
+        }
+
+        private async void IrCalendarioEditView(CalendarioCQ model)
+        {
+            if (model is null)
+            {
+                return;
+            }
+
+            Preferences.Set("DiaCalendario", model.Dia);
+            Preferences.Set("MesCalendario", model.Mes);
+            Preferences.Set("DescricaoCalendario", model.Descricao);
+            Preferences.Set("StatusFinalizado", model.IsFinished);
+            Preferences.Set("StatusExcluido", model.IsExcluded);
+            var route = $"{nameof(View.CalendarioEditCQDetailView)}";
+            await Shell.Current.GoToAsync(route);
         }
 
         private async Task AtualizarCalendarioCommand()
@@ -86,67 +104,7 @@ namespace LaboratorioTiaraju.ViewModel
                     CalendarioCQServices calendarioServices = new CalendarioCQServices();
                     string descricao = Observacao;
                     int dia = DataColeta.Day;
-                    _mes = DataColeta.ToString("MMMM").ToUpper();
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "JANUARY")
-                    //{
-                    //    _mes = "JANEIRO";
-                    //}
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "FEBRUARY")
-                    //{
-                    //    _mes = "FEVEREIRO";
-                    //}
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "MARCH")
-                    //{
-                    //    _mes = "MARÇO";
-                    //}
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "APRIL")
-                    //{
-                    //    _mes = "ABRIL";
-                    //}
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "MAY")
-                    //{
-                    //    _mes = "MAIO";
-                    //}
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "JUNE")
-                    //{
-                    //    _mes = "JUNHO";
-                    //}
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "JULY")
-                    //{
-                    //    _mes = "JULHO";
-                    //}
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "AUGUST")
-                    //{
-                    //    _mes = "AGOSTO";
-                    //}
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "SEPTEMBER")
-                    //{
-                    //    _mes = "SETEMBRO";
-                    //}
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "OCTOBER")
-                    //{
-                    //    _mes = "OUTUBRO";
-                    //}
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "NOVEMBER")
-                    //{
-                    //    _mes = "NOVEMBRO";
-                    //}
-
-                    //if (DataColeta.ToString("MMMM").ToUpper() == "DECEMBER")
-                    //{
-                    //    _mes = "DEZEMBRO";
-                    //}
+                    _mes = DataColeta.ToString("MMMM").ToUpper();                    
 
                     bool confirmaStatusAlterado = await calendarioServices.AtualizaDadosCalendario(dia, _mes, descricao);
 
@@ -157,14 +115,14 @@ namespace LaboratorioTiaraju.ViewModel
                 }
                 else
                 {
-                    await Application.Current.MainPage.DisplayAlert("Ops!", "A Data Informada Deve Ser Maior ou Igual a Hoje.", "OK");
+                    Mensagem.MensagemDataDeveSerMaior();                   
                 }
 
                 
             }
             else
             {
-                await Application.Current.MainPage.DisplayAlert("Ops!", "Algo deu errado.Verifique Sua Conexão de Internet.", "OK");
+                Mensagem.MensagemErroConexao();
             }
 
         }
@@ -229,12 +187,13 @@ namespace LaboratorioTiaraju.ViewModel
                     int dia = model.Dia;
                     string mes = model.Mes;
                     string finalizadoPor = Preferences.Get("Nome", "default_value");
-                    DateTime diaFinalizacao = DateTime.Today;
+                    string diaFinalizacao = DateTime.Today.ToShortDateString();
 
                     bool verificaStatusCalendario = await calendarioServices.GetCalendarioCQStatus(dia, mes, descricao);
 
                     if (verificaStatusCalendario)
                     {
+                        
                         await Application.Current.MainPage.DisplayAlert("Info", "Evento Já Foi Finalizado", "OK");
                     }
                     else
@@ -258,7 +217,7 @@ namespace LaboratorioTiaraju.ViewModel
             }
             else
             {
-                await Application.Current.MainPage.DisplayAlert("Erro", "Verifique Sua Conexão de Internet.", "OK");
+                Mensagem.MensagemErroConexao();
             }
             
         }

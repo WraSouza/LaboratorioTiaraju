@@ -10,13 +10,13 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <Grid>
-            <ScrollView>
+        
+            
                 <StackLayout>
                     <Label
                         Margin="0,20,0,0"
                         FontFamily="MontserratBold"
-                        FontSize="25"
+                        FontSize="25"                        
                         HorizontalOptions="Center"
                         Text="Dados do Calendário"
                         TextColor="OrangeRed" />
@@ -24,8 +24,7 @@
                     <CollectionView
                         x:Name="collectionView"
                         Margin="10,25,10,0"
-                        EmptyView="Nenhum Calendario Cadastrado No Momento."
-                        HeightRequest="350"
+                        EmptyView="Nenhum Calendario Cadastrado No Momento."                        
                         SelectionMode="Single">
 
                         <CollectionView.ItemTemplate>
@@ -69,8 +68,8 @@
                                     </StackLayout>
 
                                     <StackLayout
-                                        Margin="0,30,0,0"
-                                        HorizontalOptions="Center"
+                                        
+                                        VerticalOptions="EndAndExpand"                                        
                                         Orientation="Horizontal">
                                         <Frame HorizontalOptions="Center">
                                             <StackLayout>
@@ -94,6 +93,20 @@
                                                 <TapGestureRecognizer Command="{Binding Path=BindingContext.ExcluirCalendario, Source={x:Reference collectionView}}" CommandParameter="{Binding .}" />
                                             </Frame.GestureRecognizers>
                                         </Frame>
+                                        
+                                        <!--Edit-->
+                                        <Frame HorizontalOptions="Center">
+                                            <StackLayout>
+                                                <Image Source="edit.png" />
+                                                <Label
+                                                    FontSize="15"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="Editar Ordem" />
+                                            </StackLayout>
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Path=BindingContext.AbrirCalendarioCQEditView, Source={x:Reference collectionView}}" CommandParameter="{Binding .}" />
+                                            </Frame.GestureRecognizers>
+                                        </Frame>
                                     </StackLayout>
 
                                 </StackLayout>
@@ -102,7 +115,7 @@
 
                     </CollectionView>
 
-                    <Label
+                    <!--<Label
                         FontFamily="MontserratBold"
                         FontSize="25"
                         HorizontalOptions="Center"
@@ -153,16 +166,10 @@
                             <TapGestureRecognizer Command="{Binding AtualizarCalendario}" />
                         </Frame.GestureRecognizers>
 
-                    </Frame>
+                    </Frame>-->
 
-                </StackLayout>
-            </ScrollView>
+                </StackLayout>            
 
-            <ActivityIndicator
-                HorizontalOptions="Center"
-                IsRunning="{Binding IsBusy}"
-                VerticalOptions="Center"
-                Color="OrangeRed" />
-        </Grid>
+            
     </ContentPage.Content>
 </ContentPage>

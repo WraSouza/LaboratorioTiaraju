@@ -17,7 +17,7 @@ namespace LaboratorioTiaraju.View
         {
             InitializeComponent();
 
-            datePicker.Date = DateTime.Now;
+           // datePicker.Date = DateTime.Now;
         }
 
         protected async override void OnAppearing()
@@ -34,7 +34,7 @@ namespace LaboratorioTiaraju.View
 
             foreach(var itens in dadosEvento)
             {
-                TextoEdicao.Text = itens.Descricao;
+               // TextoEdicao.Text = itens.Descricao;
             }
 
             

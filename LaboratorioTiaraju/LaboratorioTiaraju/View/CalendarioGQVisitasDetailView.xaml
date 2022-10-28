@@ -1,20 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    x:Class="LaboratorioTiaraju.View.CalendarioCQExcluidos"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:mvvm="clr-namespace:LaboratorioTiaraju.ViewModel"
-    Title="Eventos Excluídos">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mvvm="clr-namespace:LaboratorioTiaraju.ViewModel"
+             x:Class="LaboratorioTiaraju.View.CalendarioGQVisitasDetailView">
 
     <ContentPage.BindingContext>
-        <mvvm:CalendarioCQExcluidosViewModel />
+        <mvvm:CalendarioGQVisitasDetailViewModel/>
     </ContentPage.BindingContext>
 
     <Grid>
-        <RefreshView
-            Command="{Binding AtualizarTelaCommand}"
-            IsRefreshing="{Binding IsRefreshing}"
-            RefreshColor="OrangeRed">
+        
             <CollectionView
                 x:Name="collectionView"
                 Margin="10,20,10,0"
@@ -41,7 +36,7 @@
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Margin="10,0,10,0" RowDefinitions="200">
+                        <Grid Margin="10,0,10,0" RowDefinitions="100">
 
                             <Frame
                                 Grid.Row="0"
@@ -52,7 +47,6 @@
                                 <StackLayout Margin="5">
                                     <Label
                                         FontSize="20"
-                                        FontFamily="MontserratMedium"
                                         HorizontalOptions="Start"
                                         Text="{Binding Dia}"
                                         TextColor="Black" />
@@ -61,19 +55,9 @@
                                         FontFamily="MontserratMedium"
                                         Text="{Binding Titulo}"
                                         TextColor="Black" />
-
-                                    <Label Text="Excluído Por: " />
-
-                                    <Label FontFamily="MontserratBold" Text="{Binding FinalizadoPor}" />
-
-                                    <Label Text="Motivo: " />
-
-                                    <Label FontFamily="MontserratBold" Text="{Binding MotivoExclusao}" />
-
                                 </StackLayout>
-
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.IrParaExcluidosDetail, Source={x:Reference collectionView}}" CommandParameter="{Binding .}"/>
+                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.IrParaCalendarioCQDetailView, Source={x:Reference collectionView}}" CommandParameter="{Binding .}" />
                                 </Frame.GestureRecognizers>
                             </Frame>
 
@@ -94,7 +78,6 @@
                 </CollectionView.GroupHeaderTemplate>
 
             </CollectionView>
-        </RefreshView>
-
+        
     </Grid>
 </ContentPage>

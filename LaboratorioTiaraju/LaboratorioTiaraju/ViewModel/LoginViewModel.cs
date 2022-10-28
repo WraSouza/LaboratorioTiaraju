@@ -147,7 +147,7 @@ namespace LaboratorioTiaraju.ViewModel
                 }
                 else
                 {
-                    await Application.Current.MainPage.DisplayAlert("Erro", "Não Foi Possível Verificar Credenciais. Verifique Sua Conexão de Internet.", "OK");
+                    Mensagem.MensagemErroConexao();                    
                 }
 
 

@@ -1,4 +1,5 @@
 ﻿using Firebase.Database;
+using Firebase.Database.Query;
 using LaboratorioTiaraju.Model;
 using System;
 using System.Collections.Generic;
@@ -17,9 +18,44 @@ namespace LaboratorioTiaraju.FirebaseServices
             firebase = new FirebaseClient("https://tiaraju-afa0a-default-rtdb.firebaseio.com/");
         }
 
+        public async Task<bool> CadastrarDadosCalendario(CalendarioVisitasGQ calendario)
+        {
+            await firebase.Child("CalendarioVisitasGQ")
+                .PostAsync(new CalendarioVisitasGQ()
+                {                    
+                    Descricao = calendario.Descricao,
+                    IsFinished = calendario.IsFinished,
+                    IsExcluded = calendario.IsExcluded,
+                    FinalizadoPor = calendario.FinalizadoPor,
+                    MotivoExclusao = calendario.MotivoExclusao,
+                    Titulo = calendario.Titulo,
+                    DataFinal = calendario.DataFinal,
+                    DataChegada = calendario.DataChegada,
+                    ResponsabilityMeal = calendario.ResponsabilityMeal,
+                    ResponsabilityHotel = calendario.ResponsabilityHotel,
+                    DataFinalizacao = calendario.DataFinalizacao,
+                    Dia = calendario.Dia,
+                    Mes = calendario.Mes,
+                    Comentarios = calendario.Comentarios
+                    
+                });
+
+            return true;
+        }
+
+        public async Task<List<CalendarioVisitasGQ>> RetornaCalendarioEspecifico(int dia, string mes, string descricao)
+        {
+            var calendarios = await RetornaInformacoes();
+            await firebase
+                .Child("CalendarioVisitasGQ")
+                .OnceAsync<CalendarioVisitasGQ>();
+
+            return calendarios.Where(a => a.Dia == dia && a.Mes == mes && a.Descricao == descricao && a.IsExcluded == false && a.IsFinished == false).ToList();
+        }
+
         public async Task<List<CalendarioVisitasGQ>> RetornaInformacoes()
         {
-            return (await firebase.Child("CalendarioGQ")
+            return (await firebase.Child("CalendarioVisitasGQ")
                 .OnceAsync<CalendarioVisitasGQ>()).Select(item => new CalendarioVisitasGQ
                 {
                     Dia = item.Object.Dia,
@@ -39,7 +75,7 @@ namespace LaboratorioTiaraju.FirebaseServices
             var todosCalendarios = await RetornaInformacoes();
 
             await firebase
-                .Child("CalendarioGQ")
+                .Child("CalendarioVisitasGQ")
                 .OnceAsync<CalendarioVisitasGQ>();
 
             return todosCalendarios.Where(m => m.IsFinished == false && m.IsExcluded == false).ToList();

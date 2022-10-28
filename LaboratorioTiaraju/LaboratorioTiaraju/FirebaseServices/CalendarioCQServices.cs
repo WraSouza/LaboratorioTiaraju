@@ -141,7 +141,7 @@ namespace LaboratorioTiaraju.FirebaseServices
 
         }
 
-        public async Task<bool> FinalizarCalendario(int dia, string mes, string descricao,string finalizadoPor, DateTime dataFinalizacao)
+        public async Task<bool> FinalizarCalendario(int dia, string mes, string descricao,string finalizadoPor, string dataFinalizacao)
         {
             var calendarios = await RetornaInformacoes();
             var toUpdateCalendar = (await firebase
@@ -166,7 +166,7 @@ namespace LaboratorioTiaraju.FirebaseServices
             DateTime diaHoje = DateTime.Today;
             var toDeleteCalendar = (await firebase
               .Child("CalendarioCQ")
-              .OnceAsync<CalendarioCQ>()).Where(a => ((diaHoje - a.Object.DataFinalizacao).Days) >=120 && a.Object.IsFinished == true).FirstOrDefault();
+              .OnceAsync<CalendarioCQ>()).Where(a => ((diaHoje - Convert.ToDateTime(a.Object.DataFinalizacao)).Days) >=120 && a.Object.IsFinished == true).FirstOrDefault();
 
             if (toDeleteCalendar != null)
             {
@@ -174,8 +174,7 @@ namespace LaboratorioTiaraju.FirebaseServices
                     .Child("CalendarioCQ")
                     .Child(toDeleteCalendar.Key)
                     .DeleteAsync();
-            }
-            
+            }            
             
         }
 

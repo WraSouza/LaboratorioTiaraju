@@ -30,6 +30,8 @@ namespace LaboratorioTiaraju.View
 
             Routing.RegisterRoute(nameof(CalendarioGQVisitasView), typeof(CalendarioGQVisitasView));
 
+            Routing.RegisterRoute(nameof(CalendarioGQVisitasDetailView), typeof(CalendarioGQVisitasDetailView));
+
             Routing.RegisterRoute(nameof(CadastroCalendarioCQView), typeof(CadastroCalendarioCQView));
 
             Routing.RegisterRoute(nameof(CadastroCalendarioVisitaGQView), typeof(CadastroCalendarioVisitaGQView));
@@ -47,6 +49,8 @@ namespace LaboratorioTiaraju.View
             Routing.RegisterRoute(nameof(GQTabbedView), typeof(GQTabbedView));
 
             Routing.RegisterRoute(nameof(SalaReunioesView), typeof(SalaReunioesView));
+
+            Routing.RegisterRoute(nameof(CalendarioEditCQDetailView), typeof(CalendarioEditCQDetailView));
 
             Routing.RegisterRoute(nameof(CalendarioCQExcluidosDetailView), typeof(CalendarioCQExcluidosDetailView));
 

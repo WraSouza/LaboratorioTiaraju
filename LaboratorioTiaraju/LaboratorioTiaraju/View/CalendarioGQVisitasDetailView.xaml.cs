@@ -10,15 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace LaboratorioTiaraju.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CadastroCalendarioVisitaGQView : ContentPage
+    public partial class CalendarioGQVisitasDetailView : ContentPage
     {
-        public CadastroCalendarioVisitaGQView()
+        public CalendarioGQVisitasDetailView()
         {
             InitializeComponent();
-
-            datePickerChegada.Date = DateTime.Now;
-
-            datePickerSaida.Date = DateTime.Now;
         }
     }
 }
