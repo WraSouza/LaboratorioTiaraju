@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace LaboratorioTiaraju.View
@@ -15,6 +16,8 @@ namespace LaboratorioTiaraju.View
         public CalendarioEditCQDetailView()
         {
             InitializeComponent();
+
+            //datePicker.Date = DateTime.Now;
         }
     }
 }

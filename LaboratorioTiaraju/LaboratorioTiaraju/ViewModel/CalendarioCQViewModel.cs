@@ -75,7 +75,7 @@ namespace LaboratorioTiaraju.ViewModel
             }
             else
             {
-                await Application.Current.MainPage.DisplayAlert("Erro", "Verifique Sua Conexão de Internet.", "OK");
+                Mensagem.MensagemErroConexao();               
 
                 IsRefreshing = false;
             }

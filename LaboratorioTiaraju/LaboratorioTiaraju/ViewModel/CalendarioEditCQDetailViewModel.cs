@@ -19,19 +19,25 @@ namespace LaboratorioTiaraju.ViewModel
             BuscaAtividade();
         }
 
-        private void BuscaAtividade()
+        private async void BuscaAtividade()
         {
             bool verificaConexao = Conectividade.VerificaConectividade();
 
             if (verificaConexao)
             {
-                var dia = Preferences.Get("DiaCalendario", "default_value");
+                var dia = Preferences.Get("DiaCalendario", 0);
                 var mes = Preferences.Get("MesCalendario", "default_value");
                 var descricao = Preferences.Get("DescricaoCalendario", "default_value");
 
                 CalendarioCQServices dados = new CalendarioCQServices();
-                var dadosCalendario = dados.RetornaCalendarioEspecifico(int.Parse(dia), mes, descricao);
+                var dadosCalendario = await dados.RetornaCalendarioEspecifico(dia, mes, descricao);
                 ObservableCollection<CalendarioCQ> novoCalendarioJaneiro = new ObservableCollection<CalendarioCQ>();
+
+                foreach (var c in dadosCalendario)
+                {
+                    Calendarios.Add(c);
+                    //yield return c;
+                }
             }
             else
             {

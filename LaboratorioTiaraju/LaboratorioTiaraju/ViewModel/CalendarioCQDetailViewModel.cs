@@ -72,6 +72,7 @@ namespace LaboratorioTiaraju.ViewModel
             ExcluirCalendario = new Command<CalendarioCQ>(async (model) => await ExcluirCalendarioCommand(model));
             AtualizarCalendario = new Command(async () => await AtualizarCalendarioCommand());
             AbrirCalendarioCQEditView = new Command<CalendarioCQ>((model) => IrCalendarioEditView(model));
+            
         }
 
         private async void IrCalendarioEditView(CalendarioCQ model)
