@@ -17,7 +17,7 @@ namespace LaboratorioTiaraju.View
         {
             InitializeComponent();
 
-            //datePicker.Date = DateTime.Now;
+            datePicker.Date = DateTime.Now;
         }
     }
 }

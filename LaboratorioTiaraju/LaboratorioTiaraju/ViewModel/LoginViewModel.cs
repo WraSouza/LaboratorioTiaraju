@@ -79,7 +79,9 @@ namespace LaboratorioTiaraju.ViewModel
                 {
                     IsBusy = true;                    
                     var userService = new UserServices();
-                    Result = await userService.LoginUser(Nome, Senha);
+                    var calendarioCQService = new CalendarioCQServices();
+                    string senhaDigitada = Criptografia.CriptografaSenha(Senha);
+                    Result = await userService.LoginUser(Nome, senhaDigitada);
 
                     if (Result)
                     {
@@ -110,7 +112,8 @@ namespace LaboratorioTiaraju.ViewModel
                                 Application.Current.MainPage = new View.TrocarSenhaView();
                             }
                             else
-                            {                                
+                            {
+                                //await calendarioCQService.ApagarCalendario();
                                 Application.Current.MainPage = new View.AppShell();
                             }
 
@@ -119,7 +122,7 @@ namespace LaboratorioTiaraju.ViewModel
                     }
                     else
                     {
-                        string senhaDigitada = Criptografia.CriptografaSenha(Senha);
+                        senhaDigitada = Criptografia.CriptografaSenha(Senha);
                         Result = await userService.LoginUser(Nome, senhaDigitada);
 
                         if (Result)
@@ -135,6 +138,8 @@ namespace LaboratorioTiaraju.ViewModel
                             Preferences.Set("Departamento", departamento);
 
                             Preferences.Set("Responsabilidade", responsabilidade);
+
+                            //await calendarioCQService.ApagarCalendario();
 
                             Application.Current.MainPage = new View.AppShell();
                         }

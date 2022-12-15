@@ -8,7 +8,37 @@
         <mvvm:CalendarioEditCQDetailViewModel/>
     </ContentPage.BindingContext>
 
-    <CollectionView
+    <StackLayout>
+        <Frame CornerRadius="10">
+            <StackLayout>
+                <DatePicker x:Name="datePicker" Date="{Binding DataColeta}">
+                    <DatePicker.Format>dd-MMMM-yyyy</DatePicker.Format>
+                </DatePicker>
+            </StackLayout>
+        </Frame>
+
+        <Editor
+                                            FontFamily="MontserratRegular"
+                                            FontSize="25"
+                                            Text="{Binding Descricao}"
+                                            TextColor="OrangeRed" />
+
+        <Frame HorizontalOptions="Center">
+            <StackLayout>
+                <Image Source="agree.png" />
+                <Label
+                                                    FontSize="15"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="Salvar" />
+            </StackLayout>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding AtualizarCalendario}" />
+            </Frame.GestureRecognizers>
+        </Frame>
+
+    </StackLayout>
+
+    <!--<CollectionView
                         x:Name="collectionView"                        
                         Margin="10,25,10,0"
                         EmptyView="Nenhum Calendario Cadastrado No Momento."
@@ -63,7 +93,7 @@
                                                     Text="Salvar" />
                             </StackLayout>
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Path=BindingContext.AlterarStatusCalendario, Source={x:Reference collectionView}}" CommandParameter="{Binding .}" />
+                                <TapGestureRecognizer Command="{Binding Path=BindingContext.AtualizarCalendario, Source={x:Reference collectionView}}" CommandParameter="{Binding .}" />
                             </Frame.GestureRecognizers>
                         </Frame>                       
 
@@ -74,5 +104,5 @@
             </DataTemplate>
         </CollectionView.ItemTemplate>
 
-    </CollectionView>
+    </CollectionView>-->
 </ContentPage>

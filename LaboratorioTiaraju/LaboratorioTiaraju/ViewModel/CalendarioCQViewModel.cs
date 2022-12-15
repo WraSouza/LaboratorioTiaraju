@@ -61,7 +61,7 @@ namespace LaboratorioTiaraju.ViewModel
             }
         }
 
-        async void AtualizarTela()
+        void AtualizarTela()
         {
             bool verificaConexao = Conectividade.VerificaConectividade();
 
