@@ -12,7 +12,7 @@
     
     <StackLayout>
         <StackLayout Orientation="Horizontal">
-        <Frame CornerRadius="10" HorizontalOptions="Start" Margin="10,20,0,0">
+        <Frame CornerRadius="10" BorderColor="Gainsboro" HorizontalOptions="Start" Margin="10,10,0,0">
             <StackLayout>
                 <DatePicker x:Name="datePicker" Date="{Binding AnoDesejado}">
                         <DatePicker.Format>yyyy</DatePicker.Format>
@@ -21,7 +21,9 @@
         </Frame>
 
             <Button BackgroundColor="OrangeRed"
-                    Text="Pesquisar"
+                    Margin="30,20,0,20"
+                    FontSize="15"
+                    ImageSource="loupe.png"                    
                     Command="{Binding BuscarCalendariosAno}"/>
         </StackLayout>
         <Grid>

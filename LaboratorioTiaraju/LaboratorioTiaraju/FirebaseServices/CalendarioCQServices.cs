@@ -167,7 +167,7 @@ namespace LaboratorioTiaraju.FirebaseServices
             DateTime diaHoje = DateTime.Today;
             var toDeleteCalendar = (await firebase
               .Child("CalendarioCQ")
-              .OnceAsync<CalendarioCQ>()).Where(a => ((diaHoje - Convert.ToDateTime(a.Object.DataFinalizacao)).Days) >=120 && a.Object.IsFinished == true).FirstOrDefault();
+              .OnceAsync<CalendarioCQ>()).Where(a => ((diaHoje - Convert.ToDateTime(a.Object.DataFinalizacao)).Days) >=120 && (a.Object.IsFinished == true || a.Object.IsExcluded == true)).FirstOrDefault();
 
             if (toDeleteCalendar != null)
             {

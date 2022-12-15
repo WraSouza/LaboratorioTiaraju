@@ -113,7 +113,7 @@ namespace LaboratorioTiaraju.ViewModel
                             }
                             else
                             {
-                                //await calendarioCQService.ApagarCalendario();
+                                await calendarioCQService.ApagarCalendario();
                                 Application.Current.MainPage = new View.AppShell();
                             }
 
@@ -139,7 +139,7 @@ namespace LaboratorioTiaraju.ViewModel
 
                             Preferences.Set("Responsabilidade", responsabilidade);
 
-                            //await calendarioCQService.ApagarCalendario();
+                            await calendarioCQService.ApagarCalendario();
 
                             Application.Current.MainPage = new View.AppShell();
                         }
