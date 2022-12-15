@@ -154,7 +154,8 @@ namespace LaboratorioTiaraju.ViewModel
                             FinalizadoPor = " ",
                             MotivoExclusao = " ",
                             Titulo = Titulo,
-                            DataFinalizacao = DateTime.Today.ToShortDateString()
+                            DataFinalizacao = DateTime.Today.ToShortDateString(),
+                            Ano = DateTime.Now.Year
 
                         };
 

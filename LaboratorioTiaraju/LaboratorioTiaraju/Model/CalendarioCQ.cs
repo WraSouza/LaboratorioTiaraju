@@ -11,6 +11,7 @@ namespace LaboratorioTiaraju.Model
     {        
         public string Mes { get; set; }
         public int Dia { get; set; }
+        public int Ano { get; set; }
         public string Titulo { get; set; }
         public string Descricao { get; set; }
         public bool IsFinished { get; set; }

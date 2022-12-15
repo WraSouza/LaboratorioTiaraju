@@ -9,7 +9,22 @@
         <mvvm:CalendarioCQViewModel />
     </ContentPage.BindingContext>
 
-    <Grid>
+    
+    <StackLayout>
+        <StackLayout Orientation="Horizontal">
+        <Frame CornerRadius="10" HorizontalOptions="Start" Margin="10,20,0,0">
+            <StackLayout>
+                <DatePicker x:Name="datePicker" Date="{Binding AnoDesejado}">
+                        <DatePicker.Format>yyyy</DatePicker.Format>
+                </DatePicker>
+            </StackLayout>
+        </Frame>
+
+            <Button BackgroundColor="OrangeRed"
+                    Text="Pesquisar"
+                    Command="{Binding BuscarCalendariosAno}"/>
+        </StackLayout>
+        <Grid>
 
         <RefreshView
             Command="{Binding AtualizaTela}"
@@ -96,5 +111,5 @@
             </Image.GestureRecognizers>
         </Image>
     </Grid>
-
+    </StackLayout>
 </ContentPage>

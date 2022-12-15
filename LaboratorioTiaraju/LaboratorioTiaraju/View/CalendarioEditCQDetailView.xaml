@@ -9,7 +9,13 @@
     </ContentPage.BindingContext>
 
     <StackLayout>
-        <Frame CornerRadius="10">
+        <Label FontFamily="MontserratSemiBold"
+               TextColor="OrangeRed"
+               Margin="10,20,0,0"
+               FontSize="20"
+               Text="Selecionar Data" />
+        
+        <Frame CornerRadius="10" Margin="10,20,10,0">
             <StackLayout>
                 <DatePicker x:Name="datePicker" Date="{Binding DataColeta}">
                     <DatePicker.Format>dd-MMMM-yyyy</DatePicker.Format>
@@ -17,19 +23,19 @@
             </StackLayout>
         </Frame>
 
-        <Editor
-                                            FontFamily="MontserratRegular"
-                                            FontSize="25"
-                                            Text="{Binding Descricao}"
-                                            TextColor="OrangeRed" />
+        <Editor FontFamily="MontserratRegular"
+                HeightRequest="100"
+                FontSize="25"
+                Margin="10,20,10,0"
+                Text="{Binding Descricao}"
+                TextColor="OrangeRed" />
 
-        <Frame HorizontalOptions="Center">
+        <Frame HorizontalOptions="Center" Margin="0,50,0,0">
             <StackLayout>
                 <Image Source="agree.png" />
-                <Label
-                                                    FontSize="15"
-                                                    HorizontalTextAlignment="Center"
-                                                    Text="Salvar" />
+                <Label FontSize="15"                    
+                       HorizontalTextAlignment="Center"
+                       Text="Salvar" />
             </StackLayout>
             <Frame.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding AtualizarCalendario}" />
@@ -38,71 +44,5 @@
 
     </StackLayout>
 
-    <!--<CollectionView
-                        x:Name="collectionView"                        
-                        Margin="10,25,10,0"
-                        EmptyView="Nenhum Calendario Cadastrado No Momento."
-                        VerticalOptions="Center"
-                        ItemsSource="{Binding Calendarios}"
-                        SelectionMode="Single">
-
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <StackLayout Margin="20,10,20,0">
-                    <StackLayout>
-
-                        <Label
-                                            FontFamily="MontserratSemiBold"
-                                            TextColor="OrangeRed"
-                                            FontSize="20"
-                                            Text="Selecionar Data" />
-
-                        <Frame CornerRadius="10">
-                            <StackLayout>
-                                <DatePicker x:Name="datePicker" Date="{Binding DataColeta}">
-                                    <DatePicker.Format>dd-MMMM-yyyy</DatePicker.Format>
-                                </DatePicker>
-                            </StackLayout>
-                        </Frame>
-
-                        
-                        <Label
-                                            FontFamily="MontserratSemiBold"
-                                            TextColor="OrangeRed"
-                                            FontSize="20"
-                                            Text="Descrição" />
-
-                        <Editor
-                                            FontFamily="MontserratRegular"
-                                            FontSize="25"
-                                            Text="{Binding Descricao}"
-                                            TextColor="OrangeRed" />
-
-                    </StackLayout>
-
-                    <StackLayout
-                                        Margin="0,30,0,0"
-                                        HorizontalOptions="Center"
-                                        Orientation="Horizontal">
-                        <Frame HorizontalOptions="Center">
-                            <StackLayout>
-                                <Image Source="agree.png" />
-                                <Label
-                                                    FontSize="15"
-                                                    HorizontalTextAlignment="Center"
-                                                    Text="Salvar" />
-                            </StackLayout>
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Path=BindingContext.AtualizarCalendario, Source={x:Reference collectionView}}" CommandParameter="{Binding .}" />
-                            </Frame.GestureRecognizers>
-                        </Frame>                       
-
-                        
-                    </StackLayout>
-
-                </StackLayout>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-
-    </CollectionView>-->
+    
 </ContentPage>

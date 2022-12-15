@@ -111,7 +111,8 @@ namespace LaboratorioTiaraju.FirebaseServices
                     FinalizadoPor = calendario.FinalizadoPor,
                     MotivoExclusao = " ",
                     Titulo = calendario.Titulo,
-                    DataFinalizacao = calendario.DataFinalizacao
+                    DataFinalizacao = calendario.DataFinalizacao,
+                    Ano = calendario.Ano
                 });
 
             return true;
@@ -190,7 +191,8 @@ namespace LaboratorioTiaraju.FirebaseServices
                     IsExcluded = item.Object.IsExcluded,
                     FinalizadoPor = item.Object.FinalizadoPor,
                     MotivoExclusao = item.Object.MotivoExclusao,
-                    Titulo = item.Object.Titulo
+                    Titulo = item.Object.Titulo,
+                    Ano = item.Object.Ano
 
                 }).ToList();
         }         
@@ -198,12 +200,25 @@ namespace LaboratorioTiaraju.FirebaseServices
         public async Task<List<CalendarioCQ>> RetornaCalendariosNaoFinalizados()
         {
             var todosCalendarios = await RetornaInformacoes();
+            int currentYear = DateTime.Now.Year;
 
             await firebase
                 .Child("CalendarioCQ")
                 .OnceAsync<CalendarioCQ>();
 
-            return todosCalendarios.Where(m => m.IsFinished == false && m.IsExcluded == false).ToList();
+            return todosCalendarios.Where(m => m.IsFinished == false && m.IsExcluded == false && m.Ano == currentYear).ToList();
+        }
+
+        //Busca Calendários do Ano Selecionado
+        public async Task<List<CalendarioCQ>> RetornaCalendariosNaoFinalizadosAno(int year)
+        {
+            var todosCalendarios = await RetornaInformacoes();
+
+            await firebase
+                .Child("CalendarioCQ")
+                .OnceAsync<CalendarioCQ>();
+
+            return todosCalendarios.Where(m => m.IsFinished == false && m.IsExcluded == false && m.Ano == year).ToList();
         }
 
         public async Task<List<CalendarioCQ>> RetornaCalendariosFinalizados()
