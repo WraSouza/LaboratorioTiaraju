@@ -18,14 +18,14 @@ namespace LaboratorioTiaraju.ViewModel
 
         public Command AtualizaTela { get; }
         public Command IrParaCadastroCalendarioView { get; set; }
-        public Command IrParaCalendarioCQDetailView { get; set; }
+        public Command IrParaCalendarioGQDetailView { get; set; }
 
         public CalendarioGQViewModel()
         {
             BuscaCalendario();
             AtualizaTela = new Command(AtualizarTela);
             IrParaCadastroCalendarioView = new Command(async () => await AbrirCadastroCalendarioView());
-            IrParaCalendarioCQDetailView = new Command<CalendarioVisitasGQ>((model) => AbrirCalendarioDetailView(model));
+            IrParaCalendarioGQDetailView = new Command<CalendarioVisitasGQ>((model) => AbrirCalendarioDetailView(model));
         }
 
         private async void AbrirCalendarioDetailView(CalendarioVisitasGQ model)
@@ -40,7 +40,8 @@ namespace LaboratorioTiaraju.ViewModel
             Preferences.Set("DescricaoCalendario", model.Descricao);
             Preferences.Set("StatusFinalizado", model.IsFinished);
             Preferences.Set("StatusExcluido", model.IsExcluded);
-            var route = $"{nameof(View.CalendarioCQDetailView)}";
+            var route = $"{nameof(View.CalendarioGQVisitasDetailView)}";
+            //var route = $"{nameof(View.CalendarioCQDetailView)}";
             await Shell.Current.GoToAsync(route);
         }
 

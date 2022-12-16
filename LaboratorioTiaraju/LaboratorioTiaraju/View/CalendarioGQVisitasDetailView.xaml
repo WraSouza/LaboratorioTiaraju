@@ -57,7 +57,7 @@
                                         TextColor="Black" />
                                 </StackLayout>
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.IrParaCalendarioCQDetailView, Source={x:Reference collectionView}}" CommandParameter="{Binding .}" />
+                                <TapGestureRecognizer Command="{Binding Path=BindingContext.IrParaCalendarioGQDetailView, Source={x:Reference collectionView}}" CommandParameter="{Binding .}" />
                                 </Frame.GestureRecognizers>
                             </Frame>
 

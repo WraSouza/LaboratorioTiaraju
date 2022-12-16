@@ -43,7 +43,7 @@ namespace LaboratorioTiaraju.FirebaseServices
             return true;
         }
 
-        public async Task<List<CalendarioVisitasGQ>> RetornaCalendarioEspecifico(int dia, string mes, string descricao)
+        public async Task<List<CalendarioVisitasGQ>> RetornaCalendarioVisitasEspecifico(int dia, string mes, string descricao)
         {
             var calendarios = await RetornaInformacoes();
             await firebase
@@ -58,14 +58,20 @@ namespace LaboratorioTiaraju.FirebaseServices
             return (await firebase.Child("CalendarioVisitasGQ")
                 .OnceAsync<CalendarioVisitasGQ>()).Select(item => new CalendarioVisitasGQ
                 {
+                    DataChegada = item.Object.DataChegada,
+                    DataFinal = item.Object.DataFinal,
+                    Descricao = item.Object.Descricao,
+                    Titulo = item.Object.Titulo,
+                    ResponsabilityHotel = item.Object.ResponsabilityHotel,
+                    ResponsabilityMeal = item.Object.ResponsabilityMeal,
                     Dia = item.Object.Dia,
                     Mes = item.Object.Mes,
-                    Descricao = item.Object.Descricao,
-                    IsFinished = item.Object.IsFinished,
-                    IsExcluded = item.Object.IsExcluded,
-                    FinalizadoPor = item.Object.FinalizadoPor,
-                    MotivoExclusao = item.Object.MotivoExclusao,
-                    Titulo = item.Object.Titulo
+                    //Descricao = item.Object.Descricao,
+                    //IsFinished = item.Object.IsFinished,
+                    //IsExcluded = item.Object.IsExcluded,
+                    //FinalizadoPor = item.Object.FinalizadoPor,
+                    //MotivoExclusao = item.Object.MotivoExclusao,
+                    //Titulo = item.Object.Titulo
 
                 }).ToList();
         }
