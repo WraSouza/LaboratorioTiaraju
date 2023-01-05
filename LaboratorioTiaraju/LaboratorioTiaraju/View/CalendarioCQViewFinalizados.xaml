@@ -10,7 +10,28 @@
         <mvvm:CalendarioCQFinalizadosViewModel/>
     </ContentPage.BindingContext>
 
-    <Grid>
+    <StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <StackLayout>
+                <Frame CornerRadius="10" BorderColor="Gainsboro" HorizontalOptions="Start" Margin="10,10,0,0">
+                    <StackLayout>
+                        <DatePicker x:Name="datePicker" Date="{Binding AnoDesejado}">
+                            <DatePicker.Format>yyyy</DatePicker.Format>
+                        </DatePicker>
+
+                    </StackLayout>
+                </Frame>
+                <Button BackgroundColor="OrangeRed"
+                        Margin="10,10,0,0"   
+                        CornerRadius="10"
+                        ImageSource="loupe.png"                    
+                        Command="{Binding BuscarCalendariosAno}"/>
+
+            </StackLayout>
+
+        </StackLayout>
+        <Grid>
         <RefreshView
             Command="{Binding AtualizarTelaCommand}"
             IsRefreshing="{Binding IsRefreshing}"
@@ -41,7 +62,7 @@
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Margin="10,0,10,0" RowDefinitions="130">
+                        <Grid Margin="10,0,10,0" RowDefinitions="140">
 
                             <Frame
                                 Grid.Row="0"
@@ -92,4 +113,5 @@
         </RefreshView>
 
     </Grid>
+    </StackLayout>
 </ContentPage>

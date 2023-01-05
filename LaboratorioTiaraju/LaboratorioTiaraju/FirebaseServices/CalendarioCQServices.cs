@@ -221,6 +221,18 @@ namespace LaboratorioTiaraju.FirebaseServices
             return todosCalendarios.Where(m => m.IsFinished == false && m.IsExcluded == false && m.Ano == year).ToList();
         }
 
+        //Busca Calendários Excluídos do Ano Selecionado
+        public async Task<List<CalendarioCQ>> RetornaCalendariosExcluidosAno(int year)
+        {
+            var todosCalendarios = await RetornaInformacoes();
+
+            await firebase
+                .Child("CalendarioCQ")
+                .OnceAsync<CalendarioCQ>();
+
+            return todosCalendarios.Where(m => m.IsFinished == false && m.IsExcluded == true && m.Ano == year).ToList();
+        }
+
         public async Task<List<CalendarioCQ>> RetornaCalendariosFinalizados()
         {
             var todosCalendarios = await RetornaInformacoes();
@@ -235,12 +247,13 @@ namespace LaboratorioTiaraju.FirebaseServices
         public async Task<List<CalendarioCQ>> RetornaCalendariosExcluidos()
         {
             var todosCalendarios = await RetornaInformacoes();
+            int currentYear = DateTime.Now.Year;
 
             await firebase
                 .Child("CalendarioCQ")
                 .OnceAsync<CalendarioCQ>();
 
-            return todosCalendarios.Where(m => m.IsExcluded == true).ToList();
+            return todosCalendarios.Where(m => m.IsExcluded == true && m.Ano == currentYear).ToList();
         }
 
 

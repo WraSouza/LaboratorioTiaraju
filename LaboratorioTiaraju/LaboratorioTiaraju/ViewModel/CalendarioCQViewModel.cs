@@ -385,11 +385,8 @@ namespace LaboratorioTiaraju.ViewModel
             else
             {
                 Mensagem.MensagemErroConexao();
-                // await Application.Current.MainPage.DisplayAlert("Erro", "Verifique Sua Conexão de Internet.", "OK");
+                
             }
-
-
-
         }
     }
 }
