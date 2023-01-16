@@ -81,7 +81,8 @@ namespace LaboratorioTiaraju.ViewModel
                     var userService = new UserServices();
                     var calendarioCQService = new CalendarioCQServices();
                     string senhaDigitada = Criptografia.CriptografaSenha(Senha);
-                    Result = await userService.LoginUser(Nome, senhaDigitada);
+                    Result = await userService.IsUSerExists(Nome);
+                    
 
                     if (Result)
                     {
@@ -94,10 +95,11 @@ namespace LaboratorioTiaraju.ViewModel
 
                         string status = await userService.GetUserStatus(Nome);
 
+                        string senhaUsuario = await userService.GetUserSenha(Nome);
+
                         if (status != "ativo")
-                        {
-                            await Task.Delay(2000);
-                            await Application.Current.MainPage.DisplayAlert("Info", "Usuário Sem Autorização de Acesso", "OK");
+                        {                            
+                            Mensagem.MensagemUsuarioSemAutorizacao();                           
                         }
                         else
                         {
@@ -107,47 +109,32 @@ namespace LaboratorioTiaraju.ViewModel
 
                             string senhaNoBanco = await userService.GetUserSenha(Nome);
 
+                            //Verificar se a senha é 1234
                             if (senhaNoBanco == "1234")
                             {
                                 Application.Current.MainPage = new View.TrocarSenhaView();
                             }
                             else
                             {
-                                //await calendarioCQService.ApagarCalendario();
-                                Application.Current.MainPage = new View.AppShell();
-                            }
+                                Result = await userService.LoginUser(Nome, senhaDigitada);
+
+                                if (Result)
+                                {
+                                    //await calendarioCQService.ApagarCalendario();
+                                    Application.Current.MainPage = new View.AppShell();
+                                }
+                                else
+                                {
+                                    Mensagem.MensagemSenhaInvalida();
+                                }
+                                
+                            }                           
 
                         }
 
-                    }
-                    else
+                    }else
                     {
-                        senhaDigitada = Criptografia.CriptografaSenha(Senha);
-                        Result = await userService.LoginUser(Nome, senhaDigitada);
-
-                        if (Result)
-                        {
-                            Preferences.Set("Nome", Nome);
-
-                            string responsabilidade = await userService.GetUserResponsability(Nome);
-
-                            string departamento = await userService.GetUserDept(Nome);
-
-                            string status = await userService.GetUserStatus(Nome);
-
-                            Preferences.Set("Departamento", departamento);
-
-                            Preferences.Set("Responsabilidade", responsabilidade);
-
-                            //await calendarioCQService.ApagarCalendario();
-
-                            Application.Current.MainPage = new View.AppShell();
-                        }
-                        else
-                        {
-                            await Application.Current.MainPage.DisplayAlert("Erro", "Usuário/Senha Inválidos", "OK");
-                        }
-                        
+                        Mensagem.MensagemUsuarioInvalido();
                     }
                 }
                 else

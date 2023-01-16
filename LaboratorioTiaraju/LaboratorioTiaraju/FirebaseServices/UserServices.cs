@@ -12,10 +12,21 @@ namespace LaboratorioTiaraju.FirebaseServices
     internal class UserServices
     {
         FirebaseClient firebase;
+        
 
         public UserServices()
         {
-            firebase = new FirebaseClient("https://tiaraju-afa0a-default-rtdb.firebaseio.com/");
+            firebase = new FirebaseClient("https://tiaraju-afa0a-default-rtdb.firebaseio.com/");            
+        }
+
+        public async Task<bool> IsUSerExists(string nomeUsuario)
+        {
+            var user = (await firebase.Child("Usuario")
+                .OnceAsync<Usuario>())
+                .Where(u => u.Object.NomeUsuario == nomeUsuario)
+                .FirstOrDefault();
+
+            return (user != null);
         }
 
         public async Task<bool> LoginUser(string name, string passwd)

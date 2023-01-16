@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LaboratorioTiaraju.Model
 {
-    internal class Usuario
+    public class Usuario
     {
         public string NomeUsuario { get; set; }
         public string Senha { get; set; }

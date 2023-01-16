@@ -13,9 +13,19 @@ namespace LaboratorioTiaraju.Services
             Application.Current.MainPage.DisplayAlert("Ops!", "Algo Deu Errado. Verifique Sua Conexão de Internet.", "OK");
         }
 
+        public static void MensagemSenhaInvalida()
+        {
+            Application.Current.MainPage.DisplayAlert("Ops!", "Usuário ou Senha Inválida", "OK");
+        }
+
         public static void MensagemCadastroSucesso()
         {
             Application.Current.MainPage.DisplayAlert("", "Cadastro Realizado Com Sucesso.", "OK");
+        }
+
+        public static void MensagemUsuarioInvalido()
+        {
+            Application.Current.MainPage.DisplayAlert("Ops!", "Usuário Informado Não Existe", "OK");
         }
 
         public static void MensagemEventoJaCadastrado()
@@ -26,6 +36,11 @@ namespace LaboratorioTiaraju.Services
         public static void MensagemDataDeveSerMaior()
         {
             Application.Current.MainPage.DisplayAlert("Ops!", "A Data Informada Deve Ser Posterior ou Igual a Hoje.", "OK");
+        }
+
+        public static void MensagemUsuarioSemAutorizacao()
+        {
+            Application.Current.MainPage.DisplayAlert("Ops!", "Usuário Sem Autorização de Acesso", "OK");
         }
     }
 }
