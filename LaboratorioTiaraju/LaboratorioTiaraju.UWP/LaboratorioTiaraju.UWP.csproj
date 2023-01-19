@@ -20,13 +20,13 @@
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <AppxBundlePlatforms>x64</AppxBundlePlatforms>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
-    <PackageCertificateThumbprint>9D4C6C18A919D266DDB10A529BD1CEB01D6B021C</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>377A07E701C2314CF5B97E46B13C514B2D04C2CC</PackageCertificateThumbprint>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundle>Always</AppxBundle>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-    <PackageCertificateKeyFile />
+    <PackageCertificateKeyFile>LaboratorioTiaraju.UWP_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -180,6 +180,7 @@
     <Content Include="home.png" />
     <Content Include="loginLogo.jpg" />
     <Content Include="logotiaraju.jpg" />
+    <Content Include="loupe.png" />
     <Content Include="meetingroomlogo.jpg" />
     <Content Include="novocolaboradorimage.jpg" />
     <Content Include="PautaFixa.jpg" />

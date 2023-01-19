@@ -120,7 +120,7 @@ namespace LaboratorioTiaraju.ViewModel
 
                                 if (Result)
                                 {
-                                    //await calendarioCQService.ApagarCalendario();
+                                    await calendarioCQService.ApagarCalendario();
                                     Application.Current.MainPage = new View.AppShell();
                                 }
                                 else

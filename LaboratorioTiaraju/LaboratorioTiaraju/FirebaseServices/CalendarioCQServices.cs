@@ -236,12 +236,13 @@ namespace LaboratorioTiaraju.FirebaseServices
         public async Task<List<CalendarioCQ>> RetornaCalendariosFinalizados()
         {
             var todosCalendarios = await RetornaInformacoes();
+            int currentYear = DateTime.Now.Year;
 
             await firebase
                 .Child("CalendarioCQ")
                 .OnceAsync<CalendarioCQ>();
 
-            return todosCalendarios.Where(m => m.IsFinished == true && m.IsExcluded == false).ToList();
+            return todosCalendarios.Where(m => m.IsFinished == true && m.IsExcluded == false && m.Ano == currentYear).ToList();
         }
 
         public async Task<List<CalendarioCQ>> RetornaCalendariosExcluidos()

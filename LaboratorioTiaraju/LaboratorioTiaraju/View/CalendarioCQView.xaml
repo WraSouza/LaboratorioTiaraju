@@ -25,7 +25,13 @@
                         Margin="10,10,0,0"   
                         CornerRadius="10"
                         ImageSource="loupe.png"                    
-                        Command="{Binding BuscarCalendariosAno}"/>
+                        Command="{Binding BuscarCalendariosAno}">
+                    <Button.HeightRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="UWP" Value="50"/>
+                        </OnPlatform>
+                    </Button.HeightRequest>
+                </Button>
                 
             </StackLayout>
         
