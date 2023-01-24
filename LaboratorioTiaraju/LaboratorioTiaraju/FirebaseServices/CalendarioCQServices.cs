@@ -221,6 +221,18 @@ namespace LaboratorioTiaraju.FirebaseServices
             return todosCalendarios.Where(m => m.IsFinished == false && m.IsExcluded == false && m.Ano == year).ToList();
         }
 
+        //Busca Calendários do Ano Selecionado
+        public async Task<List<CalendarioCQ>> RetornaCalendariosFinalizadosAno(int year)
+        {
+            var todosCalendarios = await RetornaInformacoes();
+
+            await firebase
+                .Child("CalendarioCQ")
+                .OnceAsync<CalendarioCQ>();
+
+            return todosCalendarios.Where(m => m.IsFinished == true && m.IsExcluded == false && m.Ano == year).ToList();
+        }
+
         //Busca Calendários Excluídos do Ano Selecionado
         public async Task<List<CalendarioCQ>> RetornaCalendariosExcluidosAno(int year)
         {

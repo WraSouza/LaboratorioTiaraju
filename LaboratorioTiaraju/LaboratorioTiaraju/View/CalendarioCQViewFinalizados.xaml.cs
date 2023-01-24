@@ -15,6 +15,8 @@ namespace LaboratorioTiaraju.View
         public CalendarioCQViewFinalizados()
         {
             InitializeComponent();
+
+            datePicker.Date = DateTime.Now;
         }
     }
 }
