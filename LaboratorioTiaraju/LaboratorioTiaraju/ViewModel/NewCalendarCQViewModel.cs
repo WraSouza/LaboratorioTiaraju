@@ -19,7 +19,14 @@ namespace LaboratorioTiaraju.ViewModel
 
         void CriarDias()
         {
-            for (int i = 0; i < 31; i++)
+            //Vamos considerar que a data seja o dia de hoje, mas pode ser qualquer data.
+            DateTime data = DateTime.Today;
+
+            //DateTime com o primeiro dia do mês
+            DateTime primeiroDiaDoMes = new DateTime(data.Year, data.Month, 1);
+
+            DateTime ultimoDiaDoMes = new DateTime(data.Year, data.Month, DateTime.DaysInMonth(data.Year, data.Month));
+            for (int i = 0; i < ultimoDiaDoMes.Day; i++)
             {
                 source.Add(new DiaMes
                 {
