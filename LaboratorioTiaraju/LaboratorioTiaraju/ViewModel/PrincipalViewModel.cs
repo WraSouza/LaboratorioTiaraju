@@ -100,7 +100,9 @@ namespace LaboratorioTiaraju.ViewModel
             {
                 if ((departamento == cq) || (departamento == micro))
                 {
-                    var route = $"{nameof(View.CalendarioCQTabbedView)}";
+                    //var route = $"{nameof(View.CalendarioCQTabbedView)}";
+
+                    var route = $"{nameof(View.NewCalendarCQView)}";
 
                     await Shell.Current.GoToAsync(route);
                 }
