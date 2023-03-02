@@ -11,7 +11,7 @@
     <ContentPage.Content>
         <ScrollView>
 
-            <Grid BackgroundColor="#F8F8F8" RowDefinitions="170,30,270,30,120,30,110">
+            <Grid BackgroundColor="#F8F8F8" RowDefinitions="170,30,270,30,210,30,110">
 
                 <Grid Margin="10,20,10,0">
                     <Image Aspect="Fill" Source="saladereuniaoimagem.jpg" />
@@ -230,6 +230,25 @@
                             FontSize="15"
                             HorizontalTextAlignment="Center"
                             Text="Biblioteca"
+                            TextColor="Black" />
+                        
+                        <!--PMO-->
+                        <Image
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Source="pmo.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenBiblioteca}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            FontFamily="MontserratSemiBold"
+                            FontSize="15"
+                            HorizontalTextAlignment="Center"
+                            Text="PMO"
                             TextColor="Black" />
                     </Grid>
 

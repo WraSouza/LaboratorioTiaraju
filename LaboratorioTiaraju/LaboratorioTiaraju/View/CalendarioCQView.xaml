@@ -101,11 +101,11 @@
                     <DataTemplate>
                         <Label
                             Margin="0,5,0,0"
-                            BackgroundColor="OrangeRed"
+                            BackgroundColor="White"
                             FontFamily="MontserratSemiBold"
                             FontSize="20"
                             Text="{Binding Mes}"
-                            TextColor="White" />
+                            TextColor="Black" />
                     </DataTemplate>
                 </CollectionView.GroupHeaderTemplate>
 

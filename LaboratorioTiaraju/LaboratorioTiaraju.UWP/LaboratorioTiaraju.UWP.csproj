@@ -18,9 +18,10 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
-    <AppxBundlePlatforms>x64</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
-    <PackageCertificateThumbprint>377A07E701C2314CF5B97E46B13C514B2D04C2CC</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>
+    </PackageCertificateThumbprint>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
@@ -177,14 +178,18 @@
     <Content Include="edit.png" />
     <Content Include="emconstrucao.png" />
     <Content Include="glpi.jpg" />
+    <Content Include="gq.jpg" />
     <Content Include="home.png" />
+    <Content Include="leftarrow.png" />
     <Content Include="loginLogo.jpg" />
     <Content Include="logotiaraju.jpg" />
     <Content Include="loupe.png" />
     <Content Include="meetingroomlogo.jpg" />
+    <Content Include="next.png" />
     <Content Include="novocolaboradorimage.jpg" />
     <Content Include="PautaFixa.jpg" />
     <Content Include="plus.png" />
+    <Content Include="pmo.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="refresh.png" />
     <Content Include="rh.jpg" />
@@ -211,7 +216,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FirebaseDatabase.net">
-      <Version>4.1.0</Version>
+      <Version>4.2.0</Version>
     </PackageReference>
     <PackageReference Include="FirebaseStorage.net">
       <Version>1.0.3</Version>
@@ -233,7 +238,7 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2545" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.14" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.4" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
     <PackageReference Include="Xamarin.Forms.PancakeView">
       <Version>2.3.0.759</Version>
     </PackageReference>

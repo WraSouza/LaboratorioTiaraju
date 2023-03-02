@@ -5,19 +5,126 @@
              xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="LaboratorioTiaraju.View.NewCalendarCQView">
     <ContentPage.BindingContext>
-        <mvvm:NewCalendarCQViewModel/>
+        <mvvm:CalendarioCQViewModel/>
     </ContentPage.BindingContext>
     
     <ContentPage.Content>
-        <Grid BackgroundColor="OrangeRed">
+        <StackLayout>
+            
+            <Grid>
+
+                <RefreshView  Command="{Binding AtualizaTela}"
+                              IsRefreshing="{Binding IsRefreshing}"
+                              RefreshColor="OrangeRed">
+                    <CollectionView  x:Name="collectionView"
+                                     Margin="10,20,10,0"
+                                     IsGrouped="True"
+                                     ItemsSource="{Binding Calendarios}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout  HorizontalItemSpacing="2"
+                                              Orientation="Vertical"
+                                              Span="2"
+                                              VerticalItemSpacing="5" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.EmptyView>
+                            
+                            <ContentView>                                
+                                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Label FontFamily="MontserratBold"
+                                           FontSize="15"
+                                           Text="Não Há Dados Cadastrados No Momento"
+                                           TextColor="Black" />
+                                </StackLayout>                                
+                            </ContentView>
+                            
+                        </CollectionView.EmptyView>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="10,0,10,0" RowDefinitions="100">
+                                    
+                                        <StackLayout Margin="5">
+                                            <Label FontSize="30"
+                                                   HorizontalOptions="Start"
+                                                   Text="{Binding Dia}"
+                                                   TextColor="Black" />
+                                        
+                                        <Label FontFamily="MontserratMedium"
+                                                   FontSize="15"
+                                                   Text="{Binding Titulo}"
+                                                   TextColor="Black" />
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.IrParaCalendarioCQDetailView, Source={x:Reference collectionView}}" CommandParameter="{Binding .}" />
+                                        </StackLayout.GestureRecognizers>
+                                        </StackLayout>
+                                       
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+
+                        <CollectionView.GroupHeaderTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Line Stroke="Black" X1="0" X2="500"/>
+                                    <Label
+                            Margin="0,5,0,0"
+                            BackgroundColor="White"
+                            FontFamily="MontserratSemiBold"
+                            FontSize="30"
+                            Text="{Binding Mes}"
+                            TextColor="Black" />
+                                </StackLayout>
+                              
+                            </DataTemplate>
+                        </CollectionView.GroupHeaderTemplate>
+
+                    </CollectionView>
+                </RefreshView>
+
+                <Image
+            Margin="0,0,10,10"
+            HeightRequest="40"
+            HorizontalOptions="EndAndExpand"
+            Source="plus.png"
+            VerticalOptions="EndAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding IrParaCadastroCalendarioView}" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+        </StackLayout>
+        <!--<Grid>
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Offset="0.1"
+                                  Color="OrangeRed"/>
+
+                    <GradientStop Offset="1.0"
+                                  Color="White"/>
+                </LinearGradientBrush>
+            </Grid.Background>
 
             <StackLayout Grid.Row="0" Grid.RowSpan="2">
-            <Label Text="Fevereiro"
-                   FontSize="20"
-                   Margin="20,20,0,0"
-                   TextColor="White"/>
+                <StackLayout Orientation="Horizontal">                    
 
-            <CollectionView Margin="20,20,20,0" x:Name="diasMes" ItemsSource="{Binding DiasMes}">
+                    <Button ImageSource="left.png"   
+                            Command="{Binding IrMesAnterior}"
+                            Margin="0,5,0,0"/>
+
+                    <Label Text="{Binding Mes}"
+                           FontSize="20"
+                           Margin="5,20,0,0"
+                           TextColor="White"/>
+
+                    <Button ImageSource="next.png" 
+                            Command="{Binding IrProximoMes}"
+                            Margin="0,12,0,0"/>
+
+                    
+                </StackLayout>
+            
+
+            <CollectionView Margin="20,10,20,0" x:Name="diasMes" ItemsSource="{Binding DiasMes}">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout HorizontalItemSpacing="2"
                                      Orientation="Vertical"
@@ -35,13 +142,13 @@
             </CollectionView>
             </StackLayout>
 
-            <pancake:PancakeView BackgroundColor="White" CornerRadius="20,20,0,0" Grid.Row="2" Grid.RowSpan="2">
+            <pancake:PancakeView BackgroundColor="White" CornerRadius="20,20,0,0" Grid.Row="2" Grid.RowSpan="2" Margin="0,40,0,0">
                 <StackLayout Margin="20,20,0,0">
                     <Label Text="Text"/>
                 </StackLayout>
             </pancake:PancakeView>
 
 
-        </Grid>
+        </Grid>-->
     </ContentPage.Content>
 </ContentPage>

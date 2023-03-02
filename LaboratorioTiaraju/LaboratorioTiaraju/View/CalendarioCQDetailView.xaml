@@ -68,7 +68,7 @@
                                     </StackLayout>
 
                                     <StackLayout
-                                        
+                                        HorizontalOptions="Center"
                                         VerticalOptions="EndAndExpand"                                        
                                         Orientation="Horizontal">
                                         <Frame HorizontalOptions="Center">
